@@ -1,0 +1,33 @@
+{
+    "ComputeKernels.monteCarlo": { 
+        "BACKEND" : "SPIRV",
+        "Device ID":  "0:0",
+        "Device":  "Intel(R) UHD Graphics 770",
+        "Global Memory Loads":  "0",
+        "Global Memory Stores":  "1",
+        "Local Memory Loads":  "0",
+        "Local Memory Stores":  "0",
+        "Constant Memory Loads":  "0",
+        "Constant Memory Stores":  "0",
+        "Private Memory Loads":  "18",
+        "Private Memory Stores":  "18",
+        "Total Loops":  "2",
+        "Parallel Loops":  "1",
+        "If Statements":  "3",
+        "Switch Statements":  "0",
+        "Switch Cases":  "0",
+        "Cast Operations":  "2",
+        "Vector Operations":  "0",
+        "Total Integer Operations":  "18",
+        "Total Float Operations":  "3",
+        "Single Precision Float Operations":  "3",
+        "Double Precision Float Operations":  "0",
+        "Binary Operations":  "0",
+        "Boolean Operations":  "0",
+        "Float Math Functions":  "2",
+        "Integer Math Functions":  "0",
+        "Integer Comparison":  "2",
+        "Float Comparison":  "1"
+    }
+}
+

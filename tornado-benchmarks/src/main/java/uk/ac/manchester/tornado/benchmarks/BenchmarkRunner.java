@@ -288,7 +288,7 @@ public abstract class BenchmarkRunner {
             case "bfs" -> new uk.ac.manchester.tornado.benchmarks.bfs.Benchmark();
             case "maxreductionglobal" -> new uk.ac.manchester.tornado.benchmarks.maxReductionGlobal.Benchmark();
             case "maxreductionlocal" -> new uk.ac.manchester.tornado.benchmarks.maxReductionLocal.Benchmark();
-            case "integration" -> new uk.ac.manchester.tornado.benchmarks.maxReductionLocal.Benchmark();
+            case "integration" -> new uk.ac.manchester.tornado.benchmarks.integration.Benchmark();
             default -> throw new TornadoRuntimeException("Benchmark not recognized: " + benchmark);
         };
     }

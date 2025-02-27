@@ -602,7 +602,7 @@ def runBenchmarksFullCoverage(args):
                     + " "
                     + str(size)
             )
-            if key == "sgemm":
+            if key == ["sgemm", "dgemm"]:
                 command = command + " " + str(size)
             command += '"'
             print(command)

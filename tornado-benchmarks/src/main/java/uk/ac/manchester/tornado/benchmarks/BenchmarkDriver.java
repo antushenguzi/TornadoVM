@@ -426,7 +426,7 @@ public abstract class BenchmarkDriver {
     private Long calculateTotalEnergy(long startTime) {
         long totalEnergy = 0;
 
-        if (snapshotTimerPerIteration.size() == powerMetricsPerIteration.size()) {
+        if (!snapshotTimerPerIteration.isEmpty() && snapshotTimerPerIteration.size() == powerMetricsPerIteration.size()) {
             long timeInterval = snapshotTimerPerIteration.get(0) - startTime;
             // Convert from nanoseconds to milliseconds
             timeInterval /= 1000000;
@@ -438,7 +438,7 @@ public abstract class BenchmarkDriver {
                 totalEnergy += energyForInterval;
             }
         } else {
-            throw new IllegalArgumentException("All lists must have the same size.");
+            throw new IllegalArgumentException("All lists must have the same size and must not be empty.");
         }
 
         return totalEnergy;

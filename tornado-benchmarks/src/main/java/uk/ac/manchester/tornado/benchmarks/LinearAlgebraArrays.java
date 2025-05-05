@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2023, APT Group, Department of Computer Science,
+ * Copyright (c) 2013-2023, 2025, APT Group, Department of Computer Science,
  * The University of Manchester.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,9 @@ import uk.ac.manchester.tornado.api.annotations.Parallel;
 import uk.ac.manchester.tornado.api.types.arrays.DoubleArray;
 import uk.ac.manchester.tornado.api.types.arrays.FloatArray;
 import uk.ac.manchester.tornado.api.types.arrays.IntArray;
+import uk.ac.manchester.tornado.api.types.matrix.Matrix2DFloat;
+import uk.ac.manchester.tornado.api.types.matrix.Matrix2DFloat4;
+import uk.ac.manchester.tornado.api.types.vectors.Float4;
 
 public class LinearAlgebraArrays {
     // CHECKSTYLE:OFF
@@ -65,6 +68,56 @@ public class LinearAlgebraArrays {
             }
         }
 
+    }
+
+    public static void matrixVectorMultiplication(final FloatArray A, final FloatArray B, final FloatArray C, final int size) {
+        for (@Parallel int i = 0; i < size; i++) {
+            float sum = 0.0f;
+            for (int j = 0; j < size; j++) {
+                sum += A.get((i * size) + j) * B.get(j);
+            }
+            C.set(i, sum);
+        }
+    }
+
+    public static void matrixTranspose(final FloatArray A, FloatArray B, final int size) {
+        for (@Parallel int i = 0; i < size; i++) {
+            for (@Parallel int j = 0; j < size; j++) {
+                B.set((i * size) + j, A.get((j * size) + i));
+            }
+        }
+    }
+
+    public static void matrixAddition(Matrix2DFloat4 A, Matrix2DFloat4 B, Matrix2DFloat4 C, final int size) {
+        for (@Parallel int i = 0; i < size; i++) {
+            for (@Parallel int j = 0; j < size; j++) {
+                C.set(i, j, Float4.add(A.get(i, j), B.get(j, j)));
+            }
+        }
+    }
+
+    public static void matrixMultiplication(final FloatArray A, final FloatArray B, final FloatArray C, final int size) {
+        for (@Parallel int i = 0; i < size; i++) {
+            for (@Parallel int j = 0; j < size; j++) {
+                float sum = 0.0f;
+                for (int k = 0; k < size; k++) {
+                    sum += A.get((i * size) + k) * B.get((k * size) + j);
+                }
+                C.set((i * size) + j, sum);
+            }
+        }
+    }
+
+    public static void matrixMultiplication(Matrix2DFloat A, Matrix2DFloat B, Matrix2DFloat C, final int size) {
+        for (@Parallel int i = 0; i < size; i++) {
+            for (@Parallel int j = 0; j < size; j++) {
+                float sum = 0.0f;
+                for (int k = 0; k < size; k++) {
+                    sum += A.get(i, k) * B.get(k, j);
+                }
+                C.set(i, j, sum);
+            }
+        }
     }
 
     public static void spmv(final FloatArray val, final IntArray cols, final IntArray rowDelimiters, final FloatArray vec, final int dim, final FloatArray out) {

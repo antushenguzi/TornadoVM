@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2023, APT Group, Department of Computer Science,
+ * Copyright (c) 2013-2023, 2025, APT Group, Department of Computer Science,
  * The University of Manchester.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -82,7 +82,7 @@ public class JMHRotateImage {
             }
 
             TaskGraph taskGraph = new TaskGraph("benchmark") //
-                    .transferToDevice(DataTransferMode.EVERY_EXECUTION, input) //
+                    .transferToDevice(DataTransferMode.EVERY_EXECUTION, input, m) //
                     .task("rotateImage", GraphicsKernels::rotateImage, output, m, input) //
                     .transferToHost(DataTransferMode.EVERY_EXECUTION, output);
 

@@ -34,6 +34,11 @@ public class Benchmark extends BenchmarkRunner {
             height = Integer.parseInt(args[2]);
             filtersize = Integer.parseInt(args[3]);
 
+        } else if (args.length == 2) {
+            iterations = Integer.parseInt(args[0]);
+            width = Integer.parseInt(args[1]);
+            height = Integer.parseInt(args[1]);
+            filtersize = 5;
         } else {
             iterations = 100;
             width = 2048;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2023, APT Group, Department of Computer Science,
+ * Copyright (c) 2013-2023, 2025, APT Group, Department of Computer Science,
  * The University of Manchester.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,7 +64,7 @@ public class RotateTornado extends BenchmarkDriver {
         }
 
         taskGraph = new TaskGraph("benchmark");
-        taskGraph.transferToDevice(DataTransferMode.EVERY_EXECUTION, input);
+        taskGraph.transferToDevice(DataTransferMode.EVERY_EXECUTION, input, m);
         taskGraph.task("rotateVector", GraphicsKernels::rotateVector, output, m, input);
         taskGraph.transferToHost(DataTransferMode.EVERY_EXECUTION, output);
 

@@ -37,6 +37,7 @@ public abstract class BenchmarkRunner {
     private static final boolean SKIP_SERIAL = Boolean.parseBoolean(System.getProperty("tornado.benchmarks.skipserial", FALSE));
     private static final boolean SKIP_STREAMS = Boolean.parseBoolean(System.getProperty("tornado.benchmarks.skipstreams", TRUE));
     private static final String STORE_OUTPUT_TO_FILE = System.getProperty("tornado.benchmarks.store.output.to.file", "");
+    private static final long DELAY_INTERVAL = Long.parseLong(System.getProperty("delay.interval", "30000"));
 
     protected abstract String getName();
 
@@ -149,7 +150,6 @@ public abstract class BenchmarkRunner {
                         continue;
                     }
                 }
-
                 TornadoDevice tornadoDevice = driver.getDevice(deviceIndex);
 
                 TornadoRuntimeProvider.setProperty("benchmark.device", driverIndex + ":" + deviceIndex);
@@ -186,12 +186,17 @@ public abstract class BenchmarkRunner {
                 if (isPowerMonitoringEnabled()) {
                     stringBuilder.append("Energy: bm=" + id + ", " + "id=" + driverIndex + ":" + deviceIndex + ", " + benchmarkDriver.getEnergySummary() + "\n");
                 }
-                if (STORE_OUTPUT_TO_FILE.isEmpty()) {
-                    System.out.printf(stringBuilder.toString());
-                } else {
-                    redirectOutputToFile(stringBuilder.toString());
-                }
             }
+            try {
+                Thread.sleep(DELAY_INTERVAL);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (STORE_OUTPUT_TO_FILE.isEmpty()) {
+            System.out.printf(stringBuilder.toString());
+        } else {
+            redirectOutputToFile(stringBuilder.toString());
         }
     }
 
@@ -219,11 +224,11 @@ public abstract class BenchmarkRunner {
                     + ", speedupFirstIteration=" + refFirstIteration / deviceTest.getFirstIteration() //
                     + ", CV=" + deviceTest.getCV() //
                     + ", deviceName=" + driver.getDevice(deviceIndex) + "\n");
-            if (STORE_OUTPUT_TO_FILE.isEmpty()) {
-                System.out.printf(stringBuilder.toString());
-            } else {
-                redirectOutputToFile(stringBuilder.toString());
-            }
+        }
+        if (STORE_OUTPUT_TO_FILE.isEmpty()) {
+            System.out.printf(stringBuilder.toString());
+        } else {
+            redirectOutputToFile(stringBuilder.toString());
         }
     }
 
@@ -260,11 +265,13 @@ public abstract class BenchmarkRunner {
             case "convolvearray" -> new uk.ac.manchester.tornado.benchmarks.convolvearray.Benchmark();
             case "convolveimage" -> new uk.ac.manchester.tornado.benchmarks.convolveimage.Benchmark();
             case "dft" -> new uk.ac.manchester.tornado.benchmarks.dft.Benchmark();
+            case "fft" -> new uk.ac.manchester.tornado.benchmarks.dft.Benchmark();
             case "dgemm" -> new uk.ac.manchester.tornado.benchmarks.dgemm.Benchmark();
             case "dotimage" -> new uk.ac.manchester.tornado.benchmarks.dotimage.Benchmark();
-            case "dorvector" -> new uk.ac.manchester.tornado.benchmarks.dotvector.Benchmark();
+            case "dotvector" -> new uk.ac.manchester.tornado.benchmarks.dotvector.Benchmark();
             case "euler" -> new uk.ac.manchester.tornado.benchmarks.euler.Benchmark();
             case "hilbert" -> new uk.ac.manchester.tornado.benchmarks.hilbert.Benchmark();
+            case "histogram" -> new uk.ac.manchester.tornado.benchmarks.histogram.Benchmark();
             case "juliaset" -> new uk.ac.manchester.tornado.benchmarks.juliaset.Benchmark();
             case "mandelbrot" -> new uk.ac.manchester.tornado.benchmarks.mandelbrot.Benchmark();
             case "montecarlo" -> new uk.ac.manchester.tornado.benchmarks.montecarlo.Benchmark();
@@ -274,8 +281,20 @@ public abstract class BenchmarkRunner {
             case "rotatevector" -> new uk.ac.manchester.tornado.benchmarks.rotatevector.Benchmark();
             case "saxpy" -> new uk.ac.manchester.tornado.benchmarks.saxpy.Benchmark();
             case "sgemm" -> new uk.ac.manchester.tornado.benchmarks.sgemm.Benchmark();
+            case "matrixvectormultiplication" -> new uk.ac.manchester.tornado.benchmarks.matrixVectorMultiplication.Benchmark();
+            case "matrixtranspose" -> new uk.ac.manchester.tornado.benchmarks.matrixTranspose.Benchmark();
+            case "matrixaddition" -> new uk.ac.manchester.tornado.benchmarks.matrixAddition.Benchmark();
             case "spmv" -> new uk.ac.manchester.tornado.benchmarks.spmv.Benchmark();
             case "stencil" -> new uk.ac.manchester.tornado.benchmarks.stencil.Benchmark();
+            case "vectoraddition" -> new uk.ac.manchester.tornado.benchmarks.vectorAddition.Benchmark();
+            case "vectoradditionfloat4" -> new uk.ac.manchester.tornado.benchmarks.vectorAdditionFloat4.Benchmark();
+            case "blackandwhitefilter" -> new uk.ac.manchester.tornado.benchmarks.blackAndWhiteFilter.Benchmark();
+            case "matrixmultiplication1d" -> new uk.ac.manchester.tornado.benchmarks.matrixMultiplication1D.Benchmark();
+            case "matrixmultiplication2d" -> new uk.ac.manchester.tornado.benchmarks.matrixMultiplication2D.Benchmark();
+            case "bfs" -> new uk.ac.manchester.tornado.benchmarks.bfs.Benchmark();
+            case "maxreductionglobal" -> new uk.ac.manchester.tornado.benchmarks.maxReductionGlobal.Benchmark();
+            case "maxreductionlocal" -> new uk.ac.manchester.tornado.benchmarks.maxReductionLocal.Benchmark();
+            case "integration" -> new uk.ac.manchester.tornado.benchmarks.integration.Benchmark();
             default -> throw new TornadoRuntimeException("Benchmark not recognized: " + benchmark);
         };
     }

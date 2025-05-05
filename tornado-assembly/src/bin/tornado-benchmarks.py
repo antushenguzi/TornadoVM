@@ -45,7 +45,7 @@ JDK_8_VERSION = "1.8"
 __JAVA_VERSION__ = (
     subprocess.Popen(
         __JAVA_HOME__
-        + "/bin/java -version 2>&1 | awk -F[\\\"\.] -v OFS=. 'NR==1{print $2,$3}'",
+        + "/bin/java -version 2>&1 | awk -F[\\\"\\.] -v OFS=. 'NR==1{print $2,$3}'",
         stdout=subprocess.PIPE,
         shell=True,
     )

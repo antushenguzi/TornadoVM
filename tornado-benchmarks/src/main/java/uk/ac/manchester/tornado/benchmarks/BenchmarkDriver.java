@@ -450,6 +450,7 @@ public abstract class BenchmarkDriver {
         List<Long> power;
         List<Long> time;
 
+
         synchronized (currentPowerMetrics) {
             power = new ArrayList<>(currentPowerMetrics);
         }
@@ -475,6 +476,7 @@ public abstract class BenchmarkDriver {
             timeIntervalNs = time.get(i + 1) - time.get(i);
             energyForInterval = (timeIntervalNs * power.get(i)) / 1000;
             totalEnergyMicroJoules += energyForInterval;
+
         }
 
         return totalEnergyMicroJoules / 1000;

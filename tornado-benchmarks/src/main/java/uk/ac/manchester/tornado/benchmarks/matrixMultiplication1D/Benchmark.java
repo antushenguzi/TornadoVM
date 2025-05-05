@@ -37,7 +37,9 @@ public class Benchmark extends BenchmarkRunner {
 
     @Override
     protected String getName() {
+
         return "matrixMultiplication1D";
+
     }
 
     @Override

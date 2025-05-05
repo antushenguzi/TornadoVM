@@ -76,10 +76,11 @@ import uk.ac.manchester.tornado.drivers.opencl.graal.compiler.OCLCompilationResu
 import uk.ac.manchester.tornado.drivers.opencl.graal.compiler.OCLCompiler;
 import uk.ac.manchester.tornado.drivers.opencl.graal.lir.OCLKind;
 import uk.ac.manchester.tornado.drivers.opencl.graal.nodes.TornadoAtomicIntegerNode;
-import uk.ac.manchester.tornado.drivers.opencl.mm.AtomicsBuffer;
+import uk.ac.manchester.tornado.drivers.opencl.mm.OCLAtomicsBuffer;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLByteArrayWrapper;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLCharArrayWrapper;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLDoubleArrayWrapper;
+import uk.ac.manchester.tornado.drivers.opencl.mm.OCLFieldBuffer;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLFloatArrayWrapper;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLIntArrayWrapper;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLLongArrayWrapper;
@@ -87,7 +88,6 @@ import uk.ac.manchester.tornado.drivers.opencl.mm.OCLMemorySegmentWrapper;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLMultiDimArrayWrapper;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLShortArrayWrapper;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLVectorWrapper;
-import uk.ac.manchester.tornado.drivers.opencl.mm.OCLXPUBuffer;
 import uk.ac.manchester.tornado.runtime.TornadoCoreRuntime;
 import uk.ac.manchester.tornado.runtime.common.KernelStackFrame;
 import uk.ac.manchester.tornado.runtime.common.RuntimeUtilities;
@@ -111,7 +111,7 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
     private final int deviceIndex;
     private final int platformIndex;
     private final String platformName;
-    private XPUBuffer reuseBuffer;
+    private XPUBuffer atomicsBuffer;
     private ConcurrentHashMap<Object, Integer> mappingAtomics;
     private TornadoLogger logger = new TornadoLogger(this.getClass());
 
@@ -233,11 +233,11 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
 
     @Override
     public XPUBuffer createOrReuseAtomicsBuffer(int[] array, Access access) {
-        if (reuseBuffer == null) {
-            reuseBuffer = getDeviceContext().getMemoryManager().createAtomicsBuffer(array, access);
+        if (atomicsBuffer == null) {
+            atomicsBuffer = getDeviceContext().getMemoryManager().createAtomicsBuffer(array, access);
         }
-        reuseBuffer.setIntBuffer(array);
-        return reuseBuffer;
+        atomicsBuffer.setIntBuffer(array);
+        return atomicsBuffer;
     }
 
     private boolean isOpenCLPreLoadBinary(long executionPlanId, OCLDeviceContextInterface deviceContext, String deviceInfo) {
@@ -406,10 +406,10 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
 
     @Override
     public int[] checkAtomicsForTask(SchedulableTask task, int[] array, int paramIndex, Object value) {
-        if (value instanceof AtomicInteger) {
-            AtomicInteger ai = (AtomicInteger) value;
-            if (TornadoAtomicIntegerNode.globalAtomicsParameters.containsKey(task.meta().getCompiledResolvedJavaMethod())) {
-                HashMap<Integer, Integer> values = TornadoAtomicIntegerNode.globalAtomicsParameters.get(task.meta().getCompiledResolvedJavaMethod());
+        if (value instanceof AtomicInteger ai) {
+            Object compiledResolvedJavaMethod = task.meta().getCompiledResolvedJavaMethod();
+            if (TornadoAtomicIntegerNode.globalAtomicsParameters.containsKey(compiledResolvedJavaMethod)) {
+                HashMap<Integer, Integer> values = TornadoAtomicIntegerNode.globalAtomicsParameters.get(compiledResolvedJavaMethod);
                 int index = values.get(paramIndex);
                 array[index] = ai.get();
             }
@@ -418,13 +418,13 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
     }
 
     @Override
-    public int[] updateAtomicRegionAndObjectState(SchedulableTask task, int[] array, int paramIndex, Object value, XPUDeviceBufferState objectState) {
+    public int[] updateAtomicRegionAndObjectState(SchedulableTask task, int[] array, int paramIndex, Object value, XPUDeviceBufferState atomicState) {
         int[] atomicsArray = checkAtomicsForTask(task, array, paramIndex, value);
         mappingAtomics.put(value, getAtomicsGlobalIndexForTask(task, paramIndex));
-        XPUBuffer bufferAtomics = objectState.getXPUBuffer();
-        bufferAtomics.setIntBuffer(atomicsArray);
-        setAtomicRegion(bufferAtomics);
-        objectState.setAtomicRegion(bufferAtomics);
+        XPUBuffer xpuBufferForAtomic = atomicState.getXPUBuffer();
+        xpuBufferForAtomic.setIntBuffer(atomicsArray);
+        this.atomicsBuffer = xpuBufferForAtomic;
+        atomicState.setAtomicRegion(xpuBufferForAtomic);
         return atomicsArray;
     }
 
@@ -532,7 +532,7 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
             }
         } else if (!type.isPrimitive()) {
             if (object instanceof AtomicInteger) {
-                result = new AtomicsBuffer(new int[] {}, deviceContext, access);
+                result = new OCLAtomicsBuffer(new int[] {}, deviceContext, access);
             } else if (object.getClass().getAnnotation(Vector.class) != null) {
                 result = new OCLVectorWrapper(deviceContext, object, batchSize, access);
             } else if (object instanceof MemorySegment) {
@@ -554,7 +554,7 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
             } else if (object instanceof HalfFloatArray) {
                 result = new OCLMemorySegmentWrapper(deviceContext, batchSize, access, OCLKind.HALF.getSizeInBytes());
             } else {
-                result = new OCLXPUBuffer(deviceContext, object, access);
+                result = new OCLFieldBuffer(deviceContext, object, access);
             }
         }
 
@@ -585,17 +585,33 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
                 bufferProvider.resetBuffers(access);
             }
         }
-        long allocatedSpace = 0;
+
+        long allocatedSpace = 0L;
         for (int i = 0; i < objects.length; i++) {
-            logger.debug("Allocate object %s with access: %s", objects[i], accesses[i]);
-            allocatedSpace += allocate(objects[i], batchSize, states[i], accesses[i]);
+            if (!reuseBatchBuffer(batchSize, accesses[i], bufferProvider, distinctAccesses, states[i])) {
+                logger.debug("Allocate object %s with access: %s", objects[i], accesses[i]);
+                allocatedSpace += allocate(objects[i], batchSize, states[i], accesses[i]);
+            }
+
         }
         return allocatedSpace;
     }
 
+    private boolean reuseBatchBuffer(long batchSize, Access access, TornadoBufferProvider bufferProvider, HashMap<Access, Integer> distinctAccesses, DeviceBufferState state) {
+        if (batchSize != 0) {
+            int numberOfBuffersForAccessType = distinctAccesses.get(access);
+            // if there is a buffer available in the used-list with the same access type, reuse it
+            if (bufferProvider.reuseBufferForBatchProcessing(batchSize, access, numberOfBuffersForAccessType)) {
+                state.markBufferAsReused();
+                return true;
+            }
+        }
+        return false;
+    }
+
     private XPUBuffer newDeviceBufferAllocation(Object object, long batchSize, DeviceBufferState deviceObjectState, Access access) {
         final XPUBuffer buffer;
-        TornadoInternalError.guarantee(deviceObjectState.isAtomicRegionPresent() || !deviceObjectState.hasObjectBuffer(), "A device memory leak might be occurring.");
+        TornadoInternalError.guarantee(deviceObjectState.isAtomicRegionPresent() || !deviceObjectState.hasObjectBuffer() || batchSize != 0, "A device memory leak might be occurring.");
         buffer = createDeviceBuffer(object.getClass(), object, (OCLDeviceContext) getDeviceContext(), batchSize, access);
         deviceObjectState.setXPUBuffer(buffer);
         buffer.allocate(object, batchSize, access);
@@ -614,7 +630,7 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
             buffer = newDeviceBufferAllocation(object, batchSize, state, access);
         }
 
-        if (buffer.getClass() == AtomicsBuffer.class) {
+        if (buffer.getClass() == OCLAtomicsBuffer.class) {
             state.setAtomicRegion();
         }
         return state.getXPUBuffer().size();
@@ -622,12 +638,12 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
 
     @Override
     public synchronized long deallocate(DeviceBufferState deviceBufferState) {
-        long deallocatedSpace = 0;
+        long deallocatedSpace = 0L;
         if (deviceBufferState.isLockedBuffer()) {
             return deallocatedSpace;
         }
         deviceBufferState.getXPUBuffer().markAsFreeBuffer();
-        if (!TornadoOptions.isReusedBuffersEnabled()) {
+        if (TornadoOptions.isDeallocateBufferEnabled()) {
             deallocatedSpace = deviceBufferState.getXPUBuffer().deallocate();
         }
         deviceBufferState.setContents(false);
@@ -792,7 +808,7 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
 
     @Override
     public XPUBuffer getAtomic() {
-        return reuseBuffer;
+        return atomicsBuffer;
     }
 
     @Override
@@ -807,7 +823,7 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
 
     @Override
     public void setAtomicRegion(XPUBuffer bufferAtomics) {
-        reuseBuffer = bufferAtomics;
+        atomicsBuffer = bufferAtomics;
     }
 
     @Override
@@ -826,19 +842,16 @@ public class OCLTornadoDevice implements TornadoXPUDevice {
         }
 
         Matcher matcher = NAME_PATTERN.matcher(version);
-        int major = 0;
-        int minor = 0;
+        int majorVersion = 0;
+        int minorVersion = 0;
         if (matcher.find()) {
-            major = Integer.parseInt(matcher.group(1));
-            minor = Integer.parseInt(matcher.group(2));
+            majorVersion = Integer.parseInt(matcher.group(1));
+            minorVersion = Integer.parseInt(matcher.group(2));
         }
-        if (major > 2) {
+        if (majorVersion > 2) {
             return true;
         }
-        if (major == 2 && minor >= 1) {
-            return true;
-        }
-        return false;
+        return majorVersion == 2 && minorVersion >= 1;
     }
 
     @Override

@@ -51,4 +51,6 @@ public interface TornadoRuntime {
      * @return the power metric as a long value, representing the current power consumption in Watts.
      */
     long getPowerMetric();
+
+    void shutdown();
 }

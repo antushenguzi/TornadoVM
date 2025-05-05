@@ -76,7 +76,7 @@ public class MatrixTransposeTornado extends BenchmarkDriver {
             worker = new WorkerGrid2D(size, size);
             worker.setLocalWork(16, 16, 1);
             grid = new GridScheduler();
-            grid.setWorkerGrid("benchmark.matrixTranspose", worker);
+            grid.addWorkerGrid("benchmark.matrixTranspose", worker);
         }
 
         taskGraph = new TaskGraph("benchmark");

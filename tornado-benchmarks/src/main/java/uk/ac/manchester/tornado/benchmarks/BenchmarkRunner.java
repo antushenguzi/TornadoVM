@@ -37,6 +37,7 @@ public abstract class BenchmarkRunner {
     private static final boolean SKIP_SERIAL = Boolean.parseBoolean(System.getProperty("tornado.benchmarks.skipserial", FALSE));
     private static final boolean SKIP_STREAMS = Boolean.parseBoolean(System.getProperty("tornado.benchmarks.skipstreams", TRUE));
     private static final String STORE_OUTPUT_TO_FILE = System.getProperty("tornado.benchmarks.store.output.to.file", "");
+    private static final long DELAY_INTERVAL = Long.parseLong(System.getProperty("delay.interval", "30000"));
 
     protected abstract String getName();
 
@@ -149,7 +150,6 @@ public abstract class BenchmarkRunner {
                         continue;
                     }
                 }
-
                 TornadoDevice tornadoDevice = driver.getDevice(deviceIndex);
 
                 TornadoRuntimeProvider.setProperty("benchmark.device", driverIndex + ":" + deviceIndex);
@@ -186,12 +186,17 @@ public abstract class BenchmarkRunner {
                 if (isPowerMonitoringEnabled()) {
                     stringBuilder.append("Energy: bm=" + id + ", " + "id=" + driverIndex + ":" + deviceIndex + ", " + benchmarkDriver.getEnergySummary() + "\n");
                 }
-                if (STORE_OUTPUT_TO_FILE.isEmpty()) {
-                    System.out.printf(stringBuilder.toString());
-                } else {
-                    redirectOutputToFile(stringBuilder.toString());
-                }
             }
+            try {
+                Thread.sleep(DELAY_INTERVAL);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (STORE_OUTPUT_TO_FILE.isEmpty()) {
+            System.out.printf(stringBuilder.toString());
+        } else {
+            redirectOutputToFile(stringBuilder.toString());
         }
     }
 
@@ -219,11 +224,11 @@ public abstract class BenchmarkRunner {
                     + ", speedupFirstIteration=" + refFirstIteration / deviceTest.getFirstIteration() //
                     + ", CV=" + deviceTest.getCV() //
                     + ", deviceName=" + driver.getDevice(deviceIndex) + "\n");
-            if (STORE_OUTPUT_TO_FILE.isEmpty()) {
-                System.out.printf(stringBuilder.toString());
-            } else {
-                redirectOutputToFile(stringBuilder.toString());
-            }
+        }
+        if (STORE_OUTPUT_TO_FILE.isEmpty()) {
+            System.out.printf(stringBuilder.toString());
+        } else {
+            redirectOutputToFile(stringBuilder.toString());
         }
     }
 
@@ -266,6 +271,7 @@ public abstract class BenchmarkRunner {
             case "dotvector" -> new uk.ac.manchester.tornado.benchmarks.dotvector.Benchmark();
             case "euler" -> new uk.ac.manchester.tornado.benchmarks.euler.Benchmark();
             case "hilbert" -> new uk.ac.manchester.tornado.benchmarks.hilbert.Benchmark();
+            case "histogram" -> new uk.ac.manchester.tornado.benchmarks.histogram.Benchmark();
             case "juliaset" -> new uk.ac.manchester.tornado.benchmarks.juliaset.Benchmark();
             case "mandelbrot" -> new uk.ac.manchester.tornado.benchmarks.mandelbrot.Benchmark();
             case "montecarlo" -> new uk.ac.manchester.tornado.benchmarks.montecarlo.Benchmark();

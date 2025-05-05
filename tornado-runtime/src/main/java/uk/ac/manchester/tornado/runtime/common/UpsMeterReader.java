@@ -38,56 +38,65 @@ import org.snmp4j.transport.DefaultUdpTransportMapping;
 
 public class UpsMeterReader {
 
-    /*
-     * The constants are specific identifiers for the EATON 5PX UPS model that is used
-     * to query the output voltage and power metrics via the SNMP protocol.
-     * The constants can be appended with new values or extended with additional metrics.
-     */
-    private static String OUTPUT_VOLTAGE_OID = "1.3.6.1.2.1.33.1.4.4.1.2.1";
-    private static String OUTPUT_POWER_OID = "1.3.6.1.2.1.33.1.4.4.1.4.1";
-    private static String COMMUNITY = "public";
-    private static String ADDRESS = TornadoOptions.UPS_IP_ADDRESS;
-    private static int SNMP_VERSION = SnmpConstants.version1;
+    private static final String OUTPUT_VOLTAGE_OID = "1.3.6.1.2.1.33.1.4.4.1.2.1";
+    private static final String OUTPUT_POWER_OID = "1.3.6.1.2.1.33.1.4.4.1.4.1";
+    private static final String COMMUNITY = "public";
+    private static final int SNMP_VERSION = SnmpConstants.version1;
+
+    private static String addressString = TornadoOptions.UPS_IP_ADDRESS;
+
+    private static String latestPowerValue;
+
+    // Single shared SNMP components
+    private static Snmp snmp;
+    private static CommunityTarget target;
+
+    static {
+        try {
+            // Initialize SNMP and target ONCE
+            if (addressString != null) {
+                Address address = GenericAddress.parse("udp:" + addressString + "/161");
+                TransportMapping<?> transport = new DefaultUdpTransportMapping();
+                snmp = new Snmp(transport);
+                transport.listen();
+
+                target = new CommunityTarget();
+                target.setCommunity(new OctetString(COMMUNITY));
+                target.setAddress(address);
+                target.setRetries(2);
+                target.setTimeout(200);
+                target.setVersion(SNMP_VERSION);
+            } else {
+                System.err.println("Error: UPS IP address not set.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error initializing SNMP: " + e.getMessage());
+        }
+    }
 
     private static String getSnmpValue(String oid) {
-        String result = "";
+        if (snmp == null || target == null) {
+            return null;
+        }
+
         try {
-            // Create TransportMapping and Listen
-            TransportMapping<?> transport = new DefaultUdpTransportMapping();
-            transport.listen();
-
-            // Create the target
-            if (ADDRESS == null) {
-                return null;
-            }
-            Address targetAddress = GenericAddress.parse("udp:" + ADDRESS + "/161");
-            CommunityTarget target = new CommunityTarget();
-            target.setCommunity(new OctetString(COMMUNITY));
-            target.setAddress(targetAddress);
-            target.setRetries(2);
-            target.setTimeout(1500);
-            target.setVersion(SNMP_VERSION);
-
-            // Create the PDU for SNMP GET
             PDU pdu = new PDU();
             pdu.add(new VariableBinding(new OID(oid)));
             pdu.setType(PDU.GET);
 
-            // Create the SNMP object and send the request
-            Snmp snmp = new Snmp(transport);
             ResponseEvent response = snmp.get(pdu, target);
 
-            // Process the response
             if (response != null && response.getResponse() != null) {
-                result = response.getResponse().get(0).getVariable().toString();
+                latestPowerValue = response.getResponse().get(0).getVariable().toString();
+                return latestPowerValue;
             } else {
-                System.err.println("Error: No response from SNMP agent.");
+                return (latestPowerValue != null) ? latestPowerValue : "-1";
             }
-            snmp.close();
         } catch (Exception e) {
             System.err.println("Error in SNMP GET: " + e.getMessage());
         }
-        return result;
+
+        return null;
     }
 
     public static String getOutputPowerMetric() {
@@ -98,4 +107,14 @@ public class UpsMeterReader {
         return getSnmpValue(OUTPUT_VOLTAGE_OID);
     }
 
+    // Optional: Call this when the program is done
+    public static void shutdown() {
+        try {
+            if (snmp != null) {
+                snmp.close();
+            }
+        } catch (Exception e) {
+            System.err.println("Error closing SNMP: " + e.getMessage());
+        }
+    }
 }

@@ -196,6 +196,11 @@ public final class TornadoCoreRuntime implements TornadoRuntime {
         return (UpsMeterReader.getOutputPowerMetric() != null) ? Long.parseLong(UpsMeterReader.getOutputPowerMetric()) : -1;
     }
 
+    @Override
+    public void shutdown() {
+        UpsMeterReader.shutdown();
+    }
+
     public MetaAccessProvider getMetaAccess() {
         return vmBackend.getMetaAccess();
     }

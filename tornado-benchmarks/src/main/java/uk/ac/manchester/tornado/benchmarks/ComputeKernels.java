@@ -17,6 +17,7 @@
  */
 package uk.ac.manchester.tornado.benchmarks;
 
+import uk.ac.manchester.tornado.api.KernelContext;
 import uk.ac.manchester.tornado.api.annotations.Parallel;
 import uk.ac.manchester.tornado.api.math.TornadoMath;
 import uk.ac.manchester.tornado.api.types.arrays.DoubleArray;
@@ -413,6 +414,38 @@ public class ComputeKernels {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * This method implements the following CUDA kernel with the TornadoVM Kernel API.
+     *
+     * __global__ void histogramKernel(int *data, int *hist, int dataSize) {
+     * int tid = threadIdx.x + blockIdx.x * blockDim.x;
+     *
+     * if (tid < dataSize) {
+     * atomicAdd(&hist[data[tid]], 1);
+     * }
+     * }
+     *
+     * @param context
+     * @param input
+     * @param output
+     */
+    public static void histogramKernel(KernelContext context, IntArray input, IntArray output) {
+        int tid = context.globalIdx;
+
+        if (tid < input.getSize()) {
+            int index = input.get(tid);
+            context.atomicAdd(output, index, 1);
+        }
+    }
+
+    public static void histogram(KernelContext context, IntArray input, IntArray output) {
+        for (int tid = 0; tid < input.getSize(); tid++) {
+            int index = input.get(tid);
+            context.atomicAdd(output, index, 1);
+            output.set(index, output.get(index));
         }
     }
 

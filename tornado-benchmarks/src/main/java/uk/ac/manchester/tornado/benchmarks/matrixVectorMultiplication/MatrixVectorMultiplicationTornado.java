@@ -77,7 +77,7 @@ public class MatrixVectorMultiplicationTornado extends BenchmarkDriver {
             worker = new WorkerGrid2D(size, size);
             worker.setLocalWork(16, 16, 1);
             grid = new GridScheduler();
-            grid.setWorkerGrid("benchmark.matrixVectorMultiplication", worker);
+            grid.addWorkerGrid("benchmark.matrixVectorMultiplication", worker);
         }
 
         taskGraph = new TaskGraph("benchmark");

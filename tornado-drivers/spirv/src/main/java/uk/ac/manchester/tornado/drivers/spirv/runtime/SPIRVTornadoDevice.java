@@ -26,6 +26,7 @@ package uk.ac.manchester.tornado.drivers.spirv.runtime;
 import java.lang.foreign.MemorySegment;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,7 +51,7 @@ import uk.ac.manchester.tornado.api.profiler.TornadoProfiler;
 import uk.ac.manchester.tornado.api.types.arrays.TornadoNativeArray;
 import uk.ac.manchester.tornado.api.types.tensors.Tensor;
 import uk.ac.manchester.tornado.drivers.common.TornadoBufferProvider;
-import uk.ac.manchester.tornado.drivers.opencl.mm.AtomicsBuffer;
+import uk.ac.manchester.tornado.drivers.opencl.mm.OCLAtomicsBuffer;
 import uk.ac.manchester.tornado.drivers.spirv.SPIRVBackend;
 import uk.ac.manchester.tornado.drivers.spirv.SPIRVBackendImpl;
 import uk.ac.manchester.tornado.drivers.spirv.SPIRVDevice;
@@ -61,6 +62,7 @@ import uk.ac.manchester.tornado.drivers.spirv.graal.compiler.SPIRVCompiler;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVByteArrayWrapper;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVCharArrayWrapper;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVDoubleArrayWrapper;
+import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVFieldBuffer;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVFloatArrayWrapper;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVIntArrayWrapper;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVLongArrayWrapper;
@@ -68,7 +70,6 @@ import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVMemorySegmentWrapper;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVMultiDimArrayWrapper;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVShortArrayWrapper;
 import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVVectorWrapper;
-import uk.ac.manchester.tornado.drivers.spirv.mm.SPIRVXPUBuffer;
 import uk.ac.manchester.tornado.runtime.TornadoCoreRuntime;
 import uk.ac.manchester.tornado.runtime.common.KernelStackFrame;
 import uk.ac.manchester.tornado.runtime.common.RuntimeUtilities;
@@ -304,15 +305,29 @@ public class SPIRVTornadoDevice implements TornadoXPUDevice {
                 return new SPIRVMemorySegmentWrapper(deviceContext, batchSize, access, nativeArray.getElementSize());
             } else {
                 // Possible a vector type, we encapsulate in an object
-                return new SPIRVXPUBuffer(deviceContext, object, access);
+                return new SPIRVFieldBuffer(deviceContext, object, access);
             }
         }
         return null;
     }
 
+    private HashMap<Access, Integer> getNumOfDistinctAccess(Access[] accesses) {
+        HashMap<Access, Integer> distinctAccesses = new HashMap<>();
+        for (Access access : accesses) {
+            if (distinctAccesses.containsKey(access)) {
+                int numOfAccesses = distinctAccesses.get(access);
+                distinctAccesses.replace(access, numOfAccesses, numOfAccesses + 1);
+            } else {
+                distinctAccesses.put(access, 1);
+            }
+        }
+        return distinctAccesses;
+    }
+
     @Override
     public synchronized long allocateObjects(Object[] objects, long batchSize, DeviceBufferState[] states, Access[] accesses) {
         TornadoBufferProvider bufferProvider = getDeviceContext().getBufferProvider();
+        HashMap<Access, Integer> distinctAccesses = getNumOfDistinctAccess(accesses);
         for (Access access : accesses) {
             if (!bufferProvider.isNumFreeBuffersAvailable(objects.length, access)) {
                 bufferProvider.resetBuffers(access);
@@ -320,15 +335,29 @@ public class SPIRVTornadoDevice implements TornadoXPUDevice {
         }
         long allocatedSpace = 0;
         for (int i = 0; i < objects.length; i++) {
-            logger.debug("Allocate object %s with access: %s", objects[i], accesses[i]);
-            allocatedSpace += allocate(objects[i], batchSize, states[i], accesses[i]);
+            if (!reuseBatchBuffer(batchSize, accesses[i], bufferProvider, distinctAccesses)) {
+                logger.debug("Allocate object %s with access: %s", objects[i], accesses[i]);
+                allocatedSpace += allocate(objects[i], batchSize, states[i], accesses[i]);
+            }
+
         }
         return allocatedSpace;
     }
 
+    private boolean reuseBatchBuffer(long batchSize, Access access, TornadoBufferProvider bufferProvider, HashMap<Access, Integer> distinctAccesses) {
+        if (batchSize != 0) {
+            int numberOfBuffersForAccessType = distinctAccesses.get(access);
+            // if there is a buffer available in the used-list with the same access type, reuse it
+            if (bufferProvider.reuseBufferForBatchProcessing(batchSize, access, numberOfBuffersForAccessType)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private XPUBuffer createNewBufferAllocation(Object object, long batchSize, DeviceBufferState state, Access access) {
         final XPUBuffer buffer;
-        TornadoInternalError.guarantee(state.isAtomicRegionPresent() || !state.hasObjectBuffer(), "A device memory leak might be occurring.");
+        TornadoInternalError.guarantee(state.isAtomicRegionPresent() || !state.hasObjectBuffer() || batchSize != 0, "A device memory leak might be occurring.");
         buffer = createDeviceBuffer(object.getClass(), object, getDeviceContext(), batchSize, access);
         state.setXPUBuffer(buffer);
         buffer.allocate(object, batchSize, access);
@@ -347,7 +376,7 @@ public class SPIRVTornadoDevice implements TornadoXPUDevice {
             buffer = createNewBufferAllocation(object, batchSize, state, access);
         }
 
-        if (buffer.getClass() == AtomicsBuffer.class) {
+        if (buffer.getClass() == OCLAtomicsBuffer.class) {
             state.setAtomicRegion();
         }
         return state.getXPUBuffer().size();
@@ -361,7 +390,7 @@ public class SPIRVTornadoDevice implements TornadoXPUDevice {
         }
 
         deviceBufferState.getXPUBuffer().markAsFreeBuffer();
-        if (!TornadoOptions.isReusedBuffersEnabled()) {
+        if (TornadoOptions.isDeallocateBufferEnabled()) {
             deallocatedSpace = deviceBufferState.getXPUBuffer().deallocate();
         }
         deviceBufferState.setContents(false);

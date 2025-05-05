@@ -45,7 +45,7 @@ JDK_8_VERSION = "1.8"
 __JAVA_VERSION__ = (
     subprocess.Popen(
         __JAVA_HOME__
-        + "/bin/java -version 2>&1 | awk -F[\\\"\.] -v OFS=. 'NR==1{print $2,$3}'",
+        + "/bin/java -version 2>&1 | awk -F[\\\"\\.] -v OFS=. 'NR==1{print $2,$3}'",
         stdout=subprocess.PIPE,
         shell=True,
     )
@@ -96,6 +96,7 @@ __BENCHMARKS__ = [
     "matrixtranspose",
     "matrixaddition",
     "hilbert",
+    "histogram",
     "mandelbrot",
     "dft",
     "fft",
@@ -134,6 +135,7 @@ __DIMENSIONS__ = {
     "matrixtranspose": "2",
     "matrixaddition": "2",
     "hilbert": "2",
+    "histogram": "1",
     "dotvector": "2",
     "dotimage": "2",
     "mandelbrot": "2",
@@ -263,6 +265,18 @@ allSizes = {
     "matrixtranspose": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
     "matrixaddition": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
     "hilbert": [[16, 32, 64, 128, 256, 512, 1024, 2048], ["getSize()"]],
+    "histogram": [
+        [
+            1048576,
+            2097152,
+            4194304,
+            8388608,
+            16777216,
+            33554432,
+            67108864
+        ],
+        ["getSize()"],
+    ],
     "dotvector": [
         [
             1048576,
@@ -460,6 +474,15 @@ mediumSizes = {
     "matrixtranspose": [[64, 128, 256, 512], ["getSize()"]],
     "matrixaddition": [[64, 128, 256, 512], ["getSize()"]],
     "hilbert": [[16, 32, 64, 128, 256], ["getSize()"]],
+    "histogram": [
+        [
+            1048576,
+            2097152,
+            4194304,
+            8388608
+        ],
+        ["getSize()"],
+    ],
     "dotvector": [
         [
             1048576,

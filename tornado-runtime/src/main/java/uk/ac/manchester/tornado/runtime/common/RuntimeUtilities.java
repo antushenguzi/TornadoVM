@@ -64,6 +64,7 @@ public final class RuntimeUtilities {
 
     public static final String FPGA_OUTPUT_FILENAME = "outputFPGA.log";
     public static final String FPGA_ERROR_FILENAME = "errorFPGA.log";
+    public static final String BYTECODES_FILENAME = "tornadovm_bytecodes.log";
 
     private RuntimeUtilities() {
     }
@@ -495,5 +496,48 @@ public final class RuntimeUtilities {
         } catch (IOException e) {
             throw new TornadoRuntimeException("JSon profiler file cannot be append");
         }
+    }
+
+    public static void writeBytecodeToFile(StringBuilder logBuilder) {
+        String filePath = getFilePath();
+        try (FileWriter fw = new FileWriter(filePath, true)) {
+            BufferedWriter bw = new BufferedWriter(fw);
+            // Clean ANSI escape sequences before writing
+            String cleanedString = removeAnsiEscapeCodes(logBuilder.toString());
+            bw.write(cleanedString);
+            bw.flush();
+        } catch (IOException e) {
+            new TornadoLogger().error("unable to dump bytecodes: ", e.getMessage());
+            throw new RuntimeException("unable to dump bytecodes: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Removes ANSI escape sequences from the input string.
+     *
+     * @param input
+     *     String potentially containing ANSI escape codes
+     * @return String with all ANSI escape sequences removed
+     */
+    private static String removeAnsiEscapeCodes(String input) {
+        // Pattern to match ANSI escape sequences
+        // This matches the most common escape codes, beginning with ESC [ and ending with m
+        return input.replaceAll("\u001B\\[[;\\d]*m", "");
+    }
+
+    private static String getFilePath() {
+        String filePath;
+
+        if (TornadoOptions.DUMP_BYTECODES != null && !TornadoOptions.DUMP_BYTECODES.isEmpty()) {
+            // Create directory if it doesn't exist
+            File directory = new File(TornadoOptions.DUMP_BYTECODES);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+            filePath = TornadoOptions.DUMP_BYTECODES + File.separator + BYTECODES_FILENAME;
+        } else {
+            filePath = BYTECODES_FILENAME;
+        }
+        return filePath;
     }
 }

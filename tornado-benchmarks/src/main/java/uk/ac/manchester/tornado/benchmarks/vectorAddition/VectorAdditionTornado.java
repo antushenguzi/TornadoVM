@@ -75,7 +75,7 @@ public class VectorAdditionTornado extends BenchmarkDriver {
             worker = new WorkerGrid2D(size, size);
             worker.setLocalWork(16, 16, 1);
             grid = new GridScheduler();
-            grid.setWorkerGrid("benchmark.vectorAddition", worker);
+            grid.addWorkerGrid("benchmark.vectorAddition", worker);
         }
 
         taskGraph = new TaskGraph("benchmark");

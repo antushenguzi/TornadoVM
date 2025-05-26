@@ -165,6 +165,10 @@ def getSize():
 __MAX_ITERATIONS__ = 131
 ITERATIONS = __MAX_ITERATIONS__
 allSizes = {
+    '''
+    Exclude:
+    blurFilter 16384, matrixMultiplication 1D 4096, matrixMultiplication 2D 4096, blurFilter 8192, dft 65536
+    '''
     "saxpy": [
         [
             512,
@@ -230,14 +234,14 @@ allSizes = {
         ],
         ["getSize()"],
     ],
-    "blurFilter": [[256, 512, 1024, 2048, 8192, 16384], ["getSize()"]],
+    "blurFilter": [[256, 512, 1024, 2048], ["getSize()"]],
     "rendertrack": [[64, 128, 256, 512, 1024, 2048, 4096, 8192], ["getSize()"]],
     "euler": [[16, 32, 64, 128, 256], ["getSize()"]],
     "nbody": [[256, 512, 1024, 2048, 4096, 8192, 16384, 32768], ["getSize()"]],
     "sgemm": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
     "matrixvectormultiplication": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
-    "matrixmultiplication1d": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
-    "matrixmultiplication2d": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
+    "matrixmultiplication1d": [[64, 128, 256, 512, 1024, 2048], ["getSize()"]],
+    "matrixmultiplication2d": [[64, 128, 256, 512, 1024, 2048], ["getSize()"]],
     "matrixtranspose": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
     "matrixaddition": [[64, 128, 256, 512, 1024, 2048, 4096], ["getSize()"]],
     "hilbert": [[16, 32, 64, 128, 256, 512, 1024, 2048], ["getSize()"]],
@@ -265,7 +269,7 @@ allSizes = {
         ["getSize()"],
     ],
     "dotimage": [[256, 512, 1024, 2048, 8192, 16384], ["getSize()"]],
-    "dft": [[256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536], ["getSize()"]],
+    "dft": [[256, 512, 1024, 2048, 4096, 8192, 16384, 32768], ["getSize()"]],
     "fft": [[256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536], ["getSize()"]],
     "juliaset": [[512, 1024, 2048, 4096, 8192], ["getSize()"]],
     "vectoraddition": [

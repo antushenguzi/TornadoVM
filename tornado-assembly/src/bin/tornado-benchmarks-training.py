@@ -165,10 +165,9 @@ def getSize():
 __MAX_ITERATIONS__ = 131
 ITERATIONS = __MAX_ITERATIONS__
 allSizes = {
-    '''
-    Exclude:
-    blurFilter 16384, matrixMultiplication 1D 4096, matrixMultiplication 2D 4096, blurFilter 8192, dft 65536
-    '''
+    # Exclude:
+    # blurFilter 16384, matrixMultiplication 1D 4096, matrixMultiplication 2D 4096, blurFilter 8192, dft 65536
+    
     "saxpy": [
         [
             512,

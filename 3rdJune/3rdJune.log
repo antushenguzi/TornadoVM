@@ -1,0 +1,7 @@
+Error: 'blurfilter' does not match a valid key in allSizes. Please provide a valid benchmark.
+Performance: bm=blurFilter-1-8192, id=java-reference, average(ns)=3.798509e+11, median(ns)=3.798509e+11, firstIteration(ns)=3.798509e+11, best(ns)=3.798509e+11
+
+Performance: bm=blurFilter-1-16384, id=java-reference, average(ns)=1.576747e+12, median(ns)=1.576747e+12, firstIteration(ns)=1.576747e+12, best(ns)=1.576747e+12
+
+tornado  --jvm="-Xms32G -Xmx32G -Dtornado.device.memory=16GB -server -Dtornado.recover.bailout=False  -Dtornado.benchmarks.skiptornadovm=True  "  -m tornado.benchmarks/uk.ac.manchester.tornado.benchmarks.BenchmarkRunner  --params="blurFilter 1 8192"
+tornado  --jvm="-Xms32G -Xmx32G -Dtornado.device.memory=16GB -server -Dtornado.recover.bailout=False  -Dtornado.benchmarks.skiptornadovm=True  "  -m tornado.benchmarks/uk.ac.manchester.tornado.benchmarks.BenchmarkRunner  --params="blurFilter 1 16384"

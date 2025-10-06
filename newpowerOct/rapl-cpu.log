@@ -1,0 +1,1871 @@
+Performance: bm=montecarlo-41-8192, id=java-reference, average(ns)=2.458127e+09, median(ns)=2.457976e+09, firstIteration(ns)=2.455416e+09, best(ns)=2.427327e+09
+
+{
+    "benchmark": {
+        "TOTAL_CODE_GENERATION_TIME": "7154267",
+        "TOTAL_BYTE_CODE_GENERATION": "4847343",
+        "TOTAL_GRAAL_COMPILE_TIME": "67815951",
+        "TOTAL_DRIVER_COMPILE_TIME": "46198464",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TASK_COMPILE_GRAAL_TIME": "67815951",
+            "TASK_CODE_GENERATION_TIME": "7154267",
+            "TASK_COMPILE_DRIVER_TIME": "46198464"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "41312",
+        "TOTAL_KERNEL_TIME": "14499648",
+        "TOTAL_DISPATCH_KERNEL_TIME": "5120",
+        "TOTAL_TASK_GRAPH_TIME": "93929920",
+        "COPY_OUT_TIME": "2304",
+        "COPY_IN_TIME": "5120",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "TOTAL_COPY_IN_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14499648"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "18816",
+        "TOTAL_KERNEL_TIME": "14499680",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3808",
+        "TOTAL_TASK_GRAPH_TIME": "15102524",
+        "COPY_OUT_TIME": "2304",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14499680"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "16576",
+        "TOTAL_KERNEL_TIME": "14495744",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3808",
+        "TOTAL_TASK_GRAPH_TIME": "14927862",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "800",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14495744"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "41248",
+        "TOTAL_KERNEL_TIME": "14493632",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4192",
+        "TOTAL_TASK_GRAPH_TIME": "14966806",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14493632"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "12768",
+        "TOTAL_KERNEL_TIME": "14491648",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4576",
+        "TOTAL_TASK_GRAPH_TIME": "14892933",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14491648"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11904",
+        "TOTAL_KERNEL_TIME": "14491648",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4448",
+        "TOTAL_TASK_GRAPH_TIME": "14781147",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "896",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14491648"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "12320",
+        "TOTAL_KERNEL_TIME": "14493696",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4416",
+        "TOTAL_TASK_GRAPH_TIME": "14787199",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14493696"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11296",
+        "TOTAL_KERNEL_TIME": "14492672",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4864",
+        "TOTAL_TASK_GRAPH_TIME": "14766178",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "768",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14492672"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11360",
+        "TOTAL_KERNEL_TIME": "14479008",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_TASK_GRAPH_TIME": "14845976",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "19040",
+            "TASK_KERNEL_TIME": "14479008"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10816",
+        "TOTAL_KERNEL_TIME": "14467072",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4512",
+        "TOTAL_TASK_GRAPH_TIME": "14743485",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "23654",
+            "TASK_KERNEL_TIME": "14467072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10560",
+        "TOTAL_KERNEL_TIME": "14467072",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4288",
+        "TOTAL_TASK_GRAPH_TIME": "14711577",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "23654",
+            "TASK_KERNEL_TIME": "14467072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10976",
+        "TOTAL_KERNEL_TIME": "14467072",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4416",
+        "TOTAL_TASK_GRAPH_TIME": "14698128",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "23654",
+            "TASK_KERNEL_TIME": "14467072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10304",
+        "TOTAL_KERNEL_TIME": "14466784",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4000",
+        "TOTAL_TASK_GRAPH_TIME": "14692524",
+        "COPY_OUT_TIME": "2080",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "23654",
+            "TASK_KERNEL_TIME": "14466784"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10688",
+        "TOTAL_KERNEL_TIME": "14467840",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4032",
+        "TOTAL_TASK_GRAPH_TIME": "14687758",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "992",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "23654",
+            "TASK_KERNEL_TIME": "14467840"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "14048",
+        "TOTAL_KERNEL_TIME": "14469440",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4352",
+        "TOTAL_TASK_GRAPH_TIME": "15048056",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "832",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "23654",
+            "TASK_KERNEL_TIME": "14469440"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "12096",
+        "TOTAL_KERNEL_TIME": "14467072",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_TASK_GRAPH_TIME": "14910822",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "23654",
+            "TASK_KERNEL_TIME": "14467072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "12672",
+        "TOTAL_KERNEL_TIME": "14435328",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_TASK_GRAPH_TIME": "14724357",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "27999",
+            "TASK_KERNEL_TIME": "14435328"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11264",
+        "TOTAL_KERNEL_TIME": "13132512",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_TASK_GRAPH_TIME": "13398278",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "27999",
+            "TASK_KERNEL_TIME": "13132512"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11904",
+        "TOTAL_KERNEL_TIME": "13134848",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4416",
+        "TOTAL_TASK_GRAPH_TIME": "13384286",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "27999",
+            "TASK_KERNEL_TIME": "13134848"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10592",
+        "TOTAL_KERNEL_TIME": "13132576",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_TASK_GRAPH_TIME": "13392704",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "992",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "27999",
+            "TASK_KERNEL_TIME": "13132576"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11936",
+        "TOTAL_KERNEL_TIME": "13132704",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_TASK_GRAPH_TIME": "13383728",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "27999",
+            "TASK_KERNEL_TIME": "13132704"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10048",
+        "TOTAL_KERNEL_TIME": "13132800",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4576",
+        "TOTAL_TASK_GRAPH_TIME": "13365620",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "27999",
+            "TASK_KERNEL_TIME": "13132800"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10880",
+        "TOTAL_KERNEL_TIME": "13134848",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4192",
+        "TOTAL_TASK_GRAPH_TIME": "13365800",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "27999",
+            "TASK_KERNEL_TIME": "13134848"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10560",
+        "TOTAL_KERNEL_TIME": "13131776",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4512",
+        "TOTAL_TASK_GRAPH_TIME": "13335130",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "31753",
+            "TASK_KERNEL_TIME": "13131776"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10368",
+        "TOTAL_KERNEL_TIME": "13159424",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_TASK_GRAPH_TIME": "13345173",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "31753",
+            "TASK_KERNEL_TIME": "13159424"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10176",
+        "TOTAL_KERNEL_TIME": "13233984",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4000",
+        "TOTAL_TASK_GRAPH_TIME": "13474336",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "31753",
+            "TASK_KERNEL_TIME": "13233984"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10688",
+        "TOTAL_KERNEL_TIME": "13234080",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_TASK_GRAPH_TIME": "13455434",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "31753",
+            "TASK_KERNEL_TIME": "13234080"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11776",
+        "TOTAL_KERNEL_TIME": "13233152",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4448",
+        "TOTAL_TASK_GRAPH_TIME": "13477648",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "31753",
+            "TASK_KERNEL_TIME": "13233152"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10304",
+        "TOTAL_KERNEL_TIME": "13234176",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_TASK_GRAPH_TIME": "13444330",
+        "COPY_OUT_TIME": "2048",
+        "COPY_IN_TIME": "928",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "31753",
+            "TASK_KERNEL_TIME": "13234176"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "13344",
+        "TOTAL_KERNEL_TIME": "13234176",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4000",
+        "TOTAL_TASK_GRAPH_TIME": "13452836",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "31753",
+            "TASK_KERNEL_TIME": "13234176"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10304",
+        "TOTAL_KERNEL_TIME": "13233440",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4032",
+        "TOTAL_TASK_GRAPH_TIME": "13461085",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "992",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13233440"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11424",
+        "TOTAL_KERNEL_TIME": "13233152",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4480",
+        "TOTAL_TASK_GRAPH_TIME": "13449463",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13233152"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10784",
+        "TOTAL_KERNEL_TIME": "13233152",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4096",
+        "TOTAL_TASK_GRAPH_TIME": "13488381",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13233152"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10240",
+        "TOTAL_KERNEL_TIME": "13234144",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_TASK_GRAPH_TIME": "13438585",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13234144"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "11040",
+        "TOTAL_KERNEL_TIME": "13234176",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_TASK_GRAPH_TIME": "13427264",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13234176"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10304",
+        "TOTAL_KERNEL_TIME": "13233152",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4096",
+        "TOTAL_TASK_GRAPH_TIME": "13432073",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13233152"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10304",
+        "TOTAL_KERNEL_TIME": "13234048",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3872",
+        "TOTAL_TASK_GRAPH_TIME": "13431016",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13234048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10464",
+        "TOTAL_KERNEL_TIME": "13233152",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_TASK_GRAPH_TIME": "13418260",
+        "COPY_OUT_TIME": "1984",
+        "COPY_IN_TIME": "896",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "35958",
+            "TASK_KERNEL_TIME": "13233152"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10528",
+        "TOTAL_KERNEL_TIME": "13233152",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4448",
+        "TOTAL_TASK_GRAPH_TIME": "13428813",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "1024",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "39739",
+            "TASK_KERNEL_TIME": "13233152"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10848",
+        "TOTAL_KERNEL_TIME": "13233888",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_TASK_GRAPH_TIME": "13402012",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "0",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "39739",
+            "TASK_KERNEL_TIME": "13233888"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "10240",
+        "TOTAL_KERNEL_TIME": "13234048",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3936",
+        "TOTAL_TASK_GRAPH_TIME": "13441416",
+        "COPY_OUT_TIME": "2016",
+        "COPY_IN_TIME": "960",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "39739",
+            "TASK_KERNEL_TIME": "13234048"
+        }
+    }
+}
+
+Performance: bm=montecarlo-41-8192, device=0:0, average(ns)=1.352918e+07, median(ns)=1.357739e+07, firstIteration(ns)=9.521504e+07, best(ns)=1.341661e+07
+, speedupAvg=181.690732467851, speedupMedian=181.03441426241295, speedupFirstIteration=25.78811510017866, CV=0.15136227943883146, deviceName= [NVIDIA CUDA] -- NVIDIA GeForce RTX 3070 Ti
+{
+    "benchmark": {
+        "TOTAL_CODE_GENERATION_TIME": "1958152",
+        "TOTAL_BYTE_CODE_GENERATION": "625871",
+        "TOTAL_GRAAL_COMPILE_TIME": "12222732",
+        "TOTAL_DRIVER_COMPILE_TIME": "504710519",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TASK_COMPILE_GRAAL_TIME": "12222732",
+            "TASK_CODE_GENERATION_TIME": "1958152",
+            "TASK_COMPILE_DRIVER_TIME": "504710519"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "77602",
+        "TOTAL_KERNEL_TIME": "617479098",
+        "TOTAL_DISPATCH_KERNEL_TIME": "74392572",
+        "TOTAL_TASK_GRAPH_TIME": "696962552",
+        "COPY_OUT_TIME": "2260",
+        "COPY_IN_TIME": "5562",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "TOTAL_COPY_IN_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617479098"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "19852",
+        "TOTAL_KERNEL_TIME": "619423787",
+        "TOTAL_DISPATCH_KERNEL_TIME": "77673",
+        "TOTAL_TASK_GRAPH_TIME": "619897149",
+        "COPY_OUT_TIME": "1951",
+        "COPY_IN_TIME": "294",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "619423787"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "30421",
+        "TOTAL_KERNEL_TIME": "620083394",
+        "TOTAL_DISPATCH_KERNEL_TIME": "160667",
+        "TOTAL_TASK_GRAPH_TIME": "620694175",
+        "COPY_OUT_TIME": "1872",
+        "COPY_IN_TIME": "364",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "620083394"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "19151",
+        "TOTAL_KERNEL_TIME": "617311693",
+        "TOTAL_DISPATCH_KERNEL_TIME": "182581",
+        "TOTAL_TASK_GRAPH_TIME": "617888817",
+        "COPY_OUT_TIME": "1989",
+        "COPY_IN_TIME": "280",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617311693"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "21956",
+        "TOTAL_KERNEL_TIME": "618219740",
+        "TOTAL_DISPATCH_KERNEL_TIME": "159476",
+        "TOTAL_TASK_GRAPH_TIME": "618790527",
+        "COPY_OUT_TIME": "1957",
+        "COPY_IN_TIME": "376",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618219740"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "23676",
+        "TOTAL_KERNEL_TIME": "618958959",
+        "TOTAL_DISPATCH_KERNEL_TIME": "133329",
+        "TOTAL_TASK_GRAPH_TIME": "619371147",
+        "COPY_OUT_TIME": "1548",
+        "COPY_IN_TIME": "402",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618958959"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "27303",
+        "TOTAL_KERNEL_TIME": "618101317",
+        "TOTAL_DISPATCH_KERNEL_TIME": "150210",
+        "TOTAL_TASK_GRAPH_TIME": "618642260",
+        "COPY_OUT_TIME": "1740",
+        "COPY_IN_TIME": "384",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618101317"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "27056",
+        "TOTAL_KERNEL_TIME": "616688208",
+        "TOTAL_DISPATCH_KERNEL_TIME": "189934",
+        "TOTAL_TASK_GRAPH_TIME": "617282901",
+        "COPY_OUT_TIME": "2525",
+        "COPY_IN_TIME": "397",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616688208"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "21201",
+        "TOTAL_KERNEL_TIME": "618068172",
+        "TOTAL_DISPATCH_KERNEL_TIME": "55321",
+        "TOTAL_TASK_GRAPH_TIME": "618575930",
+        "COPY_OUT_TIME": "2962",
+        "COPY_IN_TIME": "362",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618068172"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "24889",
+        "TOTAL_KERNEL_TIME": "617358081",
+        "TOTAL_DISPATCH_KERNEL_TIME": "184428",
+        "TOTAL_TASK_GRAPH_TIME": "617948526",
+        "COPY_OUT_TIME": "2251",
+        "COPY_IN_TIME": "339",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617358081"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "29447",
+        "TOTAL_KERNEL_TIME": "616731646",
+        "TOTAL_DISPATCH_KERNEL_TIME": "192049",
+        "TOTAL_TASK_GRAPH_TIME": "617310404",
+        "COPY_OUT_TIME": "1996",
+        "COPY_IN_TIME": "447",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616731646"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "28346",
+        "TOTAL_KERNEL_TIME": "620151233",
+        "TOTAL_DISPATCH_KERNEL_TIME": "232695",
+        "TOTAL_TASK_GRAPH_TIME": "620757731",
+        "COPY_OUT_TIME": "2306",
+        "COPY_IN_TIME": "414",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "620151233"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "26880",
+        "TOTAL_KERNEL_TIME": "618647998",
+        "TOTAL_DISPATCH_KERNEL_TIME": "79720",
+        "TOTAL_TASK_GRAPH_TIME": "619107696",
+        "COPY_OUT_TIME": "2290",
+        "COPY_IN_TIME": "350",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618647998"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "29469",
+        "TOTAL_KERNEL_TIME": "617024238",
+        "TOTAL_DISPATCH_KERNEL_TIME": "58262",
+        "TOTAL_TASK_GRAPH_TIME": "617428986",
+        "COPY_OUT_TIME": "2167",
+        "COPY_IN_TIME": "572",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617024238"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "19859",
+        "TOTAL_KERNEL_TIME": "618858936",
+        "TOTAL_DISPATCH_KERNEL_TIME": "92567",
+        "TOTAL_TASK_GRAPH_TIME": "619268496",
+        "COPY_OUT_TIME": "1522",
+        "COPY_IN_TIME": "306",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618858936"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "29140",
+        "TOTAL_KERNEL_TIME": "617146579",
+        "TOTAL_DISPATCH_KERNEL_TIME": "61464",
+        "TOTAL_TASK_GRAPH_TIME": "617577033",
+        "COPY_OUT_TIME": "2160",
+        "COPY_IN_TIME": "420",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617146579"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "25564",
+        "TOTAL_KERNEL_TIME": "615341155",
+        "TOTAL_DISPATCH_KERNEL_TIME": "92125",
+        "TOTAL_TASK_GRAPH_TIME": "615712644",
+        "COPY_OUT_TIME": "1891",
+        "COPY_IN_TIME": "2235",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "615341155"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "45809",
+        "TOTAL_KERNEL_TIME": "619462429",
+        "TOTAL_DISPATCH_KERNEL_TIME": "21825",
+        "TOTAL_TASK_GRAPH_TIME": "620107897",
+        "COPY_OUT_TIME": "1781",
+        "COPY_IN_TIME": "2318",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "619462429"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "39233",
+        "TOTAL_KERNEL_TIME": "619131053",
+        "TOTAL_DISPATCH_KERNEL_TIME": "220941",
+        "TOTAL_TASK_GRAPH_TIME": "619796081",
+        "COPY_OUT_TIME": "2550",
+        "COPY_IN_TIME": "2126",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "619131053"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "26179",
+        "TOTAL_KERNEL_TIME": "617544400",
+        "TOTAL_DISPATCH_KERNEL_TIME": "126168",
+        "TOTAL_TASK_GRAPH_TIME": "618379981",
+        "COPY_OUT_TIME": "2091",
+        "COPY_IN_TIME": "339",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617544400"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "25547",
+        "TOTAL_KERNEL_TIME": "617185676",
+        "TOTAL_DISPATCH_KERNEL_TIME": "132193",
+        "TOTAL_TASK_GRAPH_TIME": "617772208",
+        "COPY_OUT_TIME": "2070",
+        "COPY_IN_TIME": "571",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617185676"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "21959",
+        "TOTAL_KERNEL_TIME": "618268096",
+        "TOTAL_DISPATCH_KERNEL_TIME": "255653",
+        "TOTAL_TASK_GRAPH_TIME": "618905942",
+        "COPY_OUT_TIME": "2477",
+        "COPY_IN_TIME": "278",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618268096"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "22424",
+        "TOTAL_KERNEL_TIME": "616007955",
+        "TOTAL_DISPATCH_KERNEL_TIME": "199582",
+        "TOTAL_TASK_GRAPH_TIME": "616632928",
+        "COPY_OUT_TIME": "2248",
+        "COPY_IN_TIME": "329",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616007955"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "29213",
+        "TOTAL_KERNEL_TIME": "616759830",
+        "TOTAL_DISPATCH_KERNEL_TIME": "154360",
+        "TOTAL_TASK_GRAPH_TIME": "617375531",
+        "COPY_OUT_TIME": "1997",
+        "COPY_IN_TIME": "1170",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616759830"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "25190",
+        "TOTAL_KERNEL_TIME": "618506208",
+        "TOTAL_DISPATCH_KERNEL_TIME": "161644",
+        "TOTAL_TASK_GRAPH_TIME": "618977704",
+        "COPY_OUT_TIME": "1923",
+        "COPY_IN_TIME": "378",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618506208"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "32143",
+        "TOTAL_KERNEL_TIME": "618588574",
+        "TOTAL_DISPATCH_KERNEL_TIME": "124357",
+        "TOTAL_TASK_GRAPH_TIME": "619067280",
+        "COPY_OUT_TIME": "3963",
+        "COPY_IN_TIME": "381",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618588574"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "18345",
+        "TOTAL_KERNEL_TIME": "615964723",
+        "TOTAL_DISPATCH_KERNEL_TIME": "139755",
+        "TOTAL_TASK_GRAPH_TIME": "616380522",
+        "COPY_OUT_TIME": "1895",
+        "COPY_IN_TIME": "242",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "615964723"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "21813",
+        "TOTAL_KERNEL_TIME": "618264226",
+        "TOTAL_DISPATCH_KERNEL_TIME": "176286",
+        "TOTAL_TASK_GRAPH_TIME": "618856773",
+        "COPY_OUT_TIME": "2401",
+        "COPY_IN_TIME": "365",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618264226"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "20253",
+        "TOTAL_KERNEL_TIME": "616929471",
+        "TOTAL_DISPATCH_KERNEL_TIME": "113224",
+        "TOTAL_TASK_GRAPH_TIME": "617408211",
+        "COPY_OUT_TIME": "1768",
+        "COPY_IN_TIME": "347",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616929471"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "23490",
+        "TOTAL_KERNEL_TIME": "616028293",
+        "TOTAL_DISPATCH_KERNEL_TIME": "148926",
+        "TOTAL_TASK_GRAPH_TIME": "616421195",
+        "COPY_OUT_TIME": "4499",
+        "COPY_IN_TIME": "281",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616028293"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "23690",
+        "TOTAL_KERNEL_TIME": "616410535",
+        "TOTAL_DISPATCH_KERNEL_TIME": "183700",
+        "TOTAL_TASK_GRAPH_TIME": "617017243",
+        "COPY_OUT_TIME": "2247",
+        "COPY_IN_TIME": "218",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616410535"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "38164",
+        "TOTAL_KERNEL_TIME": "623456549",
+        "TOTAL_DISPATCH_KERNEL_TIME": "61218",
+        "TOTAL_TASK_GRAPH_TIME": "624103581",
+        "COPY_OUT_TIME": "3892",
+        "COPY_IN_TIME": "382",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "623456549"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "23500",
+        "TOTAL_KERNEL_TIME": "618291018",
+        "TOTAL_DISPATCH_KERNEL_TIME": "193322",
+        "TOTAL_TASK_GRAPH_TIME": "618989063",
+        "COPY_OUT_TIME": "2353",
+        "COPY_IN_TIME": "244",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618291018"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "18996",
+        "TOTAL_KERNEL_TIME": "616156362",
+        "TOTAL_DISPATCH_KERNEL_TIME": "215094",
+        "TOTAL_TASK_GRAPH_TIME": "616647832",
+        "COPY_OUT_TIME": "1428",
+        "COPY_IN_TIME": "450",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "616156362"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "30738",
+        "TOTAL_KERNEL_TIME": "617469357",
+        "TOTAL_DISPATCH_KERNEL_TIME": "88110",
+        "TOTAL_TASK_GRAPH_TIME": "617987923",
+        "COPY_OUT_TIME": "1653",
+        "COPY_IN_TIME": "593",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617469357"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "28674",
+        "TOTAL_KERNEL_TIME": "615842187",
+        "TOTAL_DISPATCH_KERNEL_TIME": "174717",
+        "TOTAL_TASK_GRAPH_TIME": "616411388",
+        "COPY_OUT_TIME": "1557",
+        "COPY_IN_TIME": "378",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "615842187"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "29150",
+        "TOTAL_KERNEL_TIME": "618895181",
+        "TOTAL_DISPATCH_KERNEL_TIME": "159478",
+        "TOTAL_TASK_GRAPH_TIME": "619434873",
+        "COPY_OUT_TIME": "2033",
+        "COPY_IN_TIME": "219",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "618895181"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "28924",
+        "TOTAL_KERNEL_TIME": "617255296",
+        "TOTAL_DISPATCH_KERNEL_TIME": "101262",
+        "TOTAL_TASK_GRAPH_TIME": "617714976",
+        "COPY_OUT_TIME": "2471",
+        "COPY_IN_TIME": "401",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617255296"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "27224",
+        "TOTAL_KERNEL_TIME": "620024359",
+        "TOTAL_DISPATCH_KERNEL_TIME": "87057",
+        "TOTAL_TASK_GRAPH_TIME": "620459170",
+        "COPY_OUT_TIME": "2733",
+        "COPY_IN_TIME": "555",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "620024359"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "26758",
+        "TOTAL_KERNEL_TIME": "615027621",
+        "TOTAL_DISPATCH_KERNEL_TIME": "88945",
+        "TOTAL_TASK_GRAPH_TIME": "615495404",
+        "COPY_OUT_TIME": "2305",
+        "COPY_IN_TIME": "274",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "615027621"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "28826",
+        "TOTAL_KERNEL_TIME": "617925102",
+        "TOTAL_DISPATCH_KERNEL_TIME": "157079",
+        "TOTAL_TASK_GRAPH_TIME": "618500026",
+        "COPY_OUT_TIME": "2311",
+        "COPY_IN_TIME": "437",
+        "ALLOCATION_BYTES": "32792",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "32792",
+        "benchmark.montecarlo": {
+            "BACKEND": "OPENCL",
+            "METHOD": "ComputeKernels.monteCarlo",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "n/a",
+            "TASK_KERNEL_TIME": "617925102"
+        }
+    }
+}
+
+Performance: bm=montecarlo-41-8192, device=0:0, average(ns)=1.352918e+07, median(ns)=1.357739e+07, firstIteration(ns)=9.521504e+07, best(ns)=1.341661e+07
+, speedupAvg=181.690732467851, speedupMedian=181.03441426241295, speedupFirstIteration=25.78811510017866, CV=0.15136227943883146, deviceName= [NVIDIA CUDA] -- NVIDIA GeForce RTX 3070 Ti
+Performance: bm=montecarlo-41-8192, device=0:1, average(ns)=6.186246e+08, median(ns)=6.187041e+08, firstIteration(ns)=6.972881e+08, best(ns)=6.157145e+08
+, speedupAvg=3.9735355854432886, speedupMedian=3.9727804585126534, speedupFirstIteration=3.5213800019166825, CV=0.3674866004445072, deviceName= [Portable Computing Language] -- pthread-12th Gen Intel(R) Core(TM) i7-12700KF
+[1;34mRunning TornadoVM Benchmarks[0;0m
+[1;36m[INFO] This process takes between 30-60 minutes[0;0m
+[0;32mList of benchmarks: [0;0m
+[;1m	*saxpy[0;0m
+[;1m	*addImage[0;0m
+[;1m	*stencil[0;0m
+[;1m	*convolvearray[0;0m
+[;1m	*convolveimage[0;0m
+[;1m	*blackscholes[0;0m
+[;1m	*montecarlo[0;0m
+[;1m	*blurFilter[0;0m
+[;1m	*renderTrack[0;0m
+[;1m	*euler[0;0m
+[;1m	*nbody[0;0m
+[;1m	*sgemm[0;0m
+[;1m	*dgemm[0;0m
+[;1m	*mandelbrot[0;0m
+[;1m	*dft[0;0m
+[;1m	*juliaset[0;0m
+[1;36m[INFO] TornadoVM options:  --enableProfiler console -Xms24G -Xmx24G -server -Dtornado.recover.bailout=False -Dtornado.power.cpu.rapl=true -Ds0.t0.device=0:1 [0;0m
+tornado  --enableProfiler console --jvm="-Xms24G -Xmx24G -server -Dtornado.recover.bailout=False -Dtornado.power.cpu.rapl=true -Ds0.t0.device=0:1 "  -m tornado.benchmarks/uk.ac.manchester.tornado.benchmarks.BenchmarkRunner --params="montecarlo"

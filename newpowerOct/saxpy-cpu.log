@@ -1,0 +1,4726 @@
+Performance: bm=saxpy-101-16777216, id=java-reference, average(ns)=1.209738e+07, median(ns)=1.208136e+07, firstIteration(ns)=3.449714e+07, best(ns)=1.202099e+07
+
+{
+    "benchmark": {
+        "TOTAL_BYTE_CODE_GENERATION": "4898130",
+        "TOTAL_CODE_GENERATION_TIME": "4521209",
+        "TOTAL_DRIVER_COMPILE_TIME": "197671155",
+        "TOTAL_GRAAL_COMPILE_TIME": "56961029",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TASK_COMPILE_DRIVER_TIME": "197671155",
+            "TASK_COMPILE_GRAAL_TIME": "56961029",
+            "TASK_CODE_GENERATION_TIME": "4521209"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "397312",
+        "TOTAL_TASK_GRAPH_TIME": "101923358",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "608896",
+        "COPY_OUT_TIME": "6751808",
+        "COPY_IN_TIME": "13874080",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "134217776",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "397312"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "395264",
+        "TOTAL_TASK_GRAPH_TIME": "14760205",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "115840",
+        "COPY_OUT_TIME": "6576736",
+        "COPY_IN_TIME": "6894464",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "395264"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "393056",
+        "TOTAL_TASK_GRAPH_TIME": "13930169",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "88704",
+        "COPY_OUT_TIME": "6582208",
+        "COPY_IN_TIME": "6306752",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "393056"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "392992",
+        "TOTAL_TASK_GRAPH_TIME": "13908403",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3936",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "125536",
+        "COPY_OUT_TIME": "6570944",
+        "COPY_IN_TIME": "6302816",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "392992"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "392960",
+        "TOTAL_TASK_GRAPH_TIME": "13818383",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "120704",
+        "COPY_OUT_TIME": "6570240",
+        "COPY_IN_TIME": "6303552",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "392960"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "393216",
+        "TOTAL_TASK_GRAPH_TIME": "13893933",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4352",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "124480",
+        "COPY_OUT_TIME": "6567264",
+        "COPY_IN_TIME": "6365440",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "393216"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "402304",
+        "TOTAL_TASK_GRAPH_TIME": "13873009",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "134144",
+        "COPY_OUT_TIME": "6571808",
+        "COPY_IN_TIME": "6293632",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "402304"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "393280",
+        "TOTAL_TASK_GRAPH_TIME": "13986151",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4256",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "89504",
+        "COPY_OUT_TIME": "6612832",
+        "COPY_IN_TIME": "6314240",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "72786",
+            "GPU_POWER_USAGE_mW": "72786",
+            "TASK_KERNEL_TIME": "393280"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "393184",
+        "TOTAL_TASK_GRAPH_TIME": "14063877",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3680",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "128000",
+        "COPY_OUT_TIME": "6640800",
+        "COPY_IN_TIME": "6309536",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73220",
+            "GPU_POWER_USAGE_mW": "73220",
+            "TASK_KERNEL_TIME": "393184"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "394240",
+        "TOTAL_TASK_GRAPH_TIME": "14199193",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4480",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "87520",
+        "COPY_OUT_TIME": "6562976",
+        "COPY_IN_TIME": "6304576",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73220",
+            "GPU_POWER_USAGE_mW": "73220",
+            "TASK_KERNEL_TIME": "394240"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "393216",
+        "TOTAL_TASK_GRAPH_TIME": "14014333",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "94112",
+        "COPY_OUT_TIME": "6573504",
+        "COPY_IN_TIME": "6375232",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73220",
+            "GPU_POWER_USAGE_mW": "73220",
+            "TASK_KERNEL_TIME": "393216"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "393888",
+        "TOTAL_TASK_GRAPH_TIME": "14000132",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3680",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "131072",
+        "COPY_OUT_TIME": "6573920",
+        "COPY_IN_TIME": "6406112",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73220",
+            "GPU_POWER_USAGE_mW": "73220",
+            "TASK_KERNEL_TIME": "393888"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385024",
+        "TOTAL_TASK_GRAPH_TIME": "13958455",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3968",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "121856",
+        "COPY_OUT_TIME": "6644480",
+        "COPY_IN_TIME": "6315040",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73220",
+            "GPU_POWER_USAGE_mW": "73220",
+            "TASK_KERNEL_TIME": "385024"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385920",
+        "TOTAL_TASK_GRAPH_TIME": "14023195",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4544",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "117824",
+        "COPY_OUT_TIME": "6578016",
+        "COPY_IN_TIME": "6269824",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73220",
+            "GPU_POWER_USAGE_mW": "73220",
+            "TASK_KERNEL_TIME": "385920"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13897133",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3968",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "116288",
+        "COPY_OUT_TIME": "6606880",
+        "COPY_IN_TIME": "6292224",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73220",
+            "GPU_POWER_USAGE_mW": "73220",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385920",
+        "TOTAL_TASK_GRAPH_TIME": "13717079",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "112672",
+        "COPY_OUT_TIME": "6570144",
+        "COPY_IN_TIME": "6261248",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73862",
+            "GPU_POWER_USAGE_mW": "73862",
+            "TASK_KERNEL_TIME": "385920"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386656",
+        "TOTAL_TASK_GRAPH_TIME": "14085635",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3776",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "114752",
+        "COPY_OUT_TIME": "6584672",
+        "COPY_IN_TIME": "6281472",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73862",
+            "GPU_POWER_USAGE_mW": "73862",
+            "TASK_KERNEL_TIME": "386656"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13776691",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4256",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "121376",
+        "COPY_OUT_TIME": "6562528",
+        "COPY_IN_TIME": "6239680",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73862",
+            "GPU_POWER_USAGE_mW": "73862",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13954808",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4032",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "123104",
+        "COPY_OUT_TIME": "6582176",
+        "COPY_IN_TIME": "6335584",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73862",
+            "GPU_POWER_USAGE_mW": "73862",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13651233",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "78976",
+        "COPY_OUT_TIME": "6571808",
+        "COPY_IN_TIME": "6233216",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73862",
+            "GPU_POWER_USAGE_mW": "73862",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13723095",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "86784",
+        "COPY_OUT_TIME": "6591200",
+        "COPY_IN_TIME": "6279136",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73862",
+            "GPU_POWER_USAGE_mW": "73862",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385024",
+        "TOTAL_TASK_GRAPH_TIME": "13759436",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4192",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "137632",
+        "COPY_OUT_TIME": "6591296",
+        "COPY_IN_TIME": "6241344",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "73862",
+            "GPU_POWER_USAGE_mW": "73862",
+            "TASK_KERNEL_TIME": "385024"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386752",
+        "TOTAL_TASK_GRAPH_TIME": "13665054",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3776",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "109728",
+        "COPY_OUT_TIME": "6565952",
+        "COPY_IN_TIME": "6237504",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "75582",
+            "GPU_POWER_USAGE_mW": "75582",
+            "TASK_KERNEL_TIME": "386752"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386016",
+        "TOTAL_TASK_GRAPH_TIME": "13912942",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3712",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "86848",
+        "COPY_OUT_TIME": "6609696",
+        "COPY_IN_TIME": "6365280",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "75582",
+            "GPU_POWER_USAGE_mW": "75582",
+            "TASK_KERNEL_TIME": "386016"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386976",
+        "TOTAL_TASK_GRAPH_TIME": "13659442",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3520",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "81248",
+        "COPY_OUT_TIME": "6572928",
+        "COPY_IN_TIME": "6262720",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "75582",
+            "GPU_POWER_USAGE_mW": "75582",
+            "TASK_KERNEL_TIME": "386976"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387840",
+        "TOTAL_TASK_GRAPH_TIME": "14044180",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "123296",
+        "COPY_OUT_TIME": "6600736",
+        "COPY_IN_TIME": "6389984",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "75582",
+            "GPU_POWER_USAGE_mW": "75582",
+            "TASK_KERNEL_TIME": "387840"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13699551",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "111424",
+        "COPY_OUT_TIME": "6575488",
+        "COPY_IN_TIME": "6286336",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "75582",
+            "GPU_POWER_USAGE_mW": "75582",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385728",
+        "TOTAL_TASK_GRAPH_TIME": "13828532",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "121056",
+        "COPY_OUT_TIME": "6568992",
+        "COPY_IN_TIME": "6311264",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "75582",
+            "GPU_POWER_USAGE_mW": "75582",
+            "TASK_KERNEL_TIME": "385728"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385792",
+        "TOTAL_TASK_GRAPH_TIME": "13846911",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3552",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "112416",
+        "COPY_OUT_TIME": "6598496",
+        "COPY_IN_TIME": "6282784",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "75582",
+            "GPU_POWER_USAGE_mW": "75582",
+            "TASK_KERNEL_TIME": "385792"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "384832",
+        "TOTAL_TASK_GRAPH_TIME": "13686599",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3680",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "109728",
+        "COPY_OUT_TIME": "6577536",
+        "COPY_IN_TIME": "6277952",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "77503",
+            "GPU_POWER_USAGE_mW": "77503",
+            "TASK_KERNEL_TIME": "384832"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "14031180",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4096",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "127520",
+        "COPY_OUT_TIME": "6637760",
+        "COPY_IN_TIME": "6462976",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "77503",
+            "GPU_POWER_USAGE_mW": "77503",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "388096",
+        "TOTAL_TASK_GRAPH_TIME": "14672862",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4704",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "133184",
+        "COPY_OUT_TIME": "6684672",
+        "COPY_IN_TIME": "6458752",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "77503",
+            "GPU_POWER_USAGE_mW": "77503",
+            "TASK_KERNEL_TIME": "388096"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "402400",
+        "TOTAL_TASK_GRAPH_TIME": "14221127",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3968",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "107520",
+        "COPY_OUT_TIME": "6731328",
+        "COPY_IN_TIME": "6525600",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "77503",
+            "GPU_POWER_USAGE_mW": "77503",
+            "TASK_KERNEL_TIME": "402400"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "388096",
+        "TOTAL_TASK_GRAPH_TIME": "13943079",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3840",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "147648",
+        "COPY_OUT_TIME": "6682784",
+        "COPY_IN_TIME": "6312480",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "77503",
+            "GPU_POWER_USAGE_mW": "77503",
+            "TASK_KERNEL_TIME": "388096"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13776679",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "92544",
+        "COPY_OUT_TIME": "6634976",
+        "COPY_IN_TIME": "6276096",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "77503",
+            "GPU_POWER_USAGE_mW": "77503",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "388832",
+        "TOTAL_TASK_GRAPH_TIME": "13783985",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "118368",
+        "COPY_OUT_TIME": "6624416",
+        "COPY_IN_TIME": "6277184",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "77503",
+            "GPU_POWER_USAGE_mW": "77503",
+            "TASK_KERNEL_TIME": "388832"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386720",
+        "TOTAL_TASK_GRAPH_TIME": "14053250",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "189152",
+        "COPY_OUT_TIME": "6646432",
+        "COPY_IN_TIME": "6373024",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "386720"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13876795",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "194944",
+        "COPY_OUT_TIME": "6638112",
+        "COPY_IN_TIME": "6293600",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13778805",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3840",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "117632",
+        "COPY_OUT_TIME": "6623776",
+        "COPY_IN_TIME": "6290688",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13832864",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4352",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "84032",
+        "COPY_OUT_TIME": "6614112",
+        "COPY_IN_TIME": "6269472",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "388096",
+        "TOTAL_TASK_GRAPH_TIME": "13758131",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4128",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "82592",
+        "COPY_OUT_TIME": "6623616",
+        "COPY_IN_TIME": "6269920",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "388096"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386912",
+        "TOTAL_TASK_GRAPH_TIME": "13820486",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "117600",
+        "COPY_OUT_TIME": "6622848",
+        "COPY_IN_TIME": "6315104",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "386912"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13736541",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "114688",
+        "COPY_OUT_TIME": "6613312",
+        "COPY_IN_TIME": "6294080",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13811321",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3968",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "111296",
+        "COPY_OUT_TIME": "6622368",
+        "COPY_IN_TIME": "6336768",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "79420",
+            "GPU_POWER_USAGE_mW": "79420",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "388096",
+        "TOTAL_TASK_GRAPH_TIME": "14218102",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4256",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "120960",
+        "COPY_OUT_TIME": "6634816",
+        "COPY_IN_TIME": "6662464",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "81370",
+            "GPU_POWER_USAGE_mW": "81370",
+            "TASK_KERNEL_TIME": "388096"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13809930",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "122432",
+        "COPY_OUT_TIME": "6622752",
+        "COPY_IN_TIME": "6283488",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "81370",
+            "GPU_POWER_USAGE_mW": "81370",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13758863",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3808",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "117760",
+        "COPY_OUT_TIME": "6608000",
+        "COPY_IN_TIME": "6269728",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "81370",
+            "GPU_POWER_USAGE_mW": "81370",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13754908",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "126048",
+        "COPY_OUT_TIME": "6607712",
+        "COPY_IN_TIME": "6291328",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "81370",
+            "GPU_POWER_USAGE_mW": "81370",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386784",
+        "TOTAL_TASK_GRAPH_TIME": "14014662",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3712",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "138592",
+        "COPY_OUT_TIME": "6627968",
+        "COPY_IN_TIME": "6504384",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "81370",
+            "GPU_POWER_USAGE_mW": "81370",
+            "TASK_KERNEL_TIME": "386784"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13819391",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4000",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "191360",
+        "COPY_OUT_TIME": "6621760",
+        "COPY_IN_TIME": "6242592",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "81370",
+            "GPU_POWER_USAGE_mW": "81370",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386976",
+        "TOTAL_TASK_GRAPH_TIME": "13894619",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "119744",
+        "COPY_OUT_TIME": "6621184",
+        "COPY_IN_TIME": "6260640",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "81370",
+            "GPU_POWER_USAGE_mW": "81370",
+            "TASK_KERNEL_TIME": "386976"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "392192",
+        "TOTAL_TASK_GRAPH_TIME": "13856158",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "88736",
+        "COPY_OUT_TIME": "6613440",
+        "COPY_IN_TIME": "6248256",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "83417",
+            "GPU_POWER_USAGE_mW": "83417",
+            "TASK_KERNEL_TIME": "392192"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13700913",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4192",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "83360",
+        "COPY_OUT_TIME": "6615968",
+        "COPY_IN_TIME": "6238688",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "83417",
+            "GPU_POWER_USAGE_mW": "83417",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "388096",
+        "TOTAL_TASK_GRAPH_TIME": "14322899",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4160",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "180160",
+        "COPY_OUT_TIME": "6677472",
+        "COPY_IN_TIME": "6680000",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "83417",
+            "GPU_POWER_USAGE_mW": "83417",
+            "TASK_KERNEL_TIME": "388096"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "388096",
+        "TOTAL_TASK_GRAPH_TIME": "14034415",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "130400",
+        "COPY_OUT_TIME": "6745216",
+        "COPY_IN_TIME": "6317440",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "83417",
+            "GPU_POWER_USAGE_mW": "83417",
+            "TASK_KERNEL_TIME": "388096"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "389120",
+        "TOTAL_TASK_GRAPH_TIME": "14253017",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "131424",
+        "COPY_OUT_TIME": "6619104",
+        "COPY_IN_TIME": "6685184",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "83417",
+            "GPU_POWER_USAGE_mW": "83417",
+            "TASK_KERNEL_TIME": "389120"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13864447",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3776",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "127072",
+        "COPY_OUT_TIME": "6624608",
+        "COPY_IN_TIME": "6322976",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "83417",
+            "GPU_POWER_USAGE_mW": "83417",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13784302",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4032",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "119488",
+        "COPY_OUT_TIME": "6622368",
+        "COPY_IN_TIME": "6290880",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "83417",
+            "GPU_POWER_USAGE_mW": "83417",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387712",
+        "TOTAL_TASK_GRAPH_TIME": "13755623",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3680",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "118464",
+        "COPY_OUT_TIME": "6615040",
+        "COPY_IN_TIME": "6269440",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "85291",
+            "GPU_POWER_USAGE_mW": "85291",
+            "TASK_KERNEL_TIME": "387712"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386080",
+        "TOTAL_TASK_GRAPH_TIME": "13911675",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4704",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "138176",
+        "COPY_OUT_TIME": "6613536",
+        "COPY_IN_TIME": "6283520",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "85291",
+            "GPU_POWER_USAGE_mW": "85291",
+            "TASK_KERNEL_TIME": "386080"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13792464",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4096",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "124288",
+        "COPY_OUT_TIME": "6653184",
+        "COPY_IN_TIME": "6268960",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "85291",
+            "GPU_POWER_USAGE_mW": "85291",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13787893",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4096",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "88544",
+        "COPY_OUT_TIME": "6619008",
+        "COPY_IN_TIME": "6292704",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "85291",
+            "GPU_POWER_USAGE_mW": "85291",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13946017",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4224",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "249472",
+        "COPY_OUT_TIME": "6623424",
+        "COPY_IN_TIME": "6294368",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "85291",
+            "GPU_POWER_USAGE_mW": "85291",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13976664",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3648",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "127616",
+        "COPY_OUT_TIME": "6627232",
+        "COPY_IN_TIME": "6299584",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "85291",
+            "GPU_POWER_USAGE_mW": "85291",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387808",
+        "TOTAL_TASK_GRAPH_TIME": "13972322",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "122240",
+        "COPY_OUT_TIME": "6620768",
+        "COPY_IN_TIME": "6373280",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "85291",
+            "GPU_POWER_USAGE_mW": "85291",
+            "TASK_KERNEL_TIME": "387808"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13780438",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "127264",
+        "COPY_OUT_TIME": "6616832",
+        "COPY_IN_TIME": "6294880",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "86995",
+            "GPU_POWER_USAGE_mW": "86995",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385184",
+        "TOTAL_TASK_GRAPH_TIME": "13739468",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3584",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "123168",
+        "COPY_OUT_TIME": "6624032",
+        "COPY_IN_TIME": "6270752",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "86995",
+            "GPU_POWER_USAGE_mW": "86995",
+            "TASK_KERNEL_TIME": "385184"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385024",
+        "TOTAL_TASK_GRAPH_TIME": "13798375",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3936",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "120064",
+        "COPY_OUT_TIME": "6641152",
+        "COPY_IN_TIME": "6313664",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "86995",
+            "GPU_POWER_USAGE_mW": "86995",
+            "TASK_KERNEL_TIME": "385024"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385024",
+        "TOTAL_TASK_GRAPH_TIME": "13694880",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3776",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "128000",
+        "COPY_OUT_TIME": "6624832",
+        "COPY_IN_TIME": "6263072",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "86995",
+            "GPU_POWER_USAGE_mW": "86995",
+            "TASK_KERNEL_TIME": "385024"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385216",
+        "TOTAL_TASK_GRAPH_TIME": "13716868",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3776",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "112192",
+        "COPY_OUT_TIME": "6622624",
+        "COPY_IN_TIME": "6269696",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "86995",
+            "GPU_POWER_USAGE_mW": "86995",
+            "TASK_KERNEL_TIME": "385216"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13760066",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "111872",
+        "COPY_OUT_TIME": "6660512",
+        "COPY_IN_TIME": "6262944",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "86995",
+            "GPU_POWER_USAGE_mW": "86995",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386208",
+        "TOTAL_TASK_GRAPH_TIME": "13754976",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4352",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "108864",
+        "COPY_OUT_TIME": "6633024",
+        "COPY_IN_TIME": "6287392",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "86995",
+            "GPU_POWER_USAGE_mW": "86995",
+            "TASK_KERNEL_TIME": "386208"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13719101",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "121408",
+        "COPY_OUT_TIME": "6632544",
+        "COPY_IN_TIME": "6254080",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "88711",
+            "GPU_POWER_USAGE_mW": "88711",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387680",
+        "TOTAL_TASK_GRAPH_TIME": "13855571",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3808",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "122400",
+        "COPY_OUT_TIME": "6625760",
+        "COPY_IN_TIME": "6354944",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "88711",
+            "GPU_POWER_USAGE_mW": "88711",
+            "TASK_KERNEL_TIME": "387680"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13852648",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3840",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "120608",
+        "COPY_OUT_TIME": "6642240",
+        "COPY_IN_TIME": "6282944",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "88711",
+            "GPU_POWER_USAGE_mW": "88711",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13909594",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4096",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "112352",
+        "COPY_OUT_TIME": "6626176",
+        "COPY_IN_TIME": "6371200",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "88711",
+            "GPU_POWER_USAGE_mW": "88711",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385984",
+        "TOTAL_TASK_GRAPH_TIME": "13865876",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3776",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "122400",
+        "COPY_OUT_TIME": "6635168",
+        "COPY_IN_TIME": "6350656",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "88711",
+            "GPU_POWER_USAGE_mW": "88711",
+            "TASK_KERNEL_TIME": "385984"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385024",
+        "TOTAL_TASK_GRAPH_TIME": "13704360",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3808",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "88864",
+        "COPY_OUT_TIME": "6627424",
+        "COPY_IN_TIME": "6268768",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "88711",
+            "GPU_POWER_USAGE_mW": "88711",
+            "TASK_KERNEL_TIME": "385024"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13734122",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "109984",
+        "COPY_OUT_TIME": "6632512",
+        "COPY_IN_TIME": "6261568",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "88711",
+            "GPU_POWER_USAGE_mW": "88711",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13868521",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "194592",
+        "COPY_OUT_TIME": "6608160",
+        "COPY_IN_TIME": "6342720",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "90355",
+            "GPU_POWER_USAGE_mW": "90355",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13770467",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3904",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "175840",
+        "COPY_OUT_TIME": "6632384",
+        "COPY_IN_TIME": "6251808",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "90355",
+            "GPU_POWER_USAGE_mW": "90355",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386688",
+        "TOTAL_TASK_GRAPH_TIME": "13683313",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3680",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "87136",
+        "COPY_OUT_TIME": "6621472",
+        "COPY_IN_TIME": "6254784",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "90355",
+            "GPU_POWER_USAGE_mW": "90355",
+            "TASK_KERNEL_TIME": "386688"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386816",
+        "TOTAL_TASK_GRAPH_TIME": "13687509",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3680",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "83904",
+        "COPY_OUT_TIME": "6624128",
+        "COPY_IN_TIME": "6250816",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "90355",
+            "GPU_POWER_USAGE_mW": "90355",
+            "TASK_KERNEL_TIME": "386816"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13681661",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3680",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "86880",
+        "COPY_OUT_TIME": "6631488",
+        "COPY_IN_TIME": "6246272",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "90355",
+            "GPU_POWER_USAGE_mW": "90355",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387904",
+        "TOTAL_TASK_GRAPH_TIME": "13734469",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3808",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "87072",
+        "COPY_OUT_TIME": "6627648",
+        "COPY_IN_TIME": "6251968",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "90355",
+            "GPU_POWER_USAGE_mW": "90355",
+            "TASK_KERNEL_TIME": "387904"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387008",
+        "TOTAL_TASK_GRAPH_TIME": "14137656",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "90720",
+        "COPY_OUT_TIME": "6849376",
+        "COPY_IN_TIME": "6376064",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "90355",
+            "GPU_POWER_USAGE_mW": "90355",
+            "TASK_KERNEL_TIME": "387008"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387776",
+        "TOTAL_TASK_GRAPH_TIME": "13825125",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3776",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "91968",
+        "COPY_OUT_TIME": "6617280",
+        "COPY_IN_TIME": "6312896",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "387776"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385888",
+        "TOTAL_TASK_GRAPH_TIME": "13872448",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "122752",
+        "COPY_OUT_TIME": "6552992",
+        "COPY_IN_TIME": "6463808",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "385888"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385024",
+        "TOTAL_TASK_GRAPH_TIME": "13680537",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3936",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "116768",
+        "COPY_OUT_TIME": "6558528",
+        "COPY_IN_TIME": "6292832",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "385024"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13699415",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4032",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "83424",
+        "COPY_OUT_TIME": "6589120",
+        "COPY_IN_TIME": "6319584",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "390144",
+        "TOTAL_TASK_GRAPH_TIME": "13591833",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "83232",
+        "COPY_OUT_TIME": "6565504",
+        "COPY_IN_TIME": "6231872",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "390144"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13740998",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4256",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "85760",
+        "COPY_OUT_TIME": "6581632",
+        "COPY_IN_TIME": "6320160",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387104",
+        "TOTAL_TASK_GRAPH_TIME": "13660641",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "79072",
+        "COPY_OUT_TIME": "6570336",
+        "COPY_IN_TIME": "6265216",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "387104"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13663653",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3712",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "80736",
+        "COPY_OUT_TIME": "6590560",
+        "COPY_IN_TIME": "6271200",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "91623",
+            "GPU_POWER_USAGE_mW": "91623",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "384960",
+        "TOTAL_TASK_GRAPH_TIME": "13666663",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3552",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "84128",
+        "COPY_OUT_TIME": "6654560",
+        "COPY_IN_TIME": "6237024",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "92664",
+            "GPU_POWER_USAGE_mW": "92664",
+            "TASK_KERNEL_TIME": "384960"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387136",
+        "TOTAL_TASK_GRAPH_TIME": "14051573",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3552",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "84160",
+        "COPY_OUT_TIME": "6599552",
+        "COPY_IN_TIME": "6599072",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "92664",
+            "GPU_POWER_USAGE_mW": "92664",
+            "TASK_KERNEL_TIME": "387136"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386048",
+        "TOTAL_TASK_GRAPH_TIME": "13944219",
+        "TOTAL_DISPATCH_KERNEL_TIME": "4064",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "117088",
+        "COPY_OUT_TIME": "6795424",
+        "COPY_IN_TIME": "6265184",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "92664",
+            "GPU_POWER_USAGE_mW": "92664",
+            "TASK_KERNEL_TIME": "386048"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13788281",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3744",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "133024",
+        "COPY_OUT_TIME": "6590880",
+        "COPY_IN_TIME": "6313024",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "92664",
+            "GPU_POWER_USAGE_mW": "92664",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "386880",
+        "TOTAL_TASK_GRAPH_TIME": "14082768",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3712",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "81760",
+        "COPY_OUT_TIME": "6753024",
+        "COPY_IN_TIME": "6499328",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "92664",
+            "GPU_POWER_USAGE_mW": "92664",
+            "TASK_KERNEL_TIME": "386880"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "387072",
+        "TOTAL_TASK_GRAPH_TIME": "13832029",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3872",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "123136",
+        "COPY_OUT_TIME": "6584256",
+        "COPY_IN_TIME": "6372160",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "92664",
+            "GPU_POWER_USAGE_mW": "92664",
+            "TASK_KERNEL_TIME": "387072"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "385024",
+        "TOTAL_TASK_GRAPH_TIME": "13678991",
+        "TOTAL_DISPATCH_KERNEL_TIME": "3616",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "118592",
+        "COPY_OUT_TIME": "6583648",
+        "COPY_IN_TIME": "6290496",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:0",
+            "DEVICE": "NVIDIA GeForce RTX 3070 Ti",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "POWER_USAGE_mW": "92664",
+            "GPU_POWER_USAGE_mW": "92664",
+            "TASK_KERNEL_TIME": "385024"
+        }
+    }
+}
+
+Performance: bm=saxpy-101-16777216, device=0:0, average(ns)=1.403133e+07, median(ns)=1.400449e+07, firstIteration(ns)=1.031469e+08, best(ns)=1.376225e+07
+, speedupAvg=0.8621690865972079, speedupMedian=0.8626777064633223, speedupFirstIteration=0.33444658020030515, CV=1.3931138176546942, deviceName= [NVIDIA CUDA] -- NVIDIA GeForce RTX 3070 Ti
+{
+    "benchmark": {
+        "TOTAL_BYTE_CODE_GENERATION": "811420",
+        "TOTAL_CODE_GENERATION_TIME": "935927",
+        "TOTAL_DRIVER_COMPILE_TIME": "536685996",
+        "TOTAL_GRAAL_COMPILE_TIME": "8304203",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TASK_COMPILE_DRIVER_TIME": "536685996",
+            "TASK_COMPILE_GRAAL_TIME": "8304203",
+            "TASK_CODE_GENERATION_TIME": "935927"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6600069",
+        "TOTAL_TASK_GRAPH_TIME": "125106393",
+        "TOTAL_DISPATCH_KERNEL_TIME": "75465876",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "68427",
+        "COPY_OUT_TIME": "3718802",
+        "COPY_IN_TIME": "36873639",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "134217776",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6600069"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5889727",
+        "TOTAL_TASK_GRAPH_TIME": "13992467",
+        "TOTAL_DISPATCH_KERNEL_TIME": "117472",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "90888",
+        "COPY_OUT_TIME": "3368375",
+        "COPY_IN_TIME": "3835522",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5889727"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6143535",
+        "TOTAL_TASK_GRAPH_TIME": "13806332",
+        "TOTAL_DISPATCH_KERNEL_TIME": "203754",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "82022",
+        "COPY_OUT_TIME": "3754011",
+        "COPY_IN_TIME": "2911112",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6143535"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5437175",
+        "TOTAL_TASK_GRAPH_TIME": "12772185",
+        "TOTAL_DISPATCH_KERNEL_TIME": "169903",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "88852",
+        "COPY_OUT_TIME": "3055970",
+        "COPY_IN_TIME": "3421466",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5437175"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "3436842",
+        "TOTAL_TASK_GRAPH_TIME": "10221299",
+        "TOTAL_DISPATCH_KERNEL_TIME": "173156",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "43099",
+        "COPY_OUT_TIME": "3033256",
+        "COPY_IN_TIME": "3025672",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "3436842"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4983398",
+        "TOTAL_TASK_GRAPH_TIME": "12093778",
+        "TOTAL_DISPATCH_KERNEL_TIME": "132191",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "124029",
+        "COPY_OUT_TIME": "3148552",
+        "COPY_IN_TIME": "2984066",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4983398"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4265725",
+        "TOTAL_TASK_GRAPH_TIME": "11390563",
+        "TOTAL_DISPATCH_KERNEL_TIME": "189547",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "61926",
+        "COPY_OUT_TIME": "3209250",
+        "COPY_IN_TIME": "2993728",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4265725"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4373427",
+        "TOTAL_TASK_GRAPH_TIME": "11714938",
+        "TOTAL_DISPATCH_KERNEL_TIME": "200913",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "70576",
+        "COPY_OUT_TIME": "3264500",
+        "COPY_IN_TIME": "3114841",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4373427"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7311645",
+        "TOTAL_TASK_GRAPH_TIME": "15682583",
+        "TOTAL_DISPATCH_KERNEL_TIME": "65986",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "82681",
+        "COPY_OUT_TIME": "4292686",
+        "COPY_IN_TIME": "3237455",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7311645"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8866917",
+        "TOTAL_TASK_GRAPH_TIME": "19519572",
+        "TOTAL_DISPATCH_KERNEL_TIME": "196560",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "75097",
+        "COPY_OUT_TIME": "4473988",
+        "COPY_IN_TIME": "4978538",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8866917"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8613013",
+        "TOTAL_TASK_GRAPH_TIME": "21949530",
+        "TOTAL_DISPATCH_KERNEL_TIME": "154237",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "136127",
+        "COPY_OUT_TIME": "5581295",
+        "COPY_IN_TIME": "6673459",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8613013"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5635132",
+        "TOTAL_TASK_GRAPH_TIME": "13598587",
+        "TOTAL_DISPATCH_KERNEL_TIME": "51284",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "62062",
+        "COPY_OUT_TIME": "3581922",
+        "COPY_IN_TIME": "3682789",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5635132"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4599333",
+        "TOTAL_TASK_GRAPH_TIME": "11467441",
+        "TOTAL_DISPATCH_KERNEL_TIME": "119032",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "51849",
+        "COPY_OUT_TIME": "3050737",
+        "COPY_IN_TIME": "3177121",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4599333"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "3266798",
+        "TOTAL_TASK_GRAPH_TIME": "9721513",
+        "TOTAL_DISPATCH_KERNEL_TIME": "186739",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "33585",
+        "COPY_OUT_TIME": "2858801",
+        "COPY_IN_TIME": "2859615",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "3266798"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4817468",
+        "TOTAL_TASK_GRAPH_TIME": "12005133",
+        "TOTAL_DISPATCH_KERNEL_TIME": "132124",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "82845",
+        "COPY_OUT_TIME": "3310626",
+        "COPY_IN_TIME": "2966320",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4817468"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7618987",
+        "TOTAL_TASK_GRAPH_TIME": "16131335",
+        "TOTAL_DISPATCH_KERNEL_TIME": "139707",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "86026",
+        "COPY_OUT_TIME": "4034763",
+        "COPY_IN_TIME": "3398977",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7618987"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5445669",
+        "TOTAL_TASK_GRAPH_TIME": "13050810",
+        "TOTAL_DISPATCH_KERNEL_TIME": "140423",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "72727",
+        "COPY_OUT_TIME": "3177099",
+        "COPY_IN_TIME": "3399497",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5445669"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5532964",
+        "TOTAL_TASK_GRAPH_TIME": "12610904",
+        "TOTAL_DISPATCH_KERNEL_TIME": "174026",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "100226",
+        "COPY_OUT_TIME": "3361145",
+        "COPY_IN_TIME": "2943707",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5532964"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5343408",
+        "TOTAL_TASK_GRAPH_TIME": "12313235",
+        "TOTAL_DISPATCH_KERNEL_TIME": "128597",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "184924",
+        "COPY_OUT_TIME": "3072448",
+        "COPY_IN_TIME": "2987591",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5343408"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4887690",
+        "TOTAL_TASK_GRAPH_TIME": "11815472",
+        "TOTAL_DISPATCH_KERNEL_TIME": "222944",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "58778",
+        "COPY_OUT_TIME": "3065694",
+        "COPY_IN_TIME": "2987472",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4887690"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7647013",
+        "TOTAL_TASK_GRAPH_TIME": "14840664",
+        "TOTAL_DISPATCH_KERNEL_TIME": "20089",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "57678",
+        "COPY_OUT_TIME": "3063339",
+        "COPY_IN_TIME": "3259883",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7647013"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "3221019",
+        "TOTAL_TASK_GRAPH_TIME": "9926527",
+        "TOTAL_DISPATCH_KERNEL_TIME": "135218",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "76918",
+        "COPY_OUT_TIME": "3036101",
+        "COPY_IN_TIME": "2956035",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "3221019"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6018784",
+        "TOTAL_TASK_GRAPH_TIME": "12902735",
+        "TOTAL_DISPATCH_KERNEL_TIME": "50702",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "36709",
+        "COPY_OUT_TIME": "3152694",
+        "COPY_IN_TIME": "3020790",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6018784"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4853860",
+        "TOTAL_TASK_GRAPH_TIME": "11782967",
+        "TOTAL_DISPATCH_KERNEL_TIME": "143147",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "69753",
+        "COPY_OUT_TIME": "3184045",
+        "COPY_IN_TIME": "3036397",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4853860"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4919927",
+        "TOTAL_TASK_GRAPH_TIME": "11809881",
+        "TOTAL_DISPATCH_KERNEL_TIME": "128147",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "69104",
+        "COPY_OUT_TIME": "3161144",
+        "COPY_IN_TIME": "2932227",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4919927"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4756433",
+        "TOTAL_TASK_GRAPH_TIME": "11498533",
+        "TOTAL_DISPATCH_KERNEL_TIME": "119509",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "65947",
+        "COPY_OUT_TIME": "3226159",
+        "COPY_IN_TIME": "2892452",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4756433"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "3813823",
+        "TOTAL_TASK_GRAPH_TIME": "10943795",
+        "TOTAL_DISPATCH_KERNEL_TIME": "21552",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "71525",
+        "COPY_OUT_TIME": "3077207",
+        "COPY_IN_TIME": "3123531",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "3813823"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5653677",
+        "TOTAL_TASK_GRAPH_TIME": "13866744",
+        "TOTAL_DISPATCH_KERNEL_TIME": "134412",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "87517",
+        "COPY_OUT_TIME": "4446297",
+        "COPY_IN_TIME": "2949542",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5653677"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8051624",
+        "TOTAL_TASK_GRAPH_TIME": "16316875",
+        "TOTAL_DISPATCH_KERNEL_TIME": "70750",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "97005",
+        "COPY_OUT_TIME": "3417777",
+        "COPY_IN_TIME": "4162553",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8051624"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "3801653",
+        "TOTAL_TASK_GRAPH_TIME": "10357364",
+        "TOTAL_DISPATCH_KERNEL_TIME": "70682",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "45849",
+        "COPY_OUT_TIME": "3013469",
+        "COPY_IN_TIME": "3006027",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "3801653"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5557276",
+        "TOTAL_TASK_GRAPH_TIME": "12423102",
+        "TOTAL_DISPATCH_KERNEL_TIME": "68308",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "64017",
+        "COPY_OUT_TIME": "3312005",
+        "COPY_IN_TIME": "2955268",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5557276"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4457168",
+        "TOTAL_TASK_GRAPH_TIME": "11194158",
+        "TOTAL_DISPATCH_KERNEL_TIME": "135405",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "41921",
+        "COPY_OUT_TIME": "3214061",
+        "COPY_IN_TIME": "2922070",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4457168"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4182175",
+        "TOTAL_TASK_GRAPH_TIME": "10978450",
+        "TOTAL_DISPATCH_KERNEL_TIME": "125281",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "54632",
+        "COPY_OUT_TIME": "3202556",
+        "COPY_IN_TIME": "3001782",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4182175"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4705555",
+        "TOTAL_TASK_GRAPH_TIME": "11581387",
+        "TOTAL_DISPATCH_KERNEL_TIME": "79087",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "52672",
+        "COPY_OUT_TIME": "3301701",
+        "COPY_IN_TIME": "2993712",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4705555"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4269819",
+        "TOTAL_TASK_GRAPH_TIME": "10965766",
+        "TOTAL_DISPATCH_KERNEL_TIME": "65669",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "60065",
+        "COPY_OUT_TIME": "3130200",
+        "COPY_IN_TIME": "2921955",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4269819"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6644842",
+        "TOTAL_TASK_GRAPH_TIME": "13691956",
+        "TOTAL_DISPATCH_KERNEL_TIME": "152147",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "88523",
+        "COPY_OUT_TIME": "3215427",
+        "COPY_IN_TIME": "3126728",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6644842"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5245427",
+        "TOTAL_TASK_GRAPH_TIME": "12235085",
+        "TOTAL_DISPATCH_KERNEL_TIME": "73669",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "60494",
+        "COPY_OUT_TIME": "3391192",
+        "COPY_IN_TIME": "2929981",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5245427"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5433161",
+        "TOTAL_TASK_GRAPH_TIME": "12844533",
+        "TOTAL_DISPATCH_KERNEL_TIME": "123112",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "60051",
+        "COPY_OUT_TIME": "3473783",
+        "COPY_IN_TIME": "3281143",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5433161"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6054803",
+        "TOTAL_TASK_GRAPH_TIME": "14005025",
+        "TOTAL_DISPATCH_KERNEL_TIME": "165284",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "76514",
+        "COPY_OUT_TIME": "3525743",
+        "COPY_IN_TIME": "3525862",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6054803"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7595984",
+        "TOTAL_TASK_GRAPH_TIME": "19343395",
+        "TOTAL_DISPATCH_KERNEL_TIME": "114481",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "59017",
+        "COPY_OUT_TIME": "7579672",
+        "COPY_IN_TIME": "3276600",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7595984"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7888003",
+        "TOTAL_TASK_GRAPH_TIME": "16442103",
+        "TOTAL_DISPATCH_KERNEL_TIME": "142277",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "73112",
+        "COPY_OUT_TIME": "3161580",
+        "COPY_IN_TIME": "4553750",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7888003"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "3409571",
+        "TOTAL_TASK_GRAPH_TIME": "10126838",
+        "TOTAL_DISPATCH_KERNEL_TIME": "151252",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "49024",
+        "COPY_OUT_TIME": "3188707",
+        "COPY_IN_TIME": "2865824",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "3409571"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6980050",
+        "TOTAL_TASK_GRAPH_TIME": "14786717",
+        "TOTAL_DISPATCH_KERNEL_TIME": "76419",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "228230",
+        "COPY_OUT_TIME": "3585486",
+        "COPY_IN_TIME": "3193719",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6980050"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6161912",
+        "TOTAL_TASK_GRAPH_TIME": "14212842",
+        "TOTAL_DISPATCH_KERNEL_TIME": "74119",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "95911",
+        "COPY_OUT_TIME": "3481172",
+        "COPY_IN_TIME": "3666091",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6161912"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8339774",
+        "TOTAL_TASK_GRAPH_TIME": "18194596",
+        "TOTAL_DISPATCH_KERNEL_TIME": "136962",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "169242",
+        "COPY_OUT_TIME": "4711716",
+        "COPY_IN_TIME": "3756136",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8339774"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8754589",
+        "TOTAL_TASK_GRAPH_TIME": "20248617",
+        "TOTAL_DISPATCH_KERNEL_TIME": "123724",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "144299",
+        "COPY_OUT_TIME": "4945654",
+        "COPY_IN_TIME": "5514356",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8754589"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5173749",
+        "TOTAL_TASK_GRAPH_TIME": "12352807",
+        "TOTAL_DISPATCH_KERNEL_TIME": "67278",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "95196",
+        "COPY_OUT_TIME": "3112918",
+        "COPY_IN_TIME": "3294917",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5173749"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9426721",
+        "TOTAL_TASK_GRAPH_TIME": "18173811",
+        "TOTAL_DISPATCH_KERNEL_TIME": "128602",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "70500",
+        "COPY_OUT_TIME": "4340072",
+        "COPY_IN_TIME": "3464574",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9426721"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9058468",
+        "TOTAL_TASK_GRAPH_TIME": "21831259",
+        "TOTAL_DISPATCH_KERNEL_TIME": "42513",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "128430",
+        "COPY_OUT_TIME": "6790255",
+        "COPY_IN_TIME": "4985872",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9058468"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9502032",
+        "TOTAL_TASK_GRAPH_TIME": "23497807",
+        "TOTAL_DISPATCH_KERNEL_TIME": "71200",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "93416",
+        "COPY_OUT_TIME": "5976999",
+        "COPY_IN_TIME": "7119217",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9502032"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9167137",
+        "TOTAL_TASK_GRAPH_TIME": "23239597",
+        "TOTAL_DISPATCH_KERNEL_TIME": "34687",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "111858",
+        "COPY_OUT_TIME": "6614443",
+        "COPY_IN_TIME": "6537041",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9167137"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8896201",
+        "TOTAL_TASK_GRAPH_TIME": "22010127",
+        "TOTAL_DISPATCH_KERNEL_TIME": "79043",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "102514",
+        "COPY_OUT_TIME": "5754825",
+        "COPY_IN_TIME": "6324517",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8896201"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9413508",
+        "TOTAL_TASK_GRAPH_TIME": "32818935",
+        "TOTAL_DISPATCH_KERNEL_TIME": "38243",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "230663",
+        "COPY_OUT_TIME": "6894064",
+        "COPY_IN_TIME": "15078511",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9413508"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7384040",
+        "TOTAL_TASK_GRAPH_TIME": "20989161",
+        "TOTAL_DISPATCH_KERNEL_TIME": "69493",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "106096",
+        "COPY_OUT_TIME": "8130106",
+        "COPY_IN_TIME": "4591111",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7384040"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8353976",
+        "TOTAL_TASK_GRAPH_TIME": "19954778",
+        "TOTAL_DISPATCH_KERNEL_TIME": "35483",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "122986",
+        "COPY_OUT_TIME": "6407695",
+        "COPY_IN_TIME": "4263078",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8353976"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "10468868",
+        "TOTAL_TASK_GRAPH_TIME": "24942494",
+        "TOTAL_DISPATCH_KERNEL_TIME": "71689",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "211119",
+        "COPY_OUT_TIME": "5425079",
+        "COPY_IN_TIME": "7750858",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "10468868"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5244626",
+        "TOTAL_TASK_GRAPH_TIME": "13455221",
+        "TOTAL_DISPATCH_KERNEL_TIME": "62936",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "98262",
+        "COPY_OUT_TIME": "3755460",
+        "COPY_IN_TIME": "3619912",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5244626"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9143972",
+        "TOTAL_TASK_GRAPH_TIME": "17268073",
+        "TOTAL_DISPATCH_KERNEL_TIME": "62384",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "83615",
+        "COPY_OUT_TIME": "3724010",
+        "COPY_IN_TIME": "3657411",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9143972"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6394107",
+        "TOTAL_TASK_GRAPH_TIME": "14337920",
+        "TOTAL_DISPATCH_KERNEL_TIME": "84626",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "103645",
+        "COPY_OUT_TIME": "3894811",
+        "COPY_IN_TIME": "3285422",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6394107"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9083729",
+        "TOTAL_TASK_GRAPH_TIME": "17250677",
+        "TOTAL_DISPATCH_KERNEL_TIME": "19791",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "97858",
+        "COPY_OUT_TIME": "3913497",
+        "COPY_IN_TIME": "3616239",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9083729"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6796370",
+        "TOTAL_TASK_GRAPH_TIME": "17020099",
+        "TOTAL_DISPATCH_KERNEL_TIME": "82723",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "104750",
+        "COPY_OUT_TIME": "5506044",
+        "COPY_IN_TIME": "3955909",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6796370"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8128432",
+        "TOTAL_TASK_GRAPH_TIME": "15299441",
+        "TOTAL_DISPATCH_KERNEL_TIME": "27217",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "185459",
+        "COPY_OUT_TIME": "3085687",
+        "COPY_IN_TIME": "3313143",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8128432"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5370203",
+        "TOTAL_TASK_GRAPH_TIME": "12799338",
+        "TOTAL_DISPATCH_KERNEL_TIME": "147495",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "65685",
+        "COPY_OUT_TIME": "3604039",
+        "COPY_IN_TIME": "3038785",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5370203"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5376823",
+        "TOTAL_TASK_GRAPH_TIME": "12890261",
+        "TOTAL_DISPATCH_KERNEL_TIME": "139709",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "73846",
+        "COPY_OUT_TIME": "3414032",
+        "COPY_IN_TIME": "3236969",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5376823"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "4711774",
+        "TOTAL_TASK_GRAPH_TIME": "12584500",
+        "TOTAL_DISPATCH_KERNEL_TIME": "86393",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "100462",
+        "COPY_OUT_TIME": "3573489",
+        "COPY_IN_TIME": "3391292",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "4711774"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8260516",
+        "TOTAL_TASK_GRAPH_TIME": "15928336",
+        "TOTAL_DISPATCH_KERNEL_TIME": "19852",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "89882",
+        "COPY_OUT_TIME": "3783622",
+        "COPY_IN_TIME": "3119667",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8260516"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9218633",
+        "TOTAL_TASK_GRAPH_TIME": "18350499",
+        "TOTAL_DISPATCH_KERNEL_TIME": "27799",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "153333",
+        "COPY_OUT_TIME": "4255350",
+        "COPY_IN_TIME": "4056453",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9218633"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5239424",
+        "TOTAL_TASK_GRAPH_TIME": "13004515",
+        "TOTAL_DISPATCH_KERNEL_TIME": "87265",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "97367",
+        "COPY_OUT_TIME": "3540090",
+        "COPY_IN_TIME": "3469733",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5239424"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5434193",
+        "TOTAL_TASK_GRAPH_TIME": "12752309",
+        "TOTAL_DISPATCH_KERNEL_TIME": "109564",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "79098",
+        "COPY_OUT_TIME": "3347674",
+        "COPY_IN_TIME": "3355465",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5434193"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8942287",
+        "TOTAL_TASK_GRAPH_TIME": "18693291",
+        "TOTAL_DISPATCH_KERNEL_TIME": "43866",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "95088",
+        "COPY_OUT_TIME": "5249381",
+        "COPY_IN_TIME": "3721628",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8942287"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9638342",
+        "TOTAL_TASK_GRAPH_TIME": "23927176",
+        "TOTAL_DISPATCH_KERNEL_TIME": "57954",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "152296",
+        "COPY_OUT_TIME": "5694746",
+        "COPY_IN_TIME": "7630299",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9638342"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7197114",
+        "TOTAL_TASK_GRAPH_TIME": "16307961",
+        "TOTAL_DISPATCH_KERNEL_TIME": "98593",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "155233",
+        "COPY_OUT_TIME": "4025050",
+        "COPY_IN_TIME": "4089132",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7197114"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8899872",
+        "TOTAL_TASK_GRAPH_TIME": "18028282",
+        "TOTAL_DISPATCH_KERNEL_TIME": "24882",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "170991",
+        "COPY_OUT_TIME": "3759896",
+        "COPY_IN_TIME": "4196695",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8899872"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5814281",
+        "TOTAL_TASK_GRAPH_TIME": "12611285",
+        "TOTAL_DISPATCH_KERNEL_TIME": "65469",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "82283",
+        "COPY_OUT_TIME": "3042795",
+        "COPY_IN_TIME": "3200684",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5814281"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5970760",
+        "TOTAL_TASK_GRAPH_TIME": "13722788",
+        "TOTAL_DISPATCH_KERNEL_TIME": "23621",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "97711",
+        "COPY_OUT_TIME": "3347474",
+        "COPY_IN_TIME": "3582507",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5970760"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9304660",
+        "TOTAL_TASK_GRAPH_TIME": "17377509",
+        "TOTAL_DISPATCH_KERNEL_TIME": "24464",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "99350",
+        "COPY_OUT_TIME": "3676389",
+        "COPY_IN_TIME": "3528567",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9304660"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7455237",
+        "TOTAL_TASK_GRAPH_TIME": "15485271",
+        "TOTAL_DISPATCH_KERNEL_TIME": "166862",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "102803",
+        "COPY_OUT_TIME": "3432071",
+        "COPY_IN_TIME": "3667374",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7455237"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8651943",
+        "TOTAL_TASK_GRAPH_TIME": "18701658",
+        "TOTAL_DISPATCH_KERNEL_TIME": "124096",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "115869",
+        "COPY_OUT_TIME": "4602533",
+        "COPY_IN_TIME": "4450851",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8651943"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5660022",
+        "TOTAL_TASK_GRAPH_TIME": "12799105",
+        "TOTAL_DISPATCH_KERNEL_TIME": "93566",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "69575",
+        "COPY_OUT_TIME": "3096724",
+        "COPY_IN_TIME": "3354939",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5660022"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "5766712",
+        "TOTAL_TASK_GRAPH_TIME": "12501857",
+        "TOTAL_DISPATCH_KERNEL_TIME": "87426",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "71400",
+        "COPY_OUT_TIME": "3147001",
+        "COPY_IN_TIME": "2937930",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "5766712"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8388422",
+        "TOTAL_TASK_GRAPH_TIME": "17833471",
+        "TOTAL_DISPATCH_KERNEL_TIME": "63940",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "81702",
+        "COPY_OUT_TIME": "4509405",
+        "COPY_IN_TIME": "4145708",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8388422"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8499178",
+        "TOTAL_TASK_GRAPH_TIME": "18539309",
+        "TOTAL_DISPATCH_KERNEL_TIME": "153645",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "117103",
+        "COPY_OUT_TIME": "4459730",
+        "COPY_IN_TIME": "4445317",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8499178"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7578971",
+        "TOTAL_TASK_GRAPH_TIME": "16681958",
+        "TOTAL_DISPATCH_KERNEL_TIME": "161112",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "101931",
+        "COPY_OUT_TIME": "3351891",
+        "COPY_IN_TIME": "4712209",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7578971"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7108655",
+        "TOTAL_TASK_GRAPH_TIME": "14944755",
+        "TOTAL_DISPATCH_KERNEL_TIME": "184745",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "84931",
+        "COPY_OUT_TIME": "3849980",
+        "COPY_IN_TIME": "3093123",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7108655"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7033968",
+        "TOTAL_TASK_GRAPH_TIME": "16756709",
+        "TOTAL_DISPATCH_KERNEL_TIME": "147688",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "81184",
+        "COPY_OUT_TIME": "4295879",
+        "COPY_IN_TIME": "4391077",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7033968"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6766735",
+        "TOTAL_TASK_GRAPH_TIME": "16028435",
+        "TOTAL_DISPATCH_KERNEL_TIME": "154991",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "122479",
+        "COPY_OUT_TIME": "3981015",
+        "COPY_IN_TIME": "4267553",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6766735"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8637470",
+        "TOTAL_TASK_GRAPH_TIME": "19690122",
+        "TOTAL_DISPATCH_KERNEL_TIME": "85677",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "103877",
+        "COPY_OUT_TIME": "5396476",
+        "COPY_IN_TIME": "4657327",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8637470"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9438147",
+        "TOTAL_TASK_GRAPH_TIME": "23823846",
+        "TOTAL_DISPATCH_KERNEL_TIME": "86178",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "102583",
+        "COPY_OUT_TIME": "5740051",
+        "COPY_IN_TIME": "7743627",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9438147"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9586773",
+        "TOTAL_TASK_GRAPH_TIME": "20167327",
+        "TOTAL_DISPATCH_KERNEL_TIME": "42037",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "94047",
+        "COPY_OUT_TIME": "4063031",
+        "COPY_IN_TIME": "5696072",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9586773"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8290582",
+        "TOTAL_TASK_GRAPH_TIME": "16801719",
+        "TOTAL_DISPATCH_KERNEL_TIME": "147111",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "64835",
+        "COPY_OUT_TIME": "4146638",
+        "COPY_IN_TIME": "3471590",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8290582"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7261118",
+        "TOTAL_TASK_GRAPH_TIME": "17427219",
+        "TOTAL_DISPATCH_KERNEL_TIME": "27004",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "105731",
+        "COPY_OUT_TIME": "4519809",
+        "COPY_IN_TIME": "4805430",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7261118"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6985325",
+        "TOTAL_TASK_GRAPH_TIME": "15158461",
+        "TOTAL_DISPATCH_KERNEL_TIME": "144515",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "87557",
+        "COPY_OUT_TIME": "3453019",
+        "COPY_IN_TIME": "3805068",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6985325"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8028422",
+        "TOTAL_TASK_GRAPH_TIME": "15830947",
+        "TOTAL_DISPATCH_KERNEL_TIME": "98351",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "77592",
+        "COPY_OUT_TIME": "4050529",
+        "COPY_IN_TIME": "3102940",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8028422"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7214756",
+        "TOTAL_TASK_GRAPH_TIME": "15703533",
+        "TOTAL_DISPATCH_KERNEL_TIME": "102580",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "103056",
+        "COPY_OUT_TIME": "3272520",
+        "COPY_IN_TIME": "4365025",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7214756"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "7390913",
+        "TOTAL_TASK_GRAPH_TIME": "14863923",
+        "TOTAL_DISPATCH_KERNEL_TIME": "184154",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "53368",
+        "COPY_OUT_TIME": "3559796",
+        "COPY_IN_TIME": "3053258",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "7390913"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9286363",
+        "TOTAL_TASK_GRAPH_TIME": "18984475",
+        "TOTAL_DISPATCH_KERNEL_TIME": "136315",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "78623",
+        "COPY_OUT_TIME": "4760633",
+        "COPY_IN_TIME": "3954633",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9286363"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9027319",
+        "TOTAL_TASK_GRAPH_TIME": "21202552",
+        "TOTAL_DISPATCH_KERNEL_TIME": "87479",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "129423",
+        "COPY_OUT_TIME": "5913953",
+        "COPY_IN_TIME": "5091834",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9027319"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8586740",
+        "TOTAL_TASK_GRAPH_TIME": "19538721",
+        "TOTAL_DISPATCH_KERNEL_TIME": "55654",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "84512",
+        "COPY_OUT_TIME": "4495111",
+        "COPY_IN_TIME": "5256903",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8586740"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "6549776",
+        "TOTAL_TASK_GRAPH_TIME": "15880955",
+        "TOTAL_DISPATCH_KERNEL_TIME": "85355",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "99684",
+        "COPY_OUT_TIME": "3864955",
+        "COPY_IN_TIME": "4547428",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "6549776"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "9281522",
+        "TOTAL_TASK_GRAPH_TIME": "22104156",
+        "TOTAL_DISPATCH_KERNEL_TIME": "102897",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "75209",
+        "COPY_OUT_TIME": "6935859",
+        "COPY_IN_TIME": "4878432",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "9281522"
+        }
+    }
+}
+
+{
+    "benchmark": {
+        "TOTAL_KERNEL_TIME": "8813217",
+        "TOTAL_TASK_GRAPH_TIME": "32165998",
+        "TOTAL_DISPATCH_KERNEL_TIME": "72830",
+        "TOTAL_DISPATCH_DATA_TRANSFERS_TIME": "119596",
+        "COPY_OUT_TIME": "6703789",
+        "COPY_IN_TIME": "15243245",
+        "TOTAL_COPY_OUT_SIZE_BYTES": "67108888",
+        "TOTAL_COPY_IN_SIZE_BYTES": "67108888",
+        "ALLOCATION_BYTES": "134217776",
+        "benchmark.saxpy": {
+            "BACKEND": "OPENCL",
+            "METHOD": "LinearAlgebraArrays.saxpy",
+            "DEVICE_ID": "0:1",
+            "DEVICE": "pthread-12th Gen Intel(R) Core(TM) i7-12700KF",
+            "TOTAL_COPY_IN_SIZE_BYTES": "24",
+            "TASK_KERNEL_TIME": "8813217"
+        }
+    }
+}
+
+Performance: bm=saxpy-101-16777216, device=0:0, average(ns)=1.403133e+07, median(ns)=1.400449e+07, firstIteration(ns)=1.031469e+08, best(ns)=1.376225e+07
+, speedupAvg=0.8621690865972079, speedupMedian=0.8626777064633223, speedupFirstIteration=0.33444658020030515, CV=1.3931138176546942, deviceName= [NVIDIA CUDA] -- NVIDIA GeForce RTX 3070 Ti
+Performance: bm=saxpy-101-16777216, device=0:1, average(ns)=1.729195e+07, median(ns)=1.538798e+07, firstIteration(ns)=1.254402e+08, best(ns)=9.944700e+06
+, speedupAvg=0.6995959292878657, speedupMedian=0.7851166020642868, speedupFirstIteration=0.2750086941842301, CV=25.914577732549137, deviceName= [Portable Computing Language] -- pthread-12th Gen Intel(R) Core(TM) i7-12700KF
+[1;34mRunning TornadoVM Benchmarks[0;0m
+[1;36m[INFO] This process takes between 30-60 minutes[0;0m
+[0;32mList of benchmarks: [0;0m
+[;1m	*saxpy[0;0m
+[;1m	*addImage[0;0m
+[;1m	*stencil[0;0m
+[;1m	*convolvearray[0;0m
+[;1m	*convolveimage[0;0m
+[;1m	*blackscholes[0;0m
+[;1m	*montecarlo[0;0m
+[;1m	*blurFilter[0;0m
+[;1m	*renderTrack[0;0m
+[;1m	*euler[0;0m
+[;1m	*nbody[0;0m
+[;1m	*sgemm[0;0m
+[;1m	*dgemm[0;0m
+[;1m	*matrixvectormultiplication[0;0m
+[;1m	*matrixtranspose[0;0m
+[;1m	*matrixaddition[0;0m
+[;1m	*hilbert[0;0m
+[;1m	*histogram[0;0m
+[;1m	*mandelbrot[0;0m
+[;1m	*dft[0;0m
+[;1m	*fft[0;0m
+[;1m	*juliaset[0;0m
+[;1m	*vectoraddition[0;0m
+[;1m	*vectoradditionfloat4[0;0m
+[;1m	*rotateimage[0;0m
+[;1m	*rotatevector[0;0m
+[;1m	*blackandwhitefilter[0;0m
+[;1m	*bfs[0;0m
+[;1m	*maxreductionglobal[0;0m
+[;1m	*maxreductionlocal[0;0m
+[;1m	*integration[0;0m
+[1;36m[INFO] TornadoVM options:  --enableProfiler console -Xms32G -Xmx32G -Dtornado.device.memory=16GB -server -Dtornado.recover.bailout=False --patch-module=tornado.runtime=/home/antushenguzi/TornadoVM/tornado-runtime/target/tornado-runtime-1.1.2-dev-d8b9a9d.jar -Dtornado.power.cpu.rapl=true -Ds0.t0.device=0:1 [0;0m
+tornado  --enableProfiler console --jvm="-Xms32G -Xmx32G -Dtornado.device.memory=16GB -server -Dtornado.recover.bailout=False --patch-module=tornado.runtime=/home/antushenguzi/TornadoVM/tornado-runtime/target/tornado-runtime-1.1.2-dev-d8b9a9d.jar -Dtornado.power.cpu.rapl=true -Ds0.t0.device=0:1 "  -m tornado.benchmarks/uk.ac.manchester.tornado.benchmarks.BenchmarkRunner --params="saxpy"

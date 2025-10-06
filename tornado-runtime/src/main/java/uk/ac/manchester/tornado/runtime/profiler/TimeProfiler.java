@@ -47,6 +47,12 @@ public class TimeProfiler implements TornadoProfiler {
     private HashMap<String, HashMap<ProfilerType, String>> taskDeviceIdentifiers;
     private HashMap<String, HashMap<ProfilerType, String>> taskMethodNames;
 
+    // --- RAPL support (CPU) ---
+    private final boolean enableRapl = Boolean.parseBoolean(System.getProperty("tornado.power.cpu.rapl", "true"));
+    private uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader raplReader = null;
+    private final HashMap<String, Long> raplStartEnergyUj = new HashMap<>();
+    private final HashMap<String, Long> raplStartTimeNs = new HashMap<>();
+
     private HashMap<String, HashMap<ProfilerType, String>> taskBackends;
 
     private StringBuilder indent;
@@ -60,6 +66,16 @@ public class TimeProfiler implements TornadoProfiler {
         taskSizeMetrics = new HashMap<>();
         taskBackends = new HashMap<>();
         indent = new StringBuilder("");
+        // Try to discover RAPL once (Linux, Intel CPUs). Safe to fail quietly.
+        try {
+            if (enableRapl) {
+                java.util.Optional<uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader> opt =
+                        uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader.discover();
+                raplReader = opt.orElse(null);
+            }
+        } catch (Throwable ignore) {
+            raplReader = null;
+        }
     }
 
     @Override
@@ -87,6 +103,16 @@ public class TimeProfiler implements TornadoProfiler {
         HashMap<ProfilerType, Long> profilerType = taskTimers.get(taskName);
         profilerType.put(type, start);
         taskTimers.put(taskName, profilerType);
+
+        // --- RAPL begin: record unconditionally for kernel interval ---
+        if (enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME) {
+            try {
+                raplStartEnergyUj.put(taskName, raplReader.readEnergyUj());
+                raplStartTimeNs.put(taskName, System.nanoTime());
+            } catch (Exception ignore) {
+                // do nothing
+            }
+        }
     }
 
     @Override
@@ -96,7 +122,7 @@ public class TimeProfiler implements TornadoProfiler {
         }
         HashMap<ProfilerType, String> profilerType = taskMethodNames.get(taskName);
         profilerType.put(type, methodName);
-        taskMethodNames.put(methodName, profilerType);
+        taskMethodNames.put(taskName, profilerType);
     }
 
     @Override
@@ -115,7 +141,6 @@ public class TimeProfiler implements TornadoProfiler {
             taskBackends.put(taskName, new HashMap<>());
         }
         HashMap<ProfilerType, String> profilerType = taskBackends.get(taskName);
-
         profilerType.put(ProfilerType.BACKEND, backend);
         taskBackends.put(taskName, profilerType);
     }
@@ -146,6 +171,35 @@ public class TimeProfiler implements TornadoProfiler {
         long total = end - start;
         profiledType.put(type, total);
         taskTimers.put(taskName, profiledType);
+
+        // --- RAPL end & record (only for CPU tasks) ---
+        if (enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME) {
+            try {
+                Long e0 = raplStartEnergyUj.remove(taskName);
+                Long t0 = raplStartTimeNs.remove(taskName);
+                if (e0 != null && t0 != null && isCpuTask(taskName)) {
+                    long e1 = raplReader.readEnergyUj();
+                    long t1 = System.nanoTime();
+                    long deltaUj = e1 - e0;
+                    if (deltaUj < 0) {
+                        long wrap = raplReader.minMaxRangeUj();
+                        if (wrap > 0) {
+                            deltaUj = (wrap - e0) + e1;
+                        }
+                    }
+                    double dtMs = (t1 - t0) / 1e6;
+                    double energy_mJ = deltaUj / 1000.0;
+                    long power_mW = (dtMs > 0.0) ? Math.round(energy_mJ / dtMs) : -1L;
+                    if (power_mW > 0L) {
+                        // Write into existing metric key (no new enum needed)
+                        setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, taskName, power_mW);
+                    }
+                }
+                // else: non-CPU or missing start — skip silently
+            } catch (Throwable ignore) {
+                // skip silently
+            }
+        }
     }
 
     @Override
@@ -191,10 +245,8 @@ public class TimeProfiler implements TornadoProfiler {
         for (ProfilerType p : profilerTime.keySet()) {
             System.out.println("[PROFILER] " + p.getDescription() + ": " + profilerTime.get(p));
         }
-
         for (String p : taskTimers.keySet()) {
             System.out.println("[PROFILER-TASK] " + p + ": " + taskTimers.get(p));
-
         }
     }
 
@@ -253,6 +305,16 @@ public class TimeProfiler implements TornadoProfiler {
                     json.append(indent.toString() + "\"" + p1 + "\"" + ": " + "\"" + taskPowerMetrics.get(p).get(p1) + "\",\n");
                 }
             }
+            if (taskPowerMetrics.containsKey(p)) {
+    String val = taskPowerMetrics.get(p).get(ProfilerType.POWER_USAGE_mW);
+    if (val != null && !val.equals("n/a")) {
+        if (isCpuTask(p)) {
+            json.append(indent.toString() + "\"CPU_POWER_USAGE_mW\": " + "\"" + val + "\",\n");
+        } else {
+            json.append(indent.toString() + "\"GPU_POWER_USAGE_mW\": " + "\"" + val + "\",\n");
+        	}
+    	}
+	}
             for (ProfilerType p2 : taskTimers.get(p).keySet()) {
                 json.append(indent.toString() + "\"" + p2 + "\"" + ": " + "\"" + taskTimers.get(p).get(p2) + "\",\n");
             }
@@ -287,6 +349,19 @@ public class TimeProfiler implements TornadoProfiler {
         indent = new StringBuilder("");
     }
 
+    private boolean isCpuTask(String taskName) {
+        try {
+            if (!taskDeviceIdentifiers.containsKey(taskName)) return false;
+            String dev = taskDeviceIdentifiers.get(taskName).get(ProfilerType.DEVICE);
+            if (dev == null) return false;
+            String d = dev.toLowerCase();
+            // e.g. "pthread-12th Gen Intel(R) Core..." or "... CL_DEVICE_TYPE_CPU ..."
+            return d.contains("cpu") || d.contains("pthread");
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
     @Override
     public synchronized void setTaskTimer(ProfilerType type, String taskID, long timer) {
         if (!taskTimers.containsKey(taskID)) {
@@ -303,7 +378,7 @@ public class TimeProfiler implements TornadoProfiler {
         if (power > 0) {
             taskPowerMetrics.get(taskID).put(type, Long.toString(power));
         } else {
-            taskPowerMetrics.get(taskID).put(type, "n/a");
+            taskPowerMetrics.get(taskID).remove(type);
         }
     }
 
@@ -336,5 +411,5 @@ public class TimeProfiler implements TornadoProfiler {
         long sum = getTimer(acc) + value;
         profilerTime.put(acc, sum);
     }
-
 }
+

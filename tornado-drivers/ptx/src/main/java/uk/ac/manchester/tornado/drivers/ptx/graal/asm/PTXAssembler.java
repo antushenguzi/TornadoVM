@@ -448,6 +448,7 @@ public class PTXAssembler extends Assembler {
         public static final PTXNullaryOp STU = new PTXNullaryOp("stu");
         public static final PTXNullaryOp RETURN = new PTXNullaryOp("ret");
         public static final PTXNullaryOp CVTA = new PTXNullaryOp(CONVERT_ADDRESS);
+        public static final PTXNullaryOp ATOM = new PTXNullaryOp("atom");
 
         protected PTXNullaryOp(String opcode) {
             this(opcode, false);
@@ -771,6 +772,7 @@ public class PTXAssembler extends Assembler {
     public static class PTXTernaryOp extends PTXOp {
         public static final PTXTernaryOp MAD_LO = new PTXTernaryOp("mad.lo");
         public static final PTXTernaryOp MAD = new PTXTernaryOp("mad");
+        public static final PTXTernaryOp FMA = new PTXTernaryOp("fma");
         public static final PTXTernaryOp SELP = new PTXTernaryOp("selp", false);
 
         private boolean needsRounding;

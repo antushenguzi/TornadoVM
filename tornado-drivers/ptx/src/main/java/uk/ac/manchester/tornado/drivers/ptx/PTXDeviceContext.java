@@ -25,7 +25,6 @@ package uk.ac.manchester.tornado.drivers.ptx;
 
 import static uk.ac.manchester.tornado.api.exceptions.TornadoInternalError.shouldNotReachHere;
 import static uk.ac.manchester.tornado.api.utils.TornadoAPIUtils.isBoxedPrimitive;
-import static uk.ac.manchester.tornado.drivers.ptx.graal.PTXCodeUtil.buildKernelName;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -47,7 +46,7 @@ import uk.ac.manchester.tornado.api.runtime.TornadoRuntimeProvider;
 import uk.ac.manchester.tornado.api.types.HalfFloat;
 import uk.ac.manchester.tornado.drivers.common.TornadoBufferProvider;
 import uk.ac.manchester.tornado.drivers.common.power.PowerMetric;
-import uk.ac.manchester.tornado.runtime.common.UpsMeterReader;
+import uk.ac.manchester.tornado.drivers.ptx.graal.PTXCodeUtil;
 import uk.ac.manchester.tornado.drivers.ptx.graal.compiler.PTXCompilationResult;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXKernelStackFrame;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXMemoryManager;
@@ -57,6 +56,7 @@ import uk.ac.manchester.tornado.drivers.ptx.runtime.PTXTornadoDevice;
 import uk.ac.manchester.tornado.runtime.common.KernelStackFrame;
 import uk.ac.manchester.tornado.runtime.common.TornadoInstalledCode;
 import uk.ac.manchester.tornado.runtime.common.TornadoOptions;
+import uk.ac.manchester.tornado.runtime.common.UpsMeterReader;
 import uk.ac.manchester.tornado.runtime.tasks.meta.TaskDataContext;
 
 public class PTXDeviceContext implements TornadoDeviceContext {
@@ -353,12 +353,14 @@ public class PTXDeviceContext implements TornadoDeviceContext {
         if (TornadoOptions.isProfilerEnabled()) {
             // Metrics captured before blocking
             meta.getProfiler().setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, meta.getId(), getPowerUsage());
-            meta.getProfiler().setSystemPowerConsumption(ProfilerType.SYSTEM_POWER_CONSUMPTION_W, meta.getId(), (UpsMeterReader.getOutputPowerMetric() != null)
-                    ? Long.parseLong(UpsMeterReader.getOutputPowerMetric())
-                    : -1);
-            meta.getProfiler().setSystemVoltage(ProfilerType.SYSTEM_VOLTAGE_V, meta.getId(), (UpsMeterReader.getOutputVoltageMetric() != null)
-                    ? Long.parseLong(UpsMeterReader.getOutputVoltageMetric())
-                    : -1);
+            if (TornadoOptions.isUpsReaderEnabled()) {
+                meta.getProfiler().setSystemPowerConsumption(ProfilerType.SYSTEM_POWER_CONSUMPTION_W, meta.getId(), (UpsMeterReader.getOutputPowerMetric() != null)
+                        ? Long.parseLong(UpsMeterReader.getOutputPowerMetric())
+                        : -1);
+                meta.getProfiler().setSystemVoltage(ProfilerType.SYSTEM_VOLTAGE_V, meta.getId(), (UpsMeterReader.getOutputVoltageMetric() != null)
+                        ? Long.parseLong(UpsMeterReader.getOutputVoltageMetric())
+                        : -1);
+            }
 
             Event tornadoKernelEvent = resolveEvent(executionPlanId, taskEvent);
             tornadoKernelEvent.waitForEvents(executionPlanId);
@@ -377,7 +379,7 @@ public class PTXDeviceContext implements TornadoDeviceContext {
     @Override
     public boolean isCached(long executionPlanId, String methodName, SchedulableTask task) {
         PTXCodeCache ptxCodeCache = getPTXCodeCache(executionPlanId);
-        return ptxCodeCache.isCached(buildKernelName(methodName, task));
+        return ptxCodeCache.isCached(PTXCodeUtil.buildKernelName(methodName, task));
     }
 
     public void destroyStream(long executionPlanId) {
@@ -601,4 +603,8 @@ public class PTXDeviceContext implements TornadoDeviceContext {
         return streamTable.get(executionPlanId).get(device);
     }
 
+    public long mapOnDeviceMemoryRegion(long executionPlanId, long destDevicePtr, long srcDevicePtr, long offset, int sizeOfType) {
+        PTXStream ptxStream = getStream(executionPlanId);
+        return ptxStream.mapOnDeviceMemoryRegion(destDevicePtr, srcDevicePtr, offset, sizeOfType);
+    }
 }

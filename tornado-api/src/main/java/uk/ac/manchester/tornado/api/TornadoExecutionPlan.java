@@ -44,11 +44,13 @@ import uk.ac.manchester.tornado.api.plan.types.WithFreeDeviceMemory;
 import uk.ac.manchester.tornado.api.plan.types.WithGraph;
 import uk.ac.manchester.tornado.api.plan.types.WithGridScheduler;
 import uk.ac.manchester.tornado.api.plan.types.WithMemoryLimit;
+import uk.ac.manchester.tornado.api.plan.types.WithPreCompilation;
 import uk.ac.manchester.tornado.api.plan.types.WithPrintKernel;
 import uk.ac.manchester.tornado.api.plan.types.WithProfiler;
 import uk.ac.manchester.tornado.api.plan.types.WithResetDevice;
 import uk.ac.manchester.tornado.api.plan.types.WithThreadInfo;
-import uk.ac.manchester.tornado.api.plan.types.WithWarmUp;
+import uk.ac.manchester.tornado.api.plan.types.WithWarmUpIterations;
+import uk.ac.manchester.tornado.api.plan.types.WithWarmUpTime;
 import uk.ac.manchester.tornado.api.runtime.ExecutorFrame;
 import uk.ac.manchester.tornado.api.runtime.TornadoRuntimeProvider;
 
@@ -80,19 +82,18 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
 
     protected ExecutorFrame executionFrame;
 
-    // Pointers
     /**
-     * Pointer to the Root of the List.
+     * Reference to the Root of the List.
      */
     protected TornadoExecutionPlan rootNode;
 
     /**
-     * Pointer to the next node in the list.
+     * Reference to the next node in the list.
      */
     protected TornadoExecutionPlan childLink;
 
     /**
-     * Pointer to the previous node in the list.
+     * Reference to the previous node in the list.
      */
     protected TornadoExecutionPlan parentLink;
 
@@ -112,8 +113,26 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
         tornadoExecutor = new TornadoExecutor(immutableTaskGraphs);
         final long id = globalExecutionPlanCounter.incrementAndGet();
         executionFrame = new ExecutorFrame(id);
+        updateAccess(immutableTaskGraphs);
         rootNode = this;
         planResults = new ArrayList<>();
+    }
+
+    /**
+     * If the {@code TornadoExecutionPlan} consists of multiple task-graphs, this function
+     * updates the access type of the input and output data of each task-graph, as necessary.
+     *
+     * @param immutableTaskGraphs
+     *     The list of the immutable task-graphs in the {@code TornadoExecutionPlan}
+     */
+    private void updateAccess(ImmutableTaskGraph... immutableTaskGraphs) {
+        if (immutableTaskGraphs.length > 1) {
+            for (ImmutableTaskGraph immutableTaskGraph : immutableTaskGraphs) {
+                TaskGraph taskGraph = immutableTaskGraph.getTaskGraph();
+                TornadoTaskGraphInterface taskGraphImpl = taskGraph.getTaskGraphImpl();
+                taskGraphImpl.updateObjectAccess();
+            }
+        }
     }
 
     /**
@@ -164,6 +183,7 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
         TornadoProfilerResult profilerResult = new TornadoProfilerResult(tornadoExecutor, this.getTraceExecutionPlan());
         TornadoExecutionResult executionResult = new TornadoExecutionResult(profilerResult);
         planResults.add(executionResult);
+        tornadoExecutor.updateLastExecutedTaskGraph();
         return executionResult;
     }
 
@@ -180,6 +200,9 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
      */
     public TornadoExecutionPlan withGraph(int graphIndex) {
         tornadoExecutor.selectGraph(graphIndex);
+        if (executionFrame.getGridScheduler() != null) {
+            tornadoExecutor.withGridScheduler(executionFrame.getGridScheduler());
+        }
         return new WithGraph(this, graphIndex);
     }
 
@@ -201,9 +224,9 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
      *
      * @return {@link TornadoExecutionPlan}
      */
-    public TornadoExecutionPlan withWarmUp() {
-        tornadoExecutor.warmup(executionFrame);
-        return new WithWarmUp(this);
+    public TornadoExecutionPlan withPreCompilation() {
+        tornadoExecutor.withPreCompilation(executionFrame);
+        return new WithPreCompilation(this);
     }
 
     /**
@@ -326,7 +349,15 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
      * @return {@link TornadoExecutionPlan}
      */
     public TornadoExecutionPlan withGridScheduler(GridScheduler gridScheduler) {
-        tornadoExecutor.withGridScheduler(gridScheduler);
+        boolean isGridRegistered = tornadoExecutor.withGridScheduler(gridScheduler);
+        if (!isGridRegistered) {
+            // check for the whole set of task-graphs
+            isGridRegistered = tornadoExecutor.checkAllTaskGraphsForGridScheduler();
+            if (!isGridRegistered) {
+                throw new TornadoRuntimeException("[ERROR] GridScheduler Name not registered in any task-graph");
+            }
+        }
+        executionFrame.setGridScheduler(gridScheduler);
         return new WithGridScheduler(this, gridScheduler);
     }
 
@@ -351,7 +382,7 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
      * @return {@link TornadoExecutionPlan}
      */
     public TornadoExecutionPlan withDynamicReconfiguration(Policy policy, DRMode mode) {
-        executionFrame.withPolicy(policy).withMode(mode);
+        executionFrame.setPolicy(policy).setMode(mode);
         return new WithDynamicReconfiguration(this, policy, mode);
     }
 
@@ -380,7 +411,7 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
      * @return {@link TornadoExecutionPlan}
      */
     public TornadoExecutionPlan withProfiler(ProfilerMode profilerMode) {
-        executionFrame.withProfilerOn(profilerMode);
+        executionFrame.setProfilerMode(profilerMode);
         return new WithProfiler(this, profilerMode);
     }
 
@@ -390,7 +421,7 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
      * @return {@link TornadoExecutionPlan}
      */
     public TornadoExecutionPlan withoutProfiler() {
-        executionFrame.withProfilerOff();
+        executionFrame.setProfilerOff();
         return new OffProfiler(this);
     }
 
@@ -553,4 +584,67 @@ public sealed class TornadoExecutionPlan implements AutoCloseable permits Execut
         return planResults.get(index);
     }
 
+    /**
+     * This function maps the device memory region that corresponds to a TornadoVM object to another on-device memory region.
+     * This call instructs the TornadoVM runtime to avoid transferring data between `device` -> `host` -> `device`. Instead,
+     * it can update the corresponding device pointers.
+     *
+     * <p>
+     * The semantics are as follows: there is the source object, and the destination object. This call maps the dest object
+     * to the source object from a given offset. The source object is passed from the task-graph `fromGraphIndex`, and
+     * the destination object is taken from the `toGraphIndex`. This method can be invoked in a multi-task-graph execution
+     * plan. It will not work if there is only one task-graph in the execution plan.
+     * </p>
+     * 
+     * @param destTornadoArray
+     * @param srcTornadoArray
+     * @param offset
+     * @param fromGraphIndex
+     * @param toGraphIndex
+     *
+     * @since v1.1.0
+     */
+    public void mapOnDeviceMemoryRegion(Object destTornadoArray, Object srcTornadoArray, long offset, int fromGraphIndex, int toGraphIndex) {
+        tornadoExecutor.mapOnDeviceMemoryRegion(destTornadoArray, srcTornadoArray, offset, fromGraphIndex, toGraphIndex);
+    }
+
+    /**
+     * This function allows developers to warm up the whole execution plan before running it. This covers
+     * copy in and out data, compiling all tasks and executing all tasks once for the specified amount
+     * of time.
+     * 
+     * @param milliseconds
+     *     Amount of time to warm up the execution plan. This amount means that the execution plan will run,
+     *     at least for the specified amount of time. if the tasks within the task-graphs
+     *     takes longer to execute, in a second run, the code will not be dispatched.
+     * @return {@link TornadoExecutionPlan}
+     * 
+     * @throws {@link
+     *     InterruptedException}
+     */
+    public TornadoExecutionPlan withWarmUpTime(long milliseconds) throws InterruptedException {
+        if (milliseconds < 0) {
+            throw new TornadoRuntimeException("[ERROR] Warm-up time cannot be negative");
+        }
+        tornadoExecutor.withWarmUpTime(milliseconds, executionFrame);
+        return new WithWarmUpTime(this, milliseconds);
+    }
+
+    /**
+     * This function allows developers to warm up the whole execution plan before running it. This covers
+     * copy in and out data, compiling all tasks and executing all tasks once for the specified amount
+     * of time.
+     *
+     * @param iterations
+     *     Number of iterations to run the whole execution plan as warm-up.
+     * @return {@link TornadoExecutionPlan}
+     *
+     */
+    public TornadoExecutionPlan withWarmUpIterations(int iterations) {
+        if (iterations < 0) {
+            throw new TornadoRuntimeException("[ERROR] Warm-up time cannot be negative");
+        }
+        tornadoExecutor.withWarmUpIterations(iterations, executionFrame);
+        return new WithWarmUpIterations(this, iterations);
+    }
 }

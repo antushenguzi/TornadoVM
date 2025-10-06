@@ -79,7 +79,7 @@ public class SgemmTornado extends BenchmarkDriver {
             worker = new WorkerGrid2D(m, n);
             worker.setLocalWork(16, 16, 1);
             grid = new GridScheduler();
-            grid.setWorkerGrid("benchmark.sgemm", worker);
+            grid.addWorkerGrid("benchmark.sgemm", worker);
         }
 
         taskGraph = new TaskGraph("benchmark");
@@ -89,7 +89,7 @@ public class SgemmTornado extends BenchmarkDriver {
         taskGraph.transferToHost(DataTransferMode.EVERY_EXECUTION, c);
 
         executionPlan = new TornadoExecutionPlan(taskGraph.snapshot());
-        executionPlan.withWarmUp();
+        executionPlan.withPreCompilation();
     }
 
     @Override

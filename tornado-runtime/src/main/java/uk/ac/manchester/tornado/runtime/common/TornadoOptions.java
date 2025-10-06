@@ -77,7 +77,7 @@ public class TornadoOptions {
     /**
      * Enable the runtime to dump the generated code (e.g., OpenCL, CUDA PTX or SPIR-V) from the TornadoVM JIT Compiler.
      */
-    public static final boolean PRINT_KERNEL_SOURCE = getBooleanValue("tornado.print.kernel", FALSE);
+    public static final boolean PRINT_KERNEL_SOURCE = getBooleanValue("tornado.printKernel", FALSE);
 
     /**
      * Priority of the PTX Backend. The higher the number, the more priority over
@@ -99,9 +99,9 @@ public class TornadoOptions {
      */
     public static final boolean FPGA_EMULATION = isFPGAEmulation();
     /**
-     * Option to set the device maximum memory usage. It is set to 1GB by default.
+     * Option to set the device maximum memory usage. It is set to 4GB by default.
      */
-    public static final long DEVICE_AVAILABLE_MEMORY = RuntimeUtilities.parseSize(System.getProperty("tornado.device.memory", "1GB"));
+    public static final long DEVICE_AVAILABLE_MEMORY = RuntimeUtilities.parseSize(System.getProperty("tornado.device.memory", "4GB"));
     /**
      * Option to enable exceptions for the OpenCL generated code. This is
      * experimental.
@@ -111,6 +111,11 @@ public class TornadoOptions {
      * Option to print TornadoVM Internal Bytecodes.
      */
     public static final boolean PRINT_BYTECODES = getBooleanValue("tornado.print.bytecodes", FALSE);
+
+    /**
+     * Option to dump TornadoVM Internal Bytecodes into a file.
+     */
+    public static final String DUMP_BYTECODES = getProperty("tornado.dump.bytecodes.dir", "");
 
     /**
      * Option to enable experimental and new option for performing automatic full
@@ -224,10 +229,10 @@ public class TornadoOptions {
      *
      * <p>
      * <ul>
-     *   <il>Use <code>-Dtornado.spirv.runtimes=opencl</code> for OpenCL only.
-     *   <il>Use <code>-Dtornado.spirv.runtimes=levelzero</code> for LevelZero only.
-     *   <il>Use <code>-Dtornado.spirv.runtimes=opencl,levelzero</code> for both OpenCL and Level Zero runtimes, being
-     *   OpenCL the first in the list (default).
+     * <il>Use <code>-Dtornado.spirv.runtimes=opencl</code> for OpenCL only.
+     * <il>Use <code>-Dtornado.spirv.runtimes=levelzero</code> for LevelZero only.
+     * <il>Use <code>-Dtornado.spirv.runtimes=opencl,levelzero</code> for both OpenCL and Level Zero runtimes, being
+     * OpenCL the first in the list (default).
      * *</ul>
      * </p>
      */
@@ -345,11 +350,27 @@ public class TornadoOptions {
     }
 
     /**
+     * Option for logging the TornadoVM Bytecodes when printing in console is enabled or dumping them into a file.
+     */
+    public static boolean LOG_BYTECODES() {
+        return TornadoOptions.PRINT_BYTECODES || !TornadoOptions.DUMP_BYTECODES.isBlank();
+    }
+
+    /**
      * Option to reuse device buffers every time a task-graph is executed. True by
      * default.
      */
     public static boolean isReusedBuffersEnabled() {
         return getBooleanValue("tornado.reuse.device.buffers", TRUE);
+    }
+
+    /**
+     * Option to deallocate after the execution plan finishes. It frees all
+     * resources consumed by the execution plan, which can involved multiple
+     * task graphs.
+     */
+    public static boolean isDeallocateBufferEnabled() {
+        return getBooleanValue("tornado.deallocate.buffers", TRUE);
     }
 
     /**
@@ -458,5 +479,17 @@ public class TornadoOptions {
         String contextEmulatorIntelFPGA = System.getenv("CL_CONTEXT_EMULATOR_DEVICE_INTELFPGA");
         String contextEmulatorXilinxFPGA = System.getenv("XCL_EMULATION_MODE");
         return (contextEmulatorIntelFPGA != null && (contextEmulatorIntelFPGA.equals("1"))) || (contextEmulatorXilinxFPGA != null && (contextEmulatorXilinxFPGA.equals("sw_emu")));
+    }
+
+    /**
+     * Flag to signal to clean up the atomics area (as in accelerator's global memory) when the Execution Plan
+     * resource is closed. This is False by default, since this area is global for all kernels. In near future,
+     * we will change this to use a unique area per execution plan, and have the option to turn on and off
+     * this flag as needed.
+     * 
+     * @return boolean
+     */
+    public static boolean cleanUpAtomicsSpace() {
+        return getBooleanValue("tornado.clean.atomics.space", FALSE);
     }
 }

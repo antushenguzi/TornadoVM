@@ -64,48 +64,28 @@ Additionally, this installation type will automatically trigger all dependencies
 
 .. code-block:: bash
 
-    $ ./bin/tornadovm-installer
-      usage: tornadovm-installer [-h] [--version] [--jdk JDK] [--backend BACKEND] [--listJDKs] [--javaHome JAVAHOME]
-                           [--polyglot]
+    $ ./bin/tornadovm-installer --help
+      usage: tornadovm-installer [-h] [--jdk JDK] [--backend BACKEND] [--version] [--listJDKs] [--polyglot] [--mvn_single_threaded] [--auto-deps]
 
       TornadoVM Installer Tool. It will install all software dependencies except the GPU/FPGA drivers
 
       options:
-        -h, --help           show this help message and exit
-        --version            Print version of TornadoVM
-        --jdk JDK            Select one of the supported JDKs. Use --listJDKs option to see all supported ones.
-        --backend BACKEND    Select the backend to install: { opencl, ptx, spirv }
-        --listJDKs           List all JDK supported versions
-        --javaHome JAVAHOME  Use a JDK from a user directory
-        --polyglot           To enable interoperability with Truffle Programming Languages.
+        -h, --help            show this help message and exit
+        --jdk JDK             Specify a JDK to install by its keyword (e.g., 'jdk21', 'graal-jdk-21'). Run with --listJDKs to view all available JDK keywords.
+        --backend BACKEND     Select the backend to install: { opencl, ptx, spirv }
+        --version             Print version
+        --listJDKs            List supported JDKs
+        --polyglot            Enable Truffle Interoperability with GraalVM
+        --mvn_single_threaded
+                              Run Maven in single-threaded mode
+        --auto-deps           Automatic download and use any missing dependencies
 
 
-**Note:** Select the desired backend with the ``--backend`` option:
-  * ``opencl``: Enables the OpenCL backend (it requires OpenCL drivers and OpenCL SDK installed)
-  * ``ptx``: Enables the PTX backend (it requires NVIDIA Driver and the CUDA SDK)
-  * ``spirv``: Enables the SPIRV backend (it requires Intel Level Zero drivers)
-
-
-For example, to build TornadoVM with GraalVM (JDK21) for all backends:
+Windows example: to build TornadoVM we recommend using a virtual Python environment (`venv`) to automatically install and import a missing ``wget`` Python module. Otherwise, the installer fails to install and import ``wget`` and reports an error. Although the installer works fine on the second try, using a `venv` from the start is the recommended approach:
 
 .. code-block:: bash
 
-  ## Install with Graal for JDK 21 using PTX, OpenCL and SPIRV backends
-  ./bin/tornadovm-installer --jdk graal-jdk-21  --backend opencl,ptx,spirv
-
-
-Another example: to build TornadoVM with OpenJDK 21 for the OpenCL and PTX backends:
-
-.. code-block:: bash
-
-  ./bin/tornadovm-installer --jdk jdk21 --backend opencl,ptx
-
-
-Windows example: to build TornadoVM with GraalVM and all supported backends (mind backslash and quotes):
-
-.. code-block:: bash
-
-  rem invoke the Microsoft Visual Studio Tool Terminal 
+  rem invoke the Microsoft Visual Studio Tool Terminal
   .\bin\windowsMicrosoftStudioTools2022.cmd
 
   rem create and activate a virtual environment
@@ -113,12 +93,7 @@ Windows example: to build TornadoVM with GraalVM and all supported backends (min
   python -m venv .venv
   .venv\Scripts\activate.bat
 
-  python bin\tornadovm-installer --jdk graal-jdk-21 --backend opencl,ptx,spirv
-
-
-**Notes on Windows:**
-
-- The installer must run in a virtual Python environment (`venv`) to automatically install and import a missing ``wget`` Python module. Otherwise, the installer fails to install and import ``wget`` and reports an error. Although the installer works fine on the second try, using a `venv` from the start is a smarter approach.
+  python bin\tornadovm-installer
 
 - Running the TornadoVM test suite on Windows requires using ``nmake`` which is part of Visual Studio:
 
@@ -145,7 +120,7 @@ On Windows by using:
 
 .. _installation_linux:
 
-Installation for Linux 
+Installation for Linux
 =======================
 
 Download dependencies (Red Hat-based):
@@ -165,18 +140,24 @@ Download dependencies (Ubuntu-based):
 Install the driver/s. Download the required driver/s from the hardware vendor as well as the required SDKs (e.g. CUDA for NVIDIA GPUs).
 
 
-Once the drivers and SDK are installed, download and build TornadoVM. 
+Once the drivers and SDK are installed, download and build TornadoVM.
 For example, using JDK 21 for all backends:
 
 .. code:: bash
 
    git clone https://github.com/beehive-lab/TornadoVM.git
    cd TornadoVM
-   bin/tornadovm-installer --jdk jdk21 --backend opencl,ptx,spirv
+   bin/tornadovm-installer
+   Select the backend(s) to install:
+     1. opencl
+     2. spirv
+     3. ptx
+   You can select more than one by typing the numbers separated by commas (e.g., 1, 2, 3).
+   Your selection: 1, 2, 3
    source setvars.sh
 
 
-Check the installation: 
+Check the installation:
 
 .. code:: bash
 
@@ -213,18 +194,24 @@ Download dependencies:
    brew install maven
 
 
-Download and install TornadoVM. Note that, in OSx Apple M1/M2/M3 chip, the only backend supported is OpenCL. 
+Download and install TornadoVM. Note that, in OSx Apple M1/M2/M3 chip, the only backend supported is OpenCL.
 
 
 .. code:: bash
 
    git clone https://github.com/beehive-lab/TornadoVM.git
    cd TornadoVM
-   bin/tornadovm-installer --jdk graal-jdk-21 --backend opencl
+   bin/tornadovm-installer
+   Select the backend(s) to install:
+     1. opencl
+     2. spirv
+     3. ptx
+   You can select more than one by typing the numbers separated by commas (e.g., 1, 2, 3).
+   Your selection: 1
    source setvars.sh
 
 
-Check the installation: 
+Check the installation:
 
 .. code:: bash
 
@@ -243,7 +230,7 @@ To recompile TornadoVM after an update:
 .. code:: bash
 
    source setvars.sh
-   make 
+   make
 
 
 
@@ -305,10 +292,10 @@ Note, that NSight, BLAST libs and Visual Studio integration are irrelevant for T
 3. Install Visual Studio Community 2022 and Python (use the Windows installer for each of those)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- `Visual Studio Community 2022 <https://visualstudio.microsoft.com/vs/community/>`_. 
+- `Visual Studio Community 2022 <https://visualstudio.microsoft.com/vs/community/>`_.
 - `Python3 for Windows <https://www.python.org/downloads/windows/>`_.
 
-If you have not configured Visual Studio 2022 to use C++, you may need to install it using the Visual Studio Installer. 
+If you have not configured Visual Studio 2022 to use C++, you may need to install it using the Visual Studio Installer.
 In this case, enable the following packages:
 
 - MSVC C++ x86/64 build tools (latest)
@@ -330,7 +317,7 @@ Clone the latest TornadoVM source code from the GitHub `repository <https://gith
 Hereafter, the directory with the source code will be referred as ``<TornadoVM>``.
 
 
-5. Configure/Compile the TornadoVM Project 
+5. Configure/Compile the TornadoVM Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -338,18 +325,18 @@ The installation script downloads the following dependencies:
 
 - Java
 - Maven
-- cmake
+- CMake
 
 .. code:: bash
 
    python -m venv .venv
    .venv\Scripts\activate.bat
    .\bin\windowsMicrosoftStudioTools2022.cmd
-   python bin\tornadovm-installer --jdk jdk21 --backend=opencl 
+   python bin\tornadovm-installer
    setvars.cmd
 
 
-And TornadoVM is ready to be used. If you want to recompile with a different backend: 
+And TornadoVM is ready to be used. If you want to recompile with a different backend:
 
 .. code:: bash
 
@@ -510,14 +497,7 @@ Clone and build TornadoVM:
    git clone https://github.com/beehive-lab/TornadoVM.git tornado
    cd tornado
 
-  ## Install OpenCL only
-   ./bin/tornadovm-installer --jdk jdk21 --backend=opencl
-
-   ## Install OpenCL and PTX
-   ./bin/tornadovm-installer --jdk jdk21 --backend=opencl,ptx
-
-   ## Install All backends:
-   ./bin/tornadovm-installer --jdk jdk21 --backend=opencl,ptx,spirv
+   ./bin/tornadovm-installer
 
 
 Finally enable environment:
@@ -593,7 +573,7 @@ Run tests:
 
 .. code:: bash
 
-   tornado-test -V 
+   tornado-test -V
 
 
 To run individual tests:
@@ -607,20 +587,34 @@ To run individual tests:
 Installation for RISC-V RVV 1.0 on Linux
 ========================================
 
-The RISC-V port is experimental, but users can try it on real RISC-V hardware. 
-The following instructions have been tested on Linux Bianbu OS 1.0.15 on a Bananapi F3 SBC. 
+The RISC-V port is experimental, but users can try it on real RISC-V hardware.
+The following instructions have been tested on Linux Bianbu OS 2.0 and 2.1 on a Bananapi F3 SBC and Sipeed Lichee PI 3A.
 
+The installation requires a patch that disables the `cmake-maven` plugin for the native OpenCL part due to unsupported port for RISC-V.
 
-The installation requires a patch that disables the `cmake-maven` plugin for the native OpenCL part due to unsupported port for RISC-V. 
-
-We have pushed a script that automatically applies the patch and builds TornadoVM to run on RISC-V. 
+We have pushed a script that automatically applies the patch and builds TornadoVM to run on RISC-V.
 
 
 First, install the dependencies:
 
 .. code:: bash
 
-   sudo apt-get install python3-psutil cmake 
+   sudo apt-get install clinfo gcc g++
+   sudo ln -s libOpenCL.so.1 libOpenCL.so
+
+
+Configure a new Python environment:
+
+.. code:: bash
+
+   python -m venv /path/to/venv
+
+
+Activate the new Python environment:
+
+.. code:: bash
+
+   source /path/to/venv/bin/activate
 
 
 OpenCL backend only
@@ -631,8 +625,11 @@ Then, download the script to apply the patch for the OpenCL backend:
 
 .. code:: bash
 
-   wget https://gist.githubusercontent.com/jjfumero/c191f7e69a653c4f59f238d5856201aa/raw/b2cc2b7f33b9d8771f54806bd2247fd64cdfd31f/apply-riscv-patch.sh
-   bash apply-riscv-patch.sh 
+   cd tornadovm
+   git clone https://github.com/beehive-lab/tornadovm-riscv-patch.git
+
+   ## Build for OpenCL only
+   bash tornadovm-riscv-patch/apply-riscv-patch-opencl.sh
 
 
 SPIR-V + OpenCL backends
@@ -642,23 +639,22 @@ If you want to enable both OpenCL and SPIR-V backends, use the following patch:
 
 .. code:: bash
 
-   wget https://gist.githubusercontent.com/jjfumero/c191f7e69a653c4f59f238d5856201aa/raw/dc8abb04756c134fa74fdd3f4959a4e920818b83/apply-riscv-spirv-patch.sh
-   bash apply-riscv-spirv-patch.sh
+   bash tornadovm-riscv-patch/apply-riscv-patch-spirv.sh
 
 
-
-Run TornadoVM:
+Run TornadoVM for RISC-V
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
    source setvars.sh
-   tornado --devices 
+   tornado --devices
 
    Number of Tornado drivers: 1
    Driver: OpenCL
       Total number of OpenCL devices  : 1
       Tornado device=0:0  (DEFAULT)
-        OPENCL --  [ComputeAorta] -- RefSi G1 RV64
+        OPENCL --  [ComputeAorta] -- RefSi G1 RV64    << RISC-V CPU
                 Global Memory Size: 2.0 GB
                 Local Memory Size: 256.0 KB
                 Workgroup Dimensions: 3
@@ -671,10 +667,6 @@ Known issues on Linux
 =======================
 
 - For Ubuntu >= 16.04, install the package ``ocl-icd-opencl-dev``
-
-- In Ubuntu >= 16.04 CMake can cause the following error:
-
-``Could NOT find OpenCL (missing: OpenCL_LIBRARY) (found version "2.2").``
 
 Then the following package should be installed:
 
@@ -737,13 +729,13 @@ To use the TornadoVM API in your projects, you can checkout our maven repository
       <dependency>
          <groupId>tornado</groupId>
          <artifactId>tornado-api</artifactId>
-         <version>1.0.10</version>
+         <version>1.1.1</version>
       </dependency>
 
       <dependency>
          <groupId>tornado</groupId>
          <artifactId>tornado-matrices</artifactId>
-         <version>1.0.10</version>
+         <version>1.1.1</version>
       </dependency>
    </dependencies>
 
@@ -754,6 +746,8 @@ Notice that, for running with TornadoVM, you will need either the docker images 
 Versions available
 ==================
 
+* 1.1.1
+* 1.1.0
 * 1.0.10
 * 1.0.9
 * 1.0.7

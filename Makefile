@@ -16,6 +16,15 @@ graal-jdk-21:
 polyglot:
 	bin/compile --jdk graal-jdk-21 --backend $(BACKEND) --polyglot
 
+mvn-single-threaded-jdk21:
+	bin/compile --jdk jdk21 --backend $(BACKEND) --mvn_single_threaded
+
+mvn-single-threaded-graal-jdk-21:
+	bin/compile --jdk graal-jdk-21 --backend $(BACKEND) --mvn_single_threaded
+
+mvn-single-threaded-polyglot:
+	bin/compile --jdk graal-jdk-21 --backend $(BACKEND) --mvn_single_threaded --polyglot
+
 ptx:
 	bin/compile --jdk jdk21 --backend ptx,opencl
 

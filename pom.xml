@@ -5,7 +5,7 @@
 
     <groupId>tornado</groupId>
     <artifactId>tornado</artifactId>
-    <version>1.0.11-dev</version>
+    <version>1.1.2-dev</version>
     <packaging>pom</packaging>
     <name>tornado</name>
     <url>https://github.com/beehive-lab/tornadovm</url>
@@ -207,6 +207,13 @@
             </activation>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-checkstyle-plugin</artifactId>

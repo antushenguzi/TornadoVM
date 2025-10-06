@@ -133,12 +133,6 @@ public class OpenCL {
         }
     }
 
-    public static OCLTornadoDevice defaultDevice() {
-        final int platformIndex = Integer.parseInt(Tornado.getProperty("tornado.opencl.platform", "0"));
-        final int deviceIndex = Integer.parseInt(Tornado.getProperty("tornado.opencl.device", "0"));
-        return new OCLTornadoDevice(platformIndex, deviceIndex);
-    }
-
     /**
      * Execute an OpenCL code compiled by Tornado on the target device
      *
@@ -169,19 +163,17 @@ public class OpenCL {
             XPUDeviceBufferState deviceState = dataObjectState.getDeviceBufferState(tornadoDevice);
 
             switch (access) {
-                case READ_WRITE:
+                case READ_WRITE -> {
                     tornadoDevice.allocate(object, 0, deviceState, Access.READ_WRITE);
                     tornadoDevice.ensurePresent(executionContextId, object, deviceState, null, 0, 0);
-                    break;
-                case READ_ONLY:
+                }
+                case READ_ONLY -> {
                     tornadoDevice.allocate(object, 0, deviceState, Access.READ_ONLY);
                     tornadoDevice.ensurePresent(executionContextId, object, deviceState, null, 0, 0);
-                    break;
-                case WRITE_ONLY:
-                    tornadoDevice.allocate(object, 0, deviceState, Access.WRITE_ONLY);
-                    break;
-                default:
-                    break;
+                }
+                case WRITE_ONLY -> tornadoDevice.allocate(object, 0, deviceState, Access.WRITE_ONLY);
+                default -> {
+                }
             }
             states.add(deviceState);
         }

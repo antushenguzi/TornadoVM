@@ -20,7 +20,9 @@ package uk.ac.manchester.tornado.api;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import uk.ac.manchester.tornado.api.common.TornadoDevice;
 import uk.ac.manchester.tornado.api.enums.TornadoVMBackendType;
@@ -47,12 +49,28 @@ class TornadoExecutor {
         immutableTaskGraphList.forEach(immutableTaskGraph -> immutableTaskGraph.execute(executionPackage));
     }
 
-    void withGridScheduler(GridScheduler gridScheduler) {
-        immutableTaskGraphList.forEach(immutableTaskGraph -> immutableTaskGraph.withGridScheduler(gridScheduler));
+    boolean withGridScheduler(GridScheduler gridScheduler) {
+        boolean checkGridRegistered = false;
+        for (ImmutableTaskGraph immutableTaskGraph : immutableTaskGraphList) {
+            immutableTaskGraph.withGridScheduler(gridScheduler);
+            checkGridRegistered |= immutableTaskGraph.isGridRegistered();
+        }
+        return checkGridRegistered;
     }
 
-    void warmup(ExecutorFrame executorFrame) {
-        immutableTaskGraphList.forEach(immutableTaskGraph -> immutableTaskGraph.warmup(executorFrame));
+    void updateLastExecutedTaskGraph() {
+        ImmutableTaskGraph last = immutableTaskGraphList.getLast();
+        immutableTaskGraphList.forEach(immutableTaskGraph -> immutableTaskGraph.setLastExecutedTaskGraph(immutableTaskGraphList.getLast()));
+
+        if (subgraphList != null) {
+            for (ImmutableTaskGraph immutableTaskGraph : subgraphList) {
+                immutableTaskGraph.setLastExecutedTaskGraph(last);
+            }
+        }
+    }
+
+    void withPreCompilation(ExecutorFrame executorFrame) {
+        immutableTaskGraphList.forEach(immutableTaskGraph -> immutableTaskGraph.withPreCompilation(executorFrame));
     }
 
     void withBatch(String batchSize) {
@@ -186,14 +204,14 @@ class TornadoExecutor {
         return immutableTaskGraphList.get(immutableTaskGraphIndex).getDevice();
     }
 
+    void withThreadInfo() {
+        immutableTaskGraphList.forEach(ImmutableTaskGraph::withThreadInfo);
+    }
+
     List<Object> getOutputs() {
         List<Object> outputs = new ArrayList<>();
         immutableTaskGraphList.forEach(immutableTaskGraph -> outputs.addAll(immutableTaskGraph.getOutputs()));
         return outputs;
-    }
-
-    void withThreadInfo() {
-        immutableTaskGraphList.forEach(ImmutableTaskGraph::withThreadInfo);
     }
 
     void withoutThreadInfo() {
@@ -229,8 +247,47 @@ class TornadoExecutor {
             subgraphList = new ArrayList<>();
             immutableTaskGraphList.forEach(g -> Collections.addAll(subgraphList, g));
         }
+        processPersistentStates(graphIndex);
         immutableTaskGraphList.clear();
         Collections.addAll(immutableTaskGraphList, subgraphList.get(graphIndex));
+    }
+
+    /**
+     * Processes the persistent states of a specified subgraph.
+     *
+     * @param graphIndex
+     *     The index of the subgraph to process.
+     */
+    private void processPersistentStates(int graphIndex) {
+        // Validate that the graphIndex is within bounds of subgraphList
+        if (graphIndex < 0 || graphIndex >= subgraphList.size()) {
+            throw new TornadoRuntimeException("Error: graphIndex out of bounds: " + graphIndex);
+        }
+
+        // Store the selected graph before clearing the list
+        ImmutableTaskGraph selectedGraph = subgraphList.get(graphIndex);
+
+        // Clear and update the immutableTaskGraphList
+        immutableTaskGraphList.clear();
+        Collections.addAll(immutableTaskGraphList, selectedGraph);
+
+    }
+
+    private ImmutableTaskGraph getGraph(int graphIndex) {
+        if (graphIndex < immutableTaskGraphList.size()) {
+            return immutableTaskGraphList.get(graphIndex);
+        } else {
+            throw new TornadoRuntimeException("TaskGraph index #" + graphIndex + " does not exist in current executor");
+        }
+    }
+
+    private ImmutableTaskGraph getGraphByName(String uniqueName) {
+        for (ImmutableTaskGraph immutableTaskGraph : immutableTaskGraphList) {
+            if (immutableTaskGraph.getTaskGraph().getTaskGraphName().equals(uniqueName)) {
+                return immutableTaskGraph;
+            }
+        }
+        throw new TornadoRuntimeException("TaskGraph with name " + uniqueName + " does not exist in current executor");
     }
 
     void selectAll() {
@@ -240,5 +297,75 @@ class TornadoExecutor {
         immutableTaskGraphList.clear();
         subgraphList.forEach(g -> Collections.addAll(immutableTaskGraphList, g));
         subgraphList = null;
+    }
+
+    void mapOnDeviceMemoryRegion(Object destArray, Object srcArray, long offset, int fromGraphIndex, int toGraphIndex) {
+        // Be sure to update the whole list of graphs
+        selectAll();
+
+        // Guard checks
+        if (immutableTaskGraphList.size() < 2) {
+            throw new TornadoRuntimeException("MapOnDeviceMemoryRegion needs at least two task graphs");
+        } else if (immutableTaskGraphList.size() < fromGraphIndex) {
+            throw new TornadoRuntimeException("TaskGraph index #" + fromGraphIndex + " does not exist in current executor");
+        } else if (immutableTaskGraphList.size() < toGraphIndex) {
+            throw new TornadoRuntimeException("TaskGraph index #" + toGraphIndex + " does not exist in current executor");
+        }
+        // Identify the task-graphs to take for the update operation
+        ImmutableTaskGraph taskGraphSrc = getGraph(fromGraphIndex);
+        ImmutableTaskGraph taskGraphDest = getGraph(toGraphIndex);
+        taskGraphDest.mapOnDeviceMemoryRegion(destArray, srcArray, offset, taskGraphSrc);
+    }
+
+    boolean checkAllTaskGraphsForGridScheduler() {
+        if (subgraphList == null) {
+            return false;
+        }
+        for (ImmutableTaskGraph immutableTaskGraph : subgraphList) {
+            if (immutableTaskGraph.isGridRegistered()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void withWarmUpTime(long milliseconds, ExecutorFrame executorFrame) throws InterruptedException {
+        AtomicBoolean run = new AtomicBoolean(true);
+
+        // If iterations takes more than the specified amount of milliseconds,
+        // the next run is stopped. This means that the amount if milliseconds
+        // specified is "at least" the time that the warm-up will take.
+        Thread warmUpThread = new Thread(() -> {
+            while (run.get()) {
+                runForWarmUp(executorFrame);
+            }
+        });
+
+        Thread controllerThread = new Thread(() -> {
+            try {
+                Thread.sleep(milliseconds);
+            } catch (InterruptedException e) {
+                throw new TornadoRuntimeException(e);
+            }
+            run.set(false);
+        });
+        warmUpThread.start();
+        controllerThread.start();
+
+        warmUpThread.join();
+        controllerThread.join();
+    }
+
+    private void runForWarmUp(ExecutorFrame executorFrame) {
+        immutableTaskGraphList.forEach(immutableTaskGraph -> {
+            immutableTaskGraph.execute(executorFrame);
+            // Update state for all task-graphs within the execution plan
+            ImmutableTaskGraph last = immutableTaskGraphList.getLast();
+            immutableTaskGraphList.forEach(itg -> itg.setLastExecutedTaskGraph(last));
+        });
+    }
+
+    public void withWarmUpIterations(int iterations, ExecutorFrame executorFrame) {
+        IntStream.range(0, iterations).forEach(iteration -> runForWarmUp(executorFrame));
     }
 }

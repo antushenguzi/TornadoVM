@@ -693,6 +693,7 @@ public final class OCLAssembler extends Assembler {
         public static final OCLUnaryIntrinsic ATOMIC_INC = new OCLUnaryIntrinsic("atomic_inc");
         public static final OCLUnaryIntrinsic ATOMIC_FETCH_ADD_EXPLICIT = new OCLUnaryIntrinsic("atomic_fetch_add_explicit");
         public static final OCLUnaryIntrinsic ATOMIC_FETCH_SUB_EXPLICIT = new OCLUnaryIntrinsic("atomic_fetch_sub_explicit");
+        public static final OCLUnaryIntrinsic ATOM_ADD = new OCLUnaryIntrinsic("atom_add");
         public static final OCLUnaryIntrinsic ATOMIC_ADD = new OCLUnaryIntrinsic("atomic_add");
         public static final OCLUnaryIntrinsic ATOMIC_VAR_INIT = new OCLUnaryIntrinsic("ATOMIC_VAR_INIT");
         public static final OCLUnaryIntrinsic ATOMIC_DEC = new OCLUnaryIntrinsic("atomic_dec");
@@ -723,7 +724,9 @@ public final class OCLAssembler extends Assembler {
         public static final OCLUnaryIntrinsic TANH = new OCLUnaryIntrinsic("tanh");
         public static final OCLUnaryIntrinsic ATAN = new OCLUnaryIntrinsic("atan");
         public static final OCLUnaryIntrinsic ASIN = new OCLUnaryIntrinsic("asin");
+        public static final OCLUnaryIntrinsic ASINH = new OCLUnaryIntrinsic("asinh");
         public static final OCLUnaryIntrinsic ACOS = new OCLUnaryIntrinsic("acos");
+        public static final OCLUnaryIntrinsic ACOSH = new OCLUnaryIntrinsic("acosh");
         public static final OCLUnaryIntrinsic SINPI = new OCLUnaryIntrinsic("sinpi");
         public static final OCLUnaryIntrinsic COSPI = new OCLUnaryIntrinsic("cospi");
 
@@ -759,9 +762,15 @@ public final class OCLAssembler extends Assembler {
         public void emit(OCLCompilationResultBuilder crb, Value x) {
             final OCLAssembler asm = crb.getAssembler();
             emitOpcode(asm);
-            asm.emit("(");
-            asm.emitValueOrOp(crb, x);
-            asm.emit(")");
+            if (x != null) {
+                asm.emit("(");
+                asm.emitValueOrOp(crb, x);
+                asm.emit(")");
+            }
+        }
+
+        public void emit(OCLCompilationResultBuilder crb) {
+            emit(crb, null);
         }
     }
 

@@ -18,6 +18,8 @@
 package uk.ac.manchester.tornado.api;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -37,6 +39,8 @@ public interface TornadoTaskGraphInterface extends ProfilerInterface {
     TornadoDevice getDevice();
 
     void setDevice(TornadoDevice device);
+
+    void updatePersistedObjectState();
 
     void setDevice(String taskName, TornadoDevice device);
 
@@ -72,9 +76,13 @@ public interface TornadoTaskGraphInterface extends ProfilerInterface {
 
     void transferToHost(int mode, Object... objects);
 
+    void consumeFromDevice(String uniqueTaskGraphName, Object... objects);
+
+    void consumeFromDevice(Object... objects);
+
     void dump();
 
-    void warmup(ExecutorFrame executionPackage);
+    void withPreCompilation(ExecutorFrame executionPackage);
 
     void freeDeviceMemory();
 
@@ -100,9 +108,9 @@ public interface TornadoTaskGraphInterface extends ProfilerInterface {
 
     Set<Object> getArgumentsLookup();
 
-    TornadoTaskGraphInterface createImmutableTaskGraph();
-
     Collection<?> getOutputs();
+
+    TornadoTaskGraphInterface createImmutableTaskGraph();
 
     void enableProfiler(ProfilerMode profilerMode);
 
@@ -124,5 +132,15 @@ public interface TornadoTaskGraphInterface extends ProfilerInterface {
 
     long getCurrentDeviceMemoryUsage();
 
+    Map<String, List<Object>> getPersistedTaskToObjectsMap();
+
     void withCompilerFlags(TornadoVMBackendType backendType, String compilerFlags);
+
+    void mapOnDeviceMemoryRegion(Object destArray, Object srcArray, long offset, TornadoTaskGraphInterface taskGraphSrc);
+
+    void updateObjectAccess();
+
+    void setLastExecutedTaskGraph(TornadoTaskGraphInterface lastExecutedTaskGraph);
+
+    boolean isGridRegistered();
 }

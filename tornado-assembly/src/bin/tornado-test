@@ -2,7 +2,7 @@
 # vim: set tasbstop=4
 
 #
-# Copyright (c) 2013-2023, APT Group, Department of Computer Science,
+# Copyright (c) 2013-2023, 2025, APT Group, Department of Computer Science,
 # The University of Manchester.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +29,7 @@ import psutil
 from abc import abstractmethod
 from builtins import staticmethod, isinstance
 from typing import Union, Optional
+
 
 # ################################################################################################################
 ## Monitor classes
@@ -102,9 +103,11 @@ class OutOfMemoryMonitorClass(MonitorClass):
             time.sleep(1)
         return True
 
+
 MONITOR_REGISTRY = {
     "outOfMemoryMonitor": OutOfMemoryMonitorClass,
 }
+
 
 # ################################################################################################################
 
@@ -159,6 +162,7 @@ __TEST_THE_WORLD__ = [
     TestEntry("uk.ac.manchester.tornado.unittests.instances.TestInstances"),
     TestEntry("uk.ac.manchester.tornado.unittests.matrices.TestMatrixTypes"),
     TestEntry("uk.ac.manchester.tornado.unittests.api.TestAPI"),
+    TestEntry("uk.ac.manchester.tornado.unittests.warmup.TestWarmUp"),
     TestEntry("uk.ac.manchester.tornado.unittests.api.TestInitDataTypes"),
     TestEntry("uk.ac.manchester.tornado.unittests.memory.TestMemoryLimit"),
     TestEntry("uk.ac.manchester.tornado.unittests.api.TestIO"),
@@ -196,14 +200,19 @@ __TEST_THE_WORLD__ = [
     TestEntry("uk.ac.manchester.tornado.unittests.fails.CodeFail"),
     TestEntry("uk.ac.manchester.tornado.unittests.parameters.ParameterTests"),
     TestEntry("uk.ac.manchester.tornado.unittests.codegen.CodeGenTest"),
+    TestEntry("uk.ac.manchester.tornado.unittests.codegen.TestShortCircuits"),
+    TestEntry("uk.ac.manchester.tornado.unittests.codegen.TestSignedComparisonsCodegen"),
     TestEntry("uk.ac.manchester.tornado.unittests.atomics.TestAtomics"),
     TestEntry("uk.ac.manchester.tornado.unittests.compute.ComputeTests"),
     TestEntry("uk.ac.manchester.tornado.unittests.compute.MMwithBytes"),
+    TestEntry("uk.ac.manchester.tornado.unittests.compute.TransformerKernelsTest"),
     TestEntry("uk.ac.manchester.tornado.unittests.dynamic.TestDynamic"),
     TestEntry("uk.ac.manchester.tornado.unittests.vector.api.TestVectorAPI"),
     TestEntry("uk.ac.manchester.tornado.unittests.api.TestConcat"),
     TestEntry("uk.ac.manchester.tornado.unittests.api.TestSlice"),
     TestEntry("uk.ac.manchester.tornado.unittests.api.TestBuildFromByteBuffers"),
+    TestEntry("uk.ac.manchester.tornado.unittests.api.TestSharedBuffers"),
+    TestEntry("uk.ac.manchester.tornado.unittests.api.TestChainOfGridSchedulers"),
     TestEntry("uk.ac.manchester.tornado.unittests.tasks.TestMultipleFunctions"),
     TestEntry("uk.ac.manchester.tornado.unittests.tasks.TestMultipleTasksMultipleDevices"),
     TestEntry("uk.ac.manchester.tornado.unittests.vm.concurrency.TestConcurrentBackends"),
@@ -212,6 +221,7 @@ __TEST_THE_WORLD__ = [
     TestEntry("uk.ac.manchester.tornado.unittests.api.TestMemorySegmentsAsType"),
     TestEntry("uk.ac.manchester.tornado.unittests.runtime.TestRuntimeAPI"),
     TestEntry("uk.ac.manchester.tornado.unittests.tensors.TestTensorTypes"),
+    TestEntry("uk.ac.manchester.tornado.unittests.pointers.TestCopyDevicePointers"),
     TestEntry("uk.ac.manchester.tornado.unittests.tensors.TestTensorAPIWithOnnx"),
     TestEntry("uk.ac.manchester.tornado.unittests.memory.MemoryConsumptionTest"),
 
@@ -225,7 +235,7 @@ __TEST_THE_WORLD__ = [
               testMethods=["testVirtualDeviceKernel"],
               testParameters=[
                   "-Dtornado.device.desc=" + os.environ["TORNADO_SDK"] + "/examples/virtual-device-GPU.json",
-                  "-Dtornado.print.kernel=True",
+                  "-Dtornado.printKernel=True",
                   "-Dtornado.virtual.device=True",
                   "-Dtornado.print.kernel.dir=" + os.environ["TORNADO_SDK"] + "/virtualKernelOut.out"]),
     TestEntry(testName="uk.ac.manchester.tornado.unittests.virtual.TestVirtualDeviceFeatureExtraction",
@@ -272,6 +282,12 @@ __TORNADO_TESTS_WHITE_LIST__ = [
     ## Atomics are only available for OpenCL
     "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic12",
     "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic15",
+    "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic13_getAndDecrement",
+    "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic13_decrementAndGet",
+    "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic17_getAndIncrement_kernel_api",
+    "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic17_getAndIncrement_parallel_api",
+    "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic17_incrementAndGet_kernel_api",
+    "uk.ac.manchester.tornado.unittests.atomics.TestAtomics#testAtomic17_incrementAndGet_parallel_api",
 
     ## Precision errors
     "uk.ac.manchester.tornado.unittests.compute.ComputeTests#testNBodyBigNoWorker",
@@ -282,6 +298,7 @@ __TORNADO_TESTS_WHITE_LIST__ = [
     "uk.ac.manchester.tornado.unittests.kernelcontext.matrices.TestMatrixMultiplicationKernelContext#mxm1DKernelContext",
     "uk.ac.manchester.tornado.unittests.kernelcontext.matrices.TestMatrixMultiplicationKernelContext#mxm2DKernelContext01",
     "uk.ac.manchester.tornado.unittests.kernelcontext.matrices.TestMatrixMultiplicationKernelContext#mxm2DKernelContext02",
+    "uk.ac.manchester.tornado.unittests.compute.TransformerKernelsTest#testReductionOneBlockWithLayer",
 
     ## Inconsistent timing metrics for data Transfers, triggering difference in copy once vs copy always
     "uk.ac.manchester.tornado.unittests.api.TestIO#testCopyInWithDevice",
@@ -290,6 +307,9 @@ __TORNADO_TESTS_WHITE_LIST__ = [
     # This errors might be related to error precision when running many threads in parallel.
     "uk.ac.manchester.tornado.unittests.compute.ComputeTests#testMandelbrot",
     "uk.ac.manchester.tornado.unittests.compute.ComputeTests#testJuliaSets",
+
+    ## Inconsistent results that occur in some NVIDIA drivers
+    "uk.ac.manchester.tornado.unittests.branching.TestLoopConditions#testConditionBeforeSingleLoopReturn",
 
     ## For the OpenCL Backend
     "uk.ac.manchester.tornado.unittests.foundation.TestIf#test06",
@@ -308,6 +328,15 @@ __TORNADO_TESTS_WHITE_LIST__ = [
     'uk.ac.manchester.tornado.unittests.arrays.TestArrays#testVectorSubtractionHalfFloat',
     'uk.ac.manchester.tornado.unittests.arrays.TestArrays#testVectorMultiplicationHalfFloat',
     'uk.ac.manchester.tornado.unittests.arrays.TestArrays#testVectorDivisionHalfFloat',
+
+    ## SPIR-V with Level Zero
+    'uk.ac.manchester.tornado.unittests.pointers.TestCopyDevicePointers#testCopyDevicePointersMatrix',
+
+    ## Test Devices: provided filters depend on the actual hardware installed.
+    ## The fact that these tests fail, does not mean the API is wrong.
+    'uk.ac.manchester.tornado.unittests.api.TestDevices#test04',
+    'uk.ac.manchester.tornado.unittests.api.TestDevices#test05',
+    'uk.ac.manchester.tornado.unittests.api.TestDevices#test06',
 
 ]
 
@@ -332,7 +361,7 @@ __MAIN_TORNADO_JUNIT_MODULE__ = " junit/"
 __MAIN_TORNADO_JUNIT__ = "org.junit.runner.JUnitCore "
 __IGV_OPTIONS__ = "-Dgraal.Dump=*:verbose -Dgraal.PrintGraph=Network -Dgraal.PrintBackendCFG=true "
 __IGV_LAST_PHASE__ = "-Dgraal.Dump=*:1 -Dgraal.PrintGraph=Network -Dgraal.PrintBackendCFG=true -Dtornado.debug.lowtier=True "
-__PRINT_OPENCL_KERNEL__ = "-Dtornado.print.kernel=True "
+__PRINT_OPENCL_KERNEL__ = "-Dtornado.printKernel=True "
 __DEBUG_TORNADO__ = "-Dtornado.debug=True "
 __TORNADOVM_FULLDEBUG__ = __DEBUG_TORNADO__ + "-Dtornado.fullDebug=True "
 __THREAD_INFO__ = "-Dtornado.threadInfo=True "
@@ -352,7 +381,7 @@ else:
 
 ENABLE_ASSERTIONS = "-ea "
 
-__VERSION__ = "1.0.10"
+__VERSION__ = "1.1.2-dev"
 
 try:
     javaHome = os.environ["JAVA_HOME"]
@@ -582,7 +611,7 @@ def runTests(args):
         command = appendTestRunnerClassToCmd(cmd, args)
         command = command + " --params \"" + args.testClass + "\""
         print(command)
-        if (args.fast):
+        if (args.live_mode):
             os.system(command)
         else:
             runSingleCommand(command, args)
@@ -592,7 +621,7 @@ def runTests(args):
         end = time.time()
         print(Colors.CYAN)
 
-        if not args.fast and args.verbose:
+        if not args.live_mode and args.verbose:
             print(Colors.GREEN)
             print("==================================================")
             print(Colors.BLUE + "              Unit tests report " + Colors.GREEN)
@@ -649,11 +678,11 @@ def runTestTheWorld(options, args):
             for testMethod in t.testMethods:
                 testMethodCmd = command + "#" + testMethod + "\""
                 print(testMethodCmd)
-                if (args.fast):
+                if (args.live_mode):
                     os.system(testMethodCmd)
                 else:
                     stats, failedTests, segFaults = runCommandWithStats(testMethodCmd, stats, failedTests, segFaults, t.monitorClass)
-        elif (args.fast):
+        elif (args.live_mode):
             command += "\""
             os.system(command)
         else:
@@ -722,7 +751,8 @@ def parseArguments():
                         help="Enable the Debug mode in Tornado")
     parser.add_argument('--fullDebug', action="store_true", dest="fullDebug", default=False,
                         help="Enable the Full Debug mode. This mode is more verbose compared to --debug only")
-    parser.add_argument('--fast', "-f", action="store_true", dest="fast", default=False, help="Visualize Fast")
+    parser.add_argument('--live', "-l", action="store_true", dest="live_mode", default=False,
+                        help="Visualize output in live mode (no wait)")
     parser.add_argument('--quickPass', "-qp", action="store_true", dest="quickPass", default=False,
                         help="Quick pass without stress memory and output for logs in a file.")
     parser.add_argument('--device', dest="device", default=None, help="Set an specific device. E.g `s0.t0.device=0:1`")

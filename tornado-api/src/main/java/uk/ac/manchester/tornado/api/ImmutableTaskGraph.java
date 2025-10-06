@@ -50,8 +50,8 @@ public class ImmutableTaskGraph {
         this.taskGraph.execute(executionPackage);
     }
 
-    void warmup(ExecutorFrame executionPackage) {
-        taskGraph.warmup(executionPackage);
+    void withPreCompilation(ExecutorFrame executionPackage) {
+        taskGraph.withPreCompilation(executionPackage);
     }
 
     void withDevice(TornadoDevice device) {
@@ -72,6 +72,10 @@ public class ImmutableTaskGraph {
 
     void transferToHost(Object object, long offset, long partialCopySize) {
         taskGraph.syncRuntimeTransferToHost(object, offset, partialCopySize);
+    }
+
+    TaskGraph getTaskGraph() {
+        return taskGraph;
     }
 
     long getTotalTime() {
@@ -162,12 +166,12 @@ public class ImmutableTaskGraph {
         return taskGraph.getDevice();
     }
 
-    Collection<?> getOutputs() {
-        return taskGraph.getOutputs();
-    }
-
     void enableProfiler(ProfilerMode profilerMode) {
         taskGraph.enableProfiler(profilerMode);
+    }
+
+    Collection<?> getOutputs() {
+        return taskGraph.getOutputs();
     }
 
     void withConcurrentDevices() {
@@ -212,5 +216,17 @@ public class ImmutableTaskGraph {
 
     long getCurrentDeviceMemoryUsage() {
         return taskGraph.getCurrentDeviceMemoryUsage();
+    }
+
+    void mapOnDeviceMemoryRegion(Object destArray, Object srcArray, long offset, ImmutableTaskGraph taskGraphSrc) {
+        taskGraph.mapOnDeviceMemoryRegion(destArray, srcArray, offset, taskGraphSrc.taskGraph.taskGraphImpl);
+    }
+
+    void setLastExecutedTaskGraph(ImmutableTaskGraph lastExecutedTaskGraph) {
+        taskGraph.setLastExecutedTaskGraph(lastExecutedTaskGraph.taskGraph.taskGraphImpl);
+    }
+
+    boolean isGridRegistered() {
+        return taskGraph.isGridRegistered();
     }
 }

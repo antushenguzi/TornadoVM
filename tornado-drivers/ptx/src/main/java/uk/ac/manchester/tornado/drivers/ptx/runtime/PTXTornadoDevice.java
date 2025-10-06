@@ -23,13 +23,12 @@
  */
 package uk.ac.manchester.tornado.drivers.ptx.runtime;
 
-import static uk.ac.manchester.tornado.drivers.ptx.graal.PTXCodeUtil.buildKernelName;
-
 import java.io.IOException;
 import java.lang.foreign.MemorySegment;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -68,6 +67,8 @@ import uk.ac.manchester.tornado.drivers.ptx.graal.PTXProviders;
 import uk.ac.manchester.tornado.drivers.ptx.graal.backend.PTXBackend;
 import uk.ac.manchester.tornado.drivers.ptx.graal.compiler.PTXCompilationResult;
 import uk.ac.manchester.tornado.drivers.ptx.graal.compiler.PTXCompiler;
+import uk.ac.manchester.tornado.drivers.ptx.graal.lir.PTXKind;
+import uk.ac.manchester.tornado.drivers.ptx.mm.CUDAFieldBuffer;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXByteArrayWrapper;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXCharArrayWrapper;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXDoubleArrayWrapper;
@@ -76,7 +77,6 @@ import uk.ac.manchester.tornado.drivers.ptx.mm.PTXIntArrayWrapper;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXLongArrayWrapper;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXMemorySegmentWrapper;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXMultiDimArrayWrapper;
-import uk.ac.manchester.tornado.drivers.ptx.mm.PTXObjectWrapper;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXShortArrayWrapper;
 import uk.ac.manchester.tornado.drivers.ptx.mm.PTXVectorWrapper;
 import uk.ac.manchester.tornado.runtime.TornadoCoreRuntime;
@@ -184,7 +184,7 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
                 profiler.stop(ProfilerType.TASK_COMPILE_GRAAL_TIME, taskMeta.getId());
                 profiler.sum(ProfilerType.TOTAL_GRAAL_COMPILE_TIME, profiler.getTaskTimer(ProfilerType.TASK_COMPILE_GRAAL_TIME, taskMeta.getId()));
             } else {
-                result = new PTXCompilationResult(buildKernelName(resolvedMethod.getName(), executable), taskMeta);
+                result = new PTXCompilationResult(PTXCodeUtil.buildKernelName(resolvedMethod.getName(), executable), taskMeta);
             }
 
             profiler.start(ProfilerType.TASK_COMPILE_DRIVER_TIME, taskMeta.getId());
@@ -205,7 +205,7 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
     private TornadoInstalledCode compilePreBuiltTask(long executionPlanId, SchedulableTask task) {
         final PTXDeviceContext deviceContext = getDeviceContext();
         final PrebuiltTask executable = (PrebuiltTask) task;
-        String functionName = buildKernelName(executable.getEntryPoint(), executable);
+        String functionName = PTXCodeUtil.buildKernelName(executable.getEntryPoint(), executable);
         if (deviceContext.isCached(executionPlanId, executable.getEntryPoint(), executable)) {
             return deviceContext.getInstalledCode(executionPlanId, functionName);
         }
@@ -238,7 +238,7 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
             ResolvedJavaMethod resolvedMethod = TornadoCoreRuntime.getTornadoRuntime().resolveMethod(compilableTask.getMethod());
             methodName = resolvedMethod.getName();
         }
-        String functionName = buildKernelName(methodName, task);
+        String functionName = PTXCodeUtil.buildKernelName(methodName, task);
         return getDeviceContext().getInstalledCode(executionPlanId, functionName);
     }
 
@@ -260,25 +260,25 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
             if (object.getClass().getAnnotation(Vector.class) != null) {
                 result = new PTXVectorWrapper(getDeviceContext(), object, batchSize, access);
             } else if (object instanceof MemorySegment) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, 0);
             } else if (object instanceof IntArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.S32.getSizeInBytes());
             } else if (object instanceof FloatArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.F32.getSizeInBytes());
             } else if (object instanceof DoubleArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.F64.getSizeInBytes());
             } else if (object instanceof LongArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.S64.getSizeInBytes());
             } else if (object instanceof ShortArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.S16.getSizeInBytes());
             } else if (object instanceof ByteArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.S8.getSizeInBytes());
             } else if (object instanceof CharArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.S8.getSizeInBytes());
             } else if (object instanceof HalfFloatArray) {
-                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access);
+                result = new PTXMemorySegmentWrapper(getDeviceContext(), batchSize, access, PTXKind.S16.getSizeInBytes());
             } else {
-                result = new PTXObjectWrapper(getDeviceContext(), object, access);
+                result = new CUDAFieldBuffer(getDeviceContext(), object, access);
             }
         }
 
@@ -286,9 +286,24 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
         return result;
     }
 
+    private HashMap<Access, Integer> getNumOfDistinctAccess(Access[] accesses) {
+        HashMap<Access, Integer> distinctAccesses = new HashMap<>();
+        for (Access access : accesses) {
+            if (distinctAccesses.containsKey(access)) {
+                int numOfAccesses = distinctAccesses.get(access);
+                distinctAccesses.replace(access, numOfAccesses, numOfAccesses + 1);
+            } else {
+                distinctAccesses.put(access, 1);
+            }
+        }
+        return distinctAccesses;
+    }
+
     @Override
     public synchronized long allocateObjects(Object[] objects, long batchSize, DeviceBufferState[] states, Access[] accesses) {
         TornadoBufferProvider bufferProvider = getDeviceContext().getBufferProvider();
+        HashMap<Access, Integer> distinctAccesses = getNumOfDistinctAccess(accesses);
+
         for (Access access : accesses) {
             if (!bufferProvider.isNumFreeBuffersAvailable(objects.length, access)) {
                 bufferProvider.resetBuffers(access);
@@ -296,17 +311,31 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
         }
         long allocatedSpace = 0;
         for (int i = 0; i < objects.length; i++) {
-            logger.debug("Allocate object %s with access: %s", objects[i], accesses[i]);
-            allocatedSpace += allocate(objects[i], batchSize, states[i], accesses[i]);
+            if (!reuseBatchBuffer(batchSize, accesses[i], bufferProvider, distinctAccesses)) {
+                logger.debug("Allocate object %s with access: %s", objects[i], accesses[i]);
+                allocatedSpace += allocate(objects[i], batchSize, states[i], accesses[i]);
+            }
+
         }
         return allocatedSpace;
+    }
+
+    private boolean reuseBatchBuffer(long batchSize, Access access, TornadoBufferProvider bufferProvider, HashMap<Access, Integer> distinctAccesses) {
+        if (batchSize != 0) {
+            int numberOfBuffersForAccessType = distinctAccesses.get(access);
+            // if there is a buffer available in the used-list with the same access type, reuse it
+            if (bufferProvider.reuseBufferForBatchProcessing(batchSize, access, numberOfBuffersForAccessType)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public long allocate(Object object, long batchSize, DeviceBufferState state, Access access) {
         final XPUBuffer buffer;
         if (!state.hasObjectBuffer() || !state.isLockedBuffer()) {
-            TornadoInternalError.guarantee(state.isAtomicRegionPresent() || !state.hasObjectBuffer(), "A device memory leak might be occurring.");
+            TornadoInternalError.guarantee(state.isAtomicRegionPresent() || !state.hasObjectBuffer() || batchSize != 0, "A device memory leak might be occurring.");
             buffer = createDeviceBuffer(object.getClass(), object, batchSize, access);
             state.setXPUBuffer(buffer);
             buffer.allocate(object, batchSize, access);
@@ -327,7 +356,7 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
         }
 
         deviceBufferState.getXPUBuffer().markAsFreeBuffer();
-        if (!TornadoOptions.isReusedBuffersEnabled()) {
+        if (TornadoOptions.isDeallocateBufferEnabled()) {
             deallocatedSpace = deviceBufferState.getXPUBuffer().deallocate();
         }
         deviceBufferState.setContents(false);
@@ -661,6 +690,13 @@ public class PTXTornadoDevice implements TornadoXPUDevice {
     @Override
     public boolean isSPIRVSupported() {
         return false;
+    }
+
+    @Override
+    public void mapDeviceRegion(long executionPlanId, Object destArray, Object srcArray, DeviceBufferState deviceStateSrc, DeviceBufferState deviceStateDest, long offset) {
+        XPUBuffer devicePointer = deviceStateDest.getXPUBuffer();
+        XPUBuffer srcPointer = deviceStateSrc.getXPUBuffer();
+        devicePointer.mapOnDeviceMemoryRegion(executionPlanId, srcPointer, offset);
     }
 
     /**

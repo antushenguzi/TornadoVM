@@ -41,58 +41,55 @@ public final class RaplReader {
      * or by scanning common powercap locations.
      */
     public static Optional<RaplReader> discover() {
-        // 1) Respect explicit overrides (very handy for debugging)
-        String energyProp = System.getProperty("tornado.power.cpu.rapl.energy");
-        if (energyProp != null && !energyProp.isEmpty()) {
-            Path e = Paths.get(energyProp);
-            if (Files.isReadable(e)) {
-                Path mr = null;
-                String mrProp = System.getProperty("tornado.power.cpu.rapl.maxrange");
-                if (mrProp != null && !mrProp.isEmpty()) {
-                    Path p = Paths.get(mrProp);
-                    if (Files.isReadable(p)) {
-                        mr = p;
-                    }
-                } else {
-                    // Try sibling default
-                    Path sibling = e.getParent() != null ? e.getParent().resolve("max_energy_range_uj") : null;
-                    if (sibling != null && Files.isReadable(sibling)) {
-                        mr = sibling;
-                    }
-                }
-                return Optional.of(new RaplReader(e, mr));
-            }
+    final boolean debug = Boolean.parseBoolean(System.getProperty("tornado.power.cpu.rapl.debug", "false"));
+    final String userEnergy = System.getProperty("tornado.power.cpu.rapl.energy");
+    final String userMax    = System.getProperty("tornado.power.cpu.rapl.maxrange");
+
+    try {
+        Path energy = (userEnergy != null && !userEnergy.isEmpty())
+                ? Paths.get(userEnergy)
+                : Paths.get("/sys/class/powercap/intel-rapl:0/energy_uj");
+
+        Path maxrng = (userMax != null && !userMax.isEmpty())
+                ? Paths.get(userMax)
+                : Paths.get("/sys/class/powercap/intel-rapl:0/max_energy_range_uj");
+
+        if (debug) {
+            System.out.println("[RAPL-DEBUG] discover energy=" + energy + " maxrange=" + maxrng);
         }
 
-        // 2) Auto-discovery in typical locations
-        String[] roots = new String[] {
-            "/sys/class/powercap",
-            "/sys/devices/virtual/powercap"
-        };
-        String[] domains = new String[] { "intel-rapl", "intel-rapl-mmio" };
-
-        // First pass: prefer "package" domains (by reading "name")
-        for (String root : roots) {
-            for (String domPrefix : domains) {
-                Optional<RaplReader> pkg = scanOneLevel(root, domPrefix, true);
-                if (pkg.isPresent()) {
-                    return pkg;
-                }
-            }
+        if (!Files.isReadable(energy)) {
+            if (debug) System.out.println("[RAPL-DEBUG] energy not readable: " + energy);
+            return Optional.empty();
+        }
+        if (!Files.isReadable(maxrng)) {
+            if (debug) System.out.println("[RAPL-DEBUG] maxrange not readable: " + maxrng);
+            return Optional.empty();
         }
 
-        // Second pass: accept any readable domain with energy_uj
-        for (String root : roots) {
-            for (String domPrefix : domains) {
-                Optional<RaplReader> any = scanOneLevel(root, domPrefix, false);
-                if (any.isPresent()) {
-                    return any;
-                }
-            }
+        RaplReader rr = new RaplReader(energy, maxrng);
+
+        // 连续读两次确认递增
+        long e0 = rr.readEnergyUj();
+        Thread.sleep(50);
+        long e1 = rr.readEnergyUj();
+        if (debug) {
+            System.out.println("[RAPL-DEBUG] probe e0=" + e0 + " e1=" + e1 + " inc=" + (e1 - e0));
+        }
+        if (e1 <= e0) {
+            if (debug) System.out.println("[RAPL-DEBUG] energy not increasing, keep anyway (some CPUs tick slower)");
         }
 
+        return Optional.of(rr);
+    } catch (Throwable t) {
+        if (debug) {
+            System.out.println("[RAPL-DEBUG] discover failed: " + t);
+            t.printStackTrace(System.out);
+        }
         return Optional.empty();
     }
+}
+
 
     private static Optional<RaplReader> scanOneLevel(String root, String domPrefix, boolean preferPackage) {
         Path rootPath = Paths.get(root);

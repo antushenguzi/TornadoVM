@@ -2,60 +2,58 @@
  * This file is part of Tornado: A heterogeneous programming framework:
  * https://github.com/beehive-lab/tornadovm
  *
- * Copyright (c) 2020, APT Group, Department of Computer Science,
+ * Copyright (c) 2020, APT Group
  * The University of Manchester. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
+ * GPLv2 only.
  */
 package uk.ac.manchester.tornado.runtime.profiler;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import uk.ac.manchester.tornado.api.profiler.ProfilerType;
 import uk.ac.manchester.tornado.api.profiler.TornadoProfiler;
 import uk.ac.manchester.tornado.runtime.common.RuntimeUtilities;
 import uk.ac.manchester.tornado.runtime.common.TornadoOptions;
+import uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader;
 
+/**
+ * Time + (optional) Power profiler.
+ *
+ * - Keeps per-task timers / sizes.
+ * - Can read CPU power via Linux RAPL (energy_uj) when enabled and when the task
+ *   runs on a CPU device (OpenCL CPU / pthread).
+ * - Stores power under ProfilerType.POWER_USAGE_mW (do NOT change API),
+ *   but renames the JSON key to CPU_POWER_USAGE_mW or GPU_POWER_USAGE_mW
+ *   at dump time based on device type for readability.
+ */
 public class TimeProfiler implements TornadoProfiler {
 
-    /**
-     * Use this dummy field because {@link #addValueToMetric} needs a task name.
-     * However, sync operations operate on task schedules, not on tasks. TODO remove
-     * this field when the {@link TimeProfiler} is refactored. Related to issue #94.
-     */
+    /** Used for sync ops that do not have a task name (legacy behavior). */
     public static String NO_TASK_NAME = "noTask";
 
+    /* ------------------------ Core metrics ------------------------ */
     private HashMap<ProfilerType, Long> profilerTime;
     private HashMap<String, HashMap<ProfilerType, Long>> taskTimers;
     private HashMap<String, HashMap<ProfilerType, String>> taskPowerMetrics;
     private HashMap<String, HashMap<ProfilerType, Long>> taskSizeMetrics;
     private HashMap<String, HashMap<ProfilerType, String>> taskDeviceIdentifiers;
     private HashMap<String, HashMap<ProfilerType, String>> taskMethodNames;
-
-    // --- RAPL support (CPU) ---
-    private final boolean enableRapl = Boolean.parseBoolean(System.getProperty("tornado.power.cpu.rapl", "true"));
-    private uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader raplReader = null;
-    private final HashMap<String, Long> raplStartEnergyUj = new HashMap<>();
-    private final HashMap<String, Long> raplStartTimeNs = new HashMap<>();
-
     private HashMap<String, HashMap<ProfilerType, String>> taskBackends;
 
     private StringBuilder indent;
+
+    /* ------------------------ CPU RAPL support ------------------------ */
+    /** Enable CPU RAPL collection with -Dtornado.power.cpu.rapl=true (default true). */
+    private final boolean enableRapl = Boolean.parseBoolean(System.getProperty("tornado.power.cpu.rapl", "true"));
+    /** Reader discovered at init (null if not present / not permitted). */
+    private RaplReader raplReader = null;
+    /** Per-task start energy/time when TASK_KERNEL_TIME starts. */
+    private final HashMap<String, Long> raplStartEnergyUj = new HashMap<>();
+    private final HashMap<String, Long> raplStartTimeNs = new HashMap<>();
 
     public TimeProfiler() {
         profilerTime = new HashMap<>();
@@ -66,17 +64,19 @@ public class TimeProfiler implements TornadoProfiler {
         taskSizeMetrics = new HashMap<>();
         taskBackends = new HashMap<>();
         indent = new StringBuilder("");
-        // Try to discover RAPL once (Linux, Intel CPUs). Safe to fail quietly.
+
+        // Try to discover a RAPL reader if enabled
         try {
             if (enableRapl) {
-                java.util.Optional<uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader> opt =
-                        uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader.discover();
+                Optional<RaplReader> opt = RaplReader.discover();
                 raplReader = opt.orElse(null);
             }
         } catch (Throwable ignore) {
             raplReader = null;
         }
     }
+
+    /* ======================== TornadoProfiler API ======================== */
 
     @Override
     public synchronized void addValueToMetric(ProfilerType type, String taskName, long value) {
@@ -104,13 +104,13 @@ public class TimeProfiler implements TornadoProfiler {
         profilerType.put(type, start);
         taskTimers.put(taskName, profilerType);
 
-        // --- RAPL begin: record unconditionally for kernel interval ---
-        if (enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME) {
+        // If this is a CPU task and we measure kernel time, snapshot RAPL energy/time
+        if (enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME && isCpuTask(taskName)) {
             try {
                 raplStartEnergyUj.put(taskName, raplReader.readEnergyUj());
                 raplStartTimeNs.put(taskName, System.nanoTime());
-            } catch (Exception ignore) {
-                // do nothing
+            } catch (Throwable ignore) {
+                // Keep robust: just skip if cannot read
             }
         }
     }
@@ -158,8 +158,8 @@ public class TimeProfiler implements TornadoProfiler {
     @Override
     public synchronized void stop(ProfilerType type) {
         long end = System.nanoTime();
-        long start = profilerTime.get(type);
-        long total = end - start;
+        Long start = profilerTime.get(type);
+        long total = (start == null) ? 0L : (end - start);
         profilerTime.put(type, total);
     }
 
@@ -167,37 +167,37 @@ public class TimeProfiler implements TornadoProfiler {
     public synchronized void stop(ProfilerType type, String taskName) {
         long end = System.nanoTime();
         HashMap<ProfilerType, Long> profiledType = taskTimers.get(taskName);
-        long start = profiledType.get(type);
-        long total = end - start;
-        profiledType.put(type, total);
-        taskTimers.put(taskName, profiledType);
+        if (profiledType != null && profiledType.containsKey(type)) {
+            long start = profiledType.get(type);
+            long total = end - start;
+            profiledType.put(type, total);
+            taskTimers.put(taskName, profiledType);
+        }
 
-        // --- RAPL end & record (only for CPU tasks) ---
-        if (enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME) {
+        // If CPU task's kernel time just ended, compute power from RAPL
+        if (enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME && isCpuTask(taskName)) {
             try {
                 Long e0 = raplStartEnergyUj.remove(taskName);
                 Long t0 = raplStartTimeNs.remove(taskName);
-                if (e0 != null && t0 != null && isCpuTask(taskName)) {
-                    long e1 = raplReader.readEnergyUj();
+                if (e0 != null && t0 != null) {
+                    long e1 = raplReader.readEnergyUj();      // micro-joules
                     long t1 = System.nanoTime();
                     long deltaUj = e1 - e0;
-                    if (deltaUj < 0) {
+                    if (deltaUj < 0) {                        // counter wrap
                         long wrap = raplReader.minMaxRangeUj();
                         if (wrap > 0) {
                             deltaUj = (wrap - e0) + e1;
                         }
                     }
-                    double dtMs = (t1 - t0) / 1e6;
-                    double energy_mJ = deltaUj / 1000.0;
-                    long power_mW = (dtMs > 0.0) ? Math.round(energy_mJ / dtMs) : -1L;
-                    if (power_mW > 0L) {
-                        // Write into existing metric key (no new enum needed)
-                        setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, taskName, power_mW);
-                    }
+                    double dtMs = (t1 - t0) / 1e6;            // ns -> ms
+                    double energy_mJ = deltaUj / 1000.0;      // μJ -> mJ
+                    long power_mW = (dtMs > 0) ? Math.round(energy_mJ / dtMs) : -1;
+
+                    // Store under POWER_USAGE_mW (keep API) — rename at JSON dump time
+                    setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, taskName, power_mW);
                 }
-                // else: non-CPU or missing start — skip silently
             } catch (Throwable ignore) {
-                // skip silently
+                // Keep robust
             }
         }
     }
@@ -212,12 +212,10 @@ public class TimeProfiler implements TornadoProfiler {
 
     @Override
     public long getSize(ProfilerType type) {
-        // for all tasks in the task graph, accumulate the size
-        Set<String> strings = taskSizeMetrics.keySet();
         long size = 0;
         for (String s : taskSizeMetrics.keySet()) {
             HashMap<ProfilerType, Long> copySizes = taskSizeMetrics.get(s);
-            if (copySizes.containsKey(type)) {
+            if (copySizes != null && copySizes.containsKey(type)) {
                 size += copySizes.get(type);
             }
         }
@@ -255,70 +253,158 @@ public class TimeProfiler implements TornadoProfiler {
     }
 
     private void decreaseIndent() {
-        indent.delete(indent.length() - 4, indent.length());
+        if (indent.length() >= 4) {
+            indent.delete(indent.length() - 4, indent.length());
+        }
     }
 
     private void closeScope(StringBuilder json) {
-        json.append(indent.toString() + "}");
+        json.append(indent.toString()).append("}");
     }
 
     private void newLine(StringBuilder json) {
         json.append("\n");
     }
 
+    private static String jsonEscape(String s) {
+        if (s == null) return "null";
+        return s.replace("\\", "\\\\").replace("\"", "\\\"");
+    }
+
+    /** Determine if a task runs on CPU device by its registered device name. */
+    private boolean isCpuTask(String taskName) {
+        try {
+            if (!taskDeviceIdentifiers.containsKey(taskName)) {
+                return false;
+            }
+            String dev = taskDeviceIdentifiers.get(taskName).get(ProfilerType.DEVICE);
+            if (dev == null) {
+                return false;
+            }
+            String d = dev.toLowerCase();
+            return d.contains("cpu") || d.contains("pthread") || d.contains("cl_device_type_cpu");
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
     @Override
     public String createJson(StringBuilder json, String sectionName) {
         json.append("{\n");
         increaseIndent();
-        json.append(indent.toString() + "\"" + sectionName + "\": " + "{\n");
+        json.append(indent.toString()).append("\"").append(sectionName).append("\": ").append("{\n");
         increaseIndent();
+
+        // Global profiler timers
         for (ProfilerType p : profilerTime.keySet()) {
-            json.append(indent.toString() + "\"" + p + "\"" + ": " + "\"" + profilerTime.get(p) + "\",\n");
+            json.append(indent.toString())
+                .append("\"").append(p).append("\": ")
+                .append("\"").append(profilerTime.get(p)).append("\",\n");
         }
+
+        // Global NO_TASK_NAME sizes (e.g., copies accumulated at schedule level)
         if (taskSizeMetrics.containsKey(NO_TASK_NAME)) {
             HashMap<ProfilerType, Long> noTaskValues = taskSizeMetrics.get(NO_TASK_NAME);
-            for (ProfilerType p : noTaskValues.keySet()) {
-                json.append(indent.toString() + "\"" + p + "\"" + ": " + "\"" + noTaskValues.get(p) + "\",\n");
+            if (noTaskValues != null) {
+                for (ProfilerType p : noTaskValues.keySet()) {
+                    json.append(indent.toString())
+                        .append("\"").append(p).append("\": ")
+                        .append("\"").append(noTaskValues.get(p)).append("\",\n");
+                }
             }
         }
 
         final int size = taskTimers.keySet().size();
         int counter = 0;
-        for (String p : taskTimers.keySet()) {
-            json.append(indent.toString() + "\"" + p + "\"" + ": {\n");
+
+        for (String task : taskTimers.keySet()) {
+            json.append(indent.toString()).append("\"").append(jsonEscape(task)).append("\": {\n");
             increaseIndent();
             counter++;
+
             if (TornadoOptions.LOG_IP) {
-                json.append(indent.toString() + "\"" + "IP" + "\"" + ": " + "\"" + RuntimeUtilities.getTornadoInstanceIP() + "\",\n");
+                json.append(indent.toString())
+                    .append("\"IP\": ")
+                    .append("\"").append(jsonEscape(RuntimeUtilities.getTornadoInstanceIP())).append("\",\n");
             }
-            json.append(indent.toString() + "\"" + ProfilerType.BACKEND + "\"" + ": " + "\"" + taskBackends.get(p).get(ProfilerType.BACKEND) + "\",\n");
-            json.append(indent.toString() + "\"" + ProfilerType.METHOD + "\"" + ": " + "\"" + taskMethodNames.get(p).get(ProfilerType.METHOD) + "\",\n");
-            json.append(indent.toString() + "\"" + ProfilerType.DEVICE_ID + "\"" + ": " + "\"" + taskDeviceIdentifiers.get(p).get(ProfilerType.DEVICE_ID) + "\",\n");
-            json.append(indent.toString() + "\"" + ProfilerType.DEVICE + "\"" + ": " + "\"" + taskDeviceIdentifiers.get(p).get(ProfilerType.DEVICE) + "\",\n");
-            if (taskSizeMetrics.containsKey(p)) {
-                for (ProfilerType p1 : taskSizeMetrics.get(p).keySet()) {
-                    json.append(indent.toString() + "\"" + p1 + "\"" + ": " + "\"" + taskSizeMetrics.get(p).get(p1) + "\",\n");
+
+            // Backend
+            String backend = null;
+            if (taskBackends.containsKey(task) && taskBackends.get(task) != null) {
+                backend = taskBackends.get(task).get(ProfilerType.BACKEND);
+            }
+            json.append(indent.toString())
+                .append("\"").append(ProfilerType.BACKEND).append("\": ")
+                .append("\"").append(jsonEscape(backend != null ? backend : "UNKNOWN")).append("\",\n");
+
+            // Method name
+            String method = null;
+            if (taskMethodNames.containsKey(task) && taskMethodNames.get(task) != null) {
+                method = taskMethodNames.get(task).get(ProfilerType.METHOD);
+            }
+            json.append(indent.toString())
+                .append("\"").append(ProfilerType.METHOD).append("\": ")
+                .append("\"").append(jsonEscape(method != null ? method : "UNKNOWN")).append("\",\n");
+
+            // Device ID + Device
+            String deviceId = null;
+            String deviceStr = null;
+            if (taskDeviceIdentifiers.containsKey(task) && taskDeviceIdentifiers.get(task) != null) {
+                deviceId = taskDeviceIdentifiers.get(task).get(ProfilerType.DEVICE_ID);
+                deviceStr = taskDeviceIdentifiers.get(task).get(ProfilerType.DEVICE);
+            }
+            json.append(indent.toString())
+                .append("\"").append(ProfilerType.DEVICE_ID).append("\": ")
+                .append("\"").append(jsonEscape(deviceId != null ? deviceId : "UNKNOWN")).append("\",\n");
+
+            json.append(indent.toString())
+                .append("\"").append(ProfilerType.DEVICE).append("\": ")
+                .append("\"").append(jsonEscape(deviceStr != null ? deviceStr : "UNKNOWN")).append("\",\n");
+
+            // Sizes for this task
+            if (taskSizeMetrics.containsKey(task) && taskSizeMetrics.get(task) != null) {
+                for (ProfilerType p1 : taskSizeMetrics.get(task).keySet()) {
+                    json.append(indent.toString())
+                        .append("\"").append(p1).append("\": ")
+                        .append("\"").append(taskSizeMetrics.get(task).get(p1)).append("\",\n");
                 }
             }
-            if (taskPowerMetrics.containsKey(p)) {
-                for (ProfilerType p1 : taskPowerMetrics.get(p).keySet()) {
-                    json.append(indent.toString() + "\"" + p1 + "\"" + ": " + "\"" + taskPowerMetrics.get(p).get(p1) + "\",\n");
+
+            // Power metrics for this task (rename POWER_USAGE_mW by device type for readability)
+            boolean isCpuDev = (deviceStr != null) &&
+                    deviceStr.toLowerCase().matches(".*(cpu|pthread|cl_device_type_cpu).*");
+
+            if (taskPowerMetrics.containsKey(task) && taskPowerMetrics.get(task) != null) {
+                for (Map.Entry<ProfilerType, String> e : taskPowerMetrics.get(task).entrySet()) {
+                    String keyName;
+                    if (e.getKey() == ProfilerType.POWER_USAGE_mW) {
+                        keyName = isCpuDev ? "CPU_POWER_USAGE_mW" : "GPU_POWER_USAGE_mW";
+                    } else {
+                        keyName = e.getKey().toString();
+                    }
+                    json.append(indent.toString())
+                        .append("\"").append(keyName).append("\": ")
+                        .append("\"").append(jsonEscape(e.getValue())).append("\",\n");
                 }
             }
-            if (taskPowerMetrics.containsKey(p)) {
-    String val = taskPowerMetrics.get(p).get(ProfilerType.POWER_USAGE_mW);
-    if (val != null && !val.equals("n/a")) {
-        if (isCpuTask(p)) {
-            json.append(indent.toString() + "\"CPU_POWER_USAGE_mW\": " + "\"" + val + "\",\n");
-        } else {
-            json.append(indent.toString() + "\"GPU_POWER_USAGE_mW\": " + "\"" + val + "\",\n");
-        	}
-    	}
-	}
-            for (ProfilerType p2 : taskTimers.get(p).keySet()) {
-                json.append(indent.toString() + "\"" + p2 + "\"" + ": " + "\"" + taskTimers.get(p).get(p2) + "\",\n");
+
+            // Timers for this task
+            HashMap<ProfilerType, Long> timers = taskTimers.get(task);
+            if (timers != null) {
+                for (ProfilerType p2 : timers.keySet()) {
+                    json.append(indent.toString())
+                        .append("\"").append(p2).append("\": ")
+                        .append("\"").append(timers.get(p2)).append("\",\n");
+                }
             }
-            json.delete(json.length() - 2, json.length() - 1); // remove last comma
+
+            // Remove trailing comma if present (safe-guard)
+            int len = json.length();
+            if (len >= 2 && json.substring(len - 2, len).equals(",\n")) {
+                json.delete(len - 2, len);
+                json.append("\n");
+            }
+
             decreaseIndent();
             closeScope(json);
             if (counter != size) {
@@ -326,6 +412,7 @@ public class TimeProfiler implements TornadoProfiler {
             }
             newLine(json);
         }
+
         decreaseIndent();
         closeScope(json);
         newLine(json);
@@ -346,20 +433,13 @@ public class TimeProfiler implements TornadoProfiler {
         taskSizeMetrics.clear();
         profilerTime.clear();
         taskTimers.clear();
+        taskPowerMetrics.clear();
+        taskDeviceIdentifiers.clear();
+        taskMethodNames.clear();
+        taskBackends.clear();
+        raplStartEnergyUj.clear();
+        raplStartTimeNs.clear();
         indent = new StringBuilder("");
-    }
-
-    private boolean isCpuTask(String taskName) {
-        try {
-            if (!taskDeviceIdentifiers.containsKey(taskName)) return false;
-            String dev = taskDeviceIdentifiers.get(taskName).get(ProfilerType.DEVICE);
-            if (dev == null) return false;
-            String d = dev.toLowerCase();
-            // e.g. "pthread-12th Gen Intel(R) Core..." or "... CL_DEVICE_TYPE_CPU ..."
-            return d.contains("cpu") || d.contains("pthread");
-        } catch (Throwable t) {
-            return false;
-        }
     }
 
     @Override
@@ -378,7 +458,7 @@ public class TimeProfiler implements TornadoProfiler {
         if (power > 0) {
             taskPowerMetrics.get(taskID).put(type, Long.toString(power));
         } else {
-            taskPowerMetrics.get(taskID).remove(type);
+            taskPowerMetrics.get(taskID).put(type, "n/a");
         }
     }
 

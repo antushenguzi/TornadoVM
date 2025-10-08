@@ -30,6 +30,7 @@ public class TimeProfiler implements TornadoProfiler {
     private HashMap<String, HashMap<ProfilerType, String>> taskDeviceIdentifiers;
     private HashMap<String, HashMap<ProfilerType, String>> taskMethodNames;
     private HashMap<String, HashMap<ProfilerType, String>> taskBackends;
+    private static volatile TimeProfiler INSTANCE;
 
     private StringBuilder indent;
 
@@ -44,6 +45,7 @@ public class TimeProfiler implements TornadoProfiler {
     private final java.util.HashMap<String, Long> raplSumTimeNs     = new java.util.HashMap<>();
 
     public TimeProfiler() {
+        INSTANCE = this;
         profilerTime = new HashMap<>();
         taskTimers = new HashMap<>();
         taskPowerMetrics = new HashMap<>();
@@ -67,6 +69,10 @@ public class TimeProfiler implements TornadoProfiler {
             }
         }
     }
+    
+    public static TimeProfiler getInstance(){
+    	return INSTANCE;
+    	}
 
     @Override
     public synchronized void addValueToMetric(ProfilerType type, String taskName, long value) {

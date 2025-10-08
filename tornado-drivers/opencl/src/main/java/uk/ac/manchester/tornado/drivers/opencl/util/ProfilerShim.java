@@ -3,8 +3,8 @@ package uk.ac.manchester.tornado.drivers.opencl.util;
 import java.lang.reflect.Method;
 
 public final class ProfilerShim {
-    private static final String TP_CLASS = "uk.ac.manchester.tornado.runtime.common.profiler.TimeProfiler";
-    private static final String PT_CLASS = "uk.ac.manchester.tornado.runtime.common.profiler.ProfilerType";
+    private static final String TP_CLASS = "uk.ac.manchester.tornado.runtime.profiler.TimeProfiler";
+    private static final String PT_CLASS = "uk.ac.manchester.tornado.api.profiler.ProfilerType";
 
     private static volatile Object tp;        // TimeProfiler singleton
     private static volatile Class<?> ptClass; // ProfilerType class

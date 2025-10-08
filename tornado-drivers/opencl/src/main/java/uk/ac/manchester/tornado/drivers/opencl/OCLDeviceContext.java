@@ -193,12 +193,9 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
         return context.createProgramWithIL(spirvBinary, lengths, this);
     }
 
+    @Override
     public int enqueueNDRangeKernel(long executionPlanId, OCLKernel kernel, int dim, long[] globalWorkOffset, long[] globalWorkSize, long[] localWorkSize, int[] waitEvents) {
 
-
-
-        OCLCommandQueue commandQueue = getCommandQueue(executionPlanId);
-        OCLEventPool eventPool = getOCLEventPool(executionPlanId);
 
         String kernelName;
         try{
@@ -230,7 +227,7 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
 
         ProfilerShim.startKernel(taskName, deviceString);
 
-        int eventID = eventPool.registerEvent(
+        final int eventId = eventPool.registerEvent(
                 commandQueue.enqueueNDRangeKernel(
                 kernel,
                 dim,
@@ -243,7 +240,7 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
 
         raplEventToTask.put(eventId, taskName);
 
-        return eventID;
+        return eventId;
     }
 
     public long getPowerUsage() {

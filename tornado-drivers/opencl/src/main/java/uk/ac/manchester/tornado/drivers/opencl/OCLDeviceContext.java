@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.lang.reflect.Method;
 
 import uk.ac.manchester.tornado.api.common.Event;
 import uk.ac.manchester.tornado.api.common.SchedulableTask;
@@ -195,10 +196,33 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
         OCLCommandQueue commandQueue = getCommandQueue(executionPlanId);
         OCLEventPool eventPool = getOCLEventPool(executionPlanId);
 
-        final String kernelName = (kernel.getKernelName() != null) ? kernel.getKernelName() : kernel.getName();
-        final String taskName   = String.format("plan:%d/%s", executionPlanId, kernelName);
+        String kernelName;
+        try{
+            Method m = kernel.getClass().getMethod("getKernelName");
+            Object r = m.invoke(kernel);
+            kernelName = (r != null) ? r.toString() : "kernel";
+        } catch (Exception e1) {
+            try{
+                Method m = kernel.getClass().getMethod("getName");
+                Object r = m.invoke(kernel);
+                kernelName = (r != null) ? r.toString() : "kernel";
+            } catch (Exception e2) {
+                kernelName = "kernel@" + Integer.toHexString(System.identityHashCode(kernel));
+            }
+        }
 
-        final String deviceString = commandQueue.getDevice().toString();
+        final String taskName = "plan:" + executionPlanId + "/" + kernelName;
+
+
+        String deviceString;
+        try{
+            Method gm = commandQueue.getClass().getMethod("getDevice");
+            Object dev = gm.invoke(commandQueue);
+            deviceString = String.valueOf(dev);
+        } catch (Exception e) {
+            deviceString = String.valueOf(commandQueue);
+        }
+
         ProfilerShim.startKernel(taskName, deviceString);
 
         return eventPool.registerEvent(commandQueue.enqueueNDRangeKernel(kernel, dim, globalWorkOffset, globalWorkSize, localWorkSize, eventPool.serialiseEvents(waitEvents, commandQueue)

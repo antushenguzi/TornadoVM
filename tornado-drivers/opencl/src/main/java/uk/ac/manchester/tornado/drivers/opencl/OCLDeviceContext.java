@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 import java.lang.reflect.Method;
 
 import uk.ac.manchester.tornado.api.common.Event;
@@ -69,6 +70,9 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
     private final TornadoBufferProvider bufferProvider;
     private boolean wasReset;
     private final Set<Long> executionIDs;
+    private final AtomicLong raplSeq = new AtomicLong();
+
+    private final ConcurrentHashMap<Integer, String> raplEventToTask = new ConcurrentHashMap<>();
 
     /**
      * Map table to represent the compiled-code per execution plan. Each entry in the execution plan has its own
@@ -212,6 +216,7 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
         }
 
         final String taskName = "plan:" + executionPlanId + "/" + kernelName;
+        final String taskName = taskBase + "#" + raplSeq.incrementAndGet();
 
 
         String deviceString;
@@ -225,9 +230,20 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
 
         ProfilerShim.startKernel(taskName, deviceString);
 
-        return eventPool.registerEvent(commandQueue.enqueueNDRangeKernel(kernel, dim, globalWorkOffset, globalWorkSize, localWorkSize, eventPool.serialiseEvents(waitEvents, commandQueue)
-                ? eventPool.waitEventsBuffer
-                : null), EventDescriptor.DESC_PARALLEL_KERNEL, commandQueue);
+        int eventID = eventPool.registerEvent(
+                commandQueue.enqueueNDRangeKernel(
+                kernel,
+                dim,
+                globalWorkOffset,
+                globalWorkSize,
+                localWorkSize,
+                eventPool.serialiseEvents(waitEvents, commandQueue);
+                )
+        );
+
+        raplEventToTask.put(eventId, taskName);
+
+        return eventID;
     }
 
     public long getPowerUsage() {

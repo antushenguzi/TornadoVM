@@ -51,7 +51,7 @@ import uk.ac.manchester.tornado.drivers.opencl.runtime.OCLBufferProvider;
 import uk.ac.manchester.tornado.drivers.opencl.runtime.OCLTornadoDevice;
 import uk.ac.manchester.tornado.runtime.common.TornadoOptions;
 import uk.ac.manchester.tornado.runtime.common.profiler.TimeProfiler;
-import uk.ac.manchester.tornado.runtime.common.profiler.Profilertype;
+import uk.ac.manchester.tornado.runtime.common.profiler.ProfilerType;
 import uk.ac.manchester.tornado.runtime.tasks.meta.TaskDataContext;
 
 public class OCLDeviceContext implements OCLDeviceContextInterface {

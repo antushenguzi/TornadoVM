@@ -38,11 +38,26 @@ public class TimeProfiler implements TornadoProfiler {
     private final boolean enableRapl = Boolean.parseBoolean(System.getProperty("tornado.power.cpu.rapl", "false"));
     private final boolean raplDebug  = Boolean.parseBoolean(System.getProperty("tornado.power.cpu.rapl.debug", "false"));
     private uk.ac.manchester.tornado.runtime.profiler.rapl.RaplReader raplReader = null;
-    private final java.util.HashMap<String, Long> raplStartEnergyUj = new java.util.HashMap<>();
-    private final java.util.HashMap<String, Long> raplStartTimeNs   = new java.util.HashMap<>();
-    
-    private final java.util.HashMap<String, Long> raplSumEnergyUj   = new java.util.HashMap<>();
-    private final java.util.HashMap<String, Long> raplSumTimeNs     = new java.util.HashMap<>();
+    private static final java.util.concurrent.ConcurrentHashMap<String, Long> raplStartEnergyUj = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final java.util.concurrent.ConcurrentHashMap<String, Long> raplStartTimeNs   = new java.util.concurrent.ConcurrentHashMap<>();
+
+
+    private static final java.util.concurrent.ConcurrentHashMap<String, Long> raplSumEnergyUj   = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final java.util.concurrent.ConcurrentHashMap<String, Long> raplSumTimeNs     = new java.util.concurrent.ConcurrentHashMap<>();
+
+    private static final java.util.concurrent.ConcurrentHashMap<String, String> raplLatestKeyByBase = new java.util.concurrent.ConcurrentHashMap<>();
+
+
+    private static String raplBaseOf(String id) {
+        if (id == null) return "";
+        String t = id;
+        int slash = t.lastIndexOf('/');  if (slash >= 0) t = t.substring(slash + 1); // saxpy#101
+        int dot   = t.lastIndexOf('.');  if (dot   >= 0) t = t.substring(dot   + 1); // saxpy
+        int hash  = t.indexOf('#');      if (hash  >= 0) t = t.substring(0, hash);
+        return t;
+    }
+
+
 
     public TimeProfiler() {
         INSTANCE = this;
@@ -93,42 +108,52 @@ public class TimeProfiler implements TornadoProfiler {
 
     @Override
     public synchronized void start(ProfilerType type, String taskName) {
-
-    long start = System.nanoTime();
-    if (!taskTimers.containsKey(taskName)) {
-        taskTimers.put(taskName, new java.util.HashMap<>());
-    }
-    java.util.HashMap<ProfilerType, Long> profilerType = taskTimers.get(taskName);
-    profilerType.put(type, start);
-    taskTimers.put(taskName, profilerType);
-
-
-    if (enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME) {
-
-        if (!raplStartEnergyUj.containsKey(taskName) || !raplStartTimeNs.containsKey(taskName)) {
-            try {
-                long e0 = raplReader.readEnergyUj();  // μJ
-                long t0 = System.nanoTime();          // ns
-                raplStartEnergyUj.put(taskName, e0);
-                raplStartTimeNs.put(taskName, t0);
-                if (raplDebug) {
-                    System.out.println("[RAPL-DEBUG] START task=" + taskName + " e0(uj)=" + e0 + " t0(ns)=" + t0);
-                }
-            } catch (Throwable t) {
-
-                raplStartEnergyUj.remove(taskName);
-                raplStartTimeNs.remove(taskName);
-                if (raplDebug) {
-                    System.out.println("[RAPL-DEBUG] START read fail task=" + taskName + " err=" + t);
-                }
-            }
-        } else if (raplDebug) {
-            System.out.println("[RAPL-DEBUG] START task=" + taskName + " baseline already present");
+        long start = System.nanoTime();
+        if (!taskTimers.containsKey(taskName)) {
+            taskTimers.put(taskName, new java.util.HashMap<>());
         }
-    } else if (raplDebug && type == ProfilerType.TASK_KERNEL_TIME) {
-        System.out.println("[RAPL-DEBUG] START task=" + taskName + " rapl disabled or raplReader null");
+        java.util.HashMap<ProfilerType, Long> profilerType = taskTimers.get(taskName);
+        profilerType.put(type, start);
+        taskTimers.put(taskName, profilerType);
+
+        if (type != ProfilerType.TASK_KERNEL_TIME) {
+            return;
+        }
+        if (!(enableRapl && raplReader != null)) {
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] START task=" + taskName + " rapl disabled or raplReader null");
+            }
+            return;
+        }
+
+        if (raplStartEnergyUj.containsKey(taskName) && raplStartTimeNs.containsKey(taskName)) {
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] START task=" + taskName + " baseline already present");
+            }
+            return;
+        }
+
+        try {
+            long e0 = raplReader.readEnergyUj();  // μJ
+            long t0 = System.nanoTime();          // ns
+            raplStartEnergyUj.put(taskName, e0);
+            raplStartTimeNs.put(taskName, t0);
+
+
+            raplLatestKeyByBase.put(raplBaseOf(taskName), taskName);
+
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] START task=" + taskName + " e0(uj)=" + e0 + " t0(ns)=" + t0);
+            }
+        } catch (Throwable t) {
+            raplStartEnergyUj.remove(taskName);
+            raplStartTimeNs.remove(taskName);
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] START read fail task=" + taskName + " err=" + t);
+            }
+        }
     }
-}
+
 
 
     @Override
@@ -181,89 +206,152 @@ public class TimeProfiler implements TornadoProfiler {
 
     @Override
     public synchronized void stop(ProfilerType type, String taskName) {
-  
-    long end = System.nanoTime();
-    java.util.HashMap<ProfilerType, Long> profiledType = taskTimers.get(taskName);
-    if (profiledType != null && profiledType.containsKey(type)) {
-        long start = profiledType.get(type);
-        long total = end - start;
-        profiledType.put(type, total);
-        taskTimers.put(taskName, profiledType);
-    }
 
-
-    if (!(enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME)) {
-        if (raplDebug && type == ProfilerType.TASK_KERNEL_TIME) {
-            System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " rapl disabled or raplReader null");
+        long end = System.nanoTime();
+        java.util.HashMap<ProfilerType, Long> profiledType = taskTimers.get(taskName);
+        if (profiledType != null && profiledType.containsKey(type)) {
+            long start = profiledType.get(type);
+            long total = end - start;
+            profiledType.put(type, total);
+            taskTimers.put(taskName, profiledType);
         }
-        return;
-    }
+
+        if (!(enableRapl && raplReader != null && type == ProfilerType.TASK_KERNEL_TIME)) {
+            if (raplDebug && type == ProfilerType.TASK_KERNEL_TIME) {
+                System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " rapl disabled or raplReader null");
+            }
+            return;
+        }
+
+        Long e0 = raplStartEnergyUj.get(taskName);
+        Long t0 = raplStartTimeNs.get(taskName);
+
+        boolean isCpu = false;
+        try {
+            if (taskDeviceIdentifiers.containsKey(taskName)) {
+                String dev = taskDeviceIdentifiers.get(taskName).get(ProfilerType.DEVICE);
+                if (dev != null) {
+                    String d = dev.toLowerCase();
+                    isCpu = d.contains("cpu") || d.contains("pthread") || d.contains("cl_device_type_cpu");
+                }
+            }
+        } catch (Throwable ignore) {}
+
+        if (!isCpu) {
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " not CPU → discard baseline e0=" + e0 + " t0=" + t0);
+            }
+            return;
+        }
+
+        if (e0 == null) {
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " missing baseline e0");
+            }
+            return;
+        }
+
+        try {
+            long e1 = raplReader.readEnergyUj();    // μJ
+            long t1 = System.nanoTime();            // ns
+
+            long deltaUj = e1 - e0;
+            if (deltaUj < 0) {
+                long wrap = raplReader.minMaxRangeUj();
+                if (wrap > 0) deltaUj = (wrap - e0) + e1;
+            }
+
+            long dtNs;
+            if (t0 != null) {
+                dtNs = t1 - t0;
+            } else {
+                Long dtFromTimer = null;
+                java.util.HashMap<ProfilerType, Long> pt = taskTimers.get(taskName);
+                if (pt != null) dtFromTimer = pt.get(ProfilerType.TASK_KERNEL_TIME);
+                if (dtFromTimer == null) {
+                    if (raplDebug) {
+                        System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " missing dtNs fallback");
+                    }
+                    return;
+                }
+                dtNs = dtFromTimer;
+            }
 
 
-    Long e0 = raplStartEnergyUj.remove(taskName);
-    Long t0 = raplStartTimeNs.remove(taskName);
+            double dtMs      = dtNs / 1e6;           // ns → ms
+            double energy_mJ = deltaUj / 1000.0;     // μJ → mJ
+            long   power_mW  = (dtMs > 0.0) ? Math.round((energy_mJ / dtMs) * 1000.0) : -1;
 
+            setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, taskName, power_mW);
 
-    boolean isCpu = false;
-    try {
-        if (taskDeviceIdentifiers.containsKey(taskName)) {
-            String dev = taskDeviceIdentifiers.get(taskName).get(ProfilerType.DEVICE);
-            if (dev != null) {
-                String d = dev.toLowerCase();
-                isCpu = d.contains("cpu") || d.contains("pthread") || d.contains("cl_device_type_cpu");
+            raplSumEnergyUj.put(taskName, raplSumEnergyUj.getOrDefault(taskName, 0L) + deltaUj);
+            raplSumTimeNs.put(taskName, raplSumTimeNs.getOrDefault(taskName, 0L) + dtNs);
+
+            // ✅ 成功后再清理基线
+            raplStartEnergyUj.remove(taskName);
+            raplStartTimeNs.remove(taskName);
+
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] STOP  task=" + taskName
+                        + " e1(uj)=" + e1
+                        + " delta(uj)=" + deltaUj
+                        + " dt(ms)=" + String.format("%.3f", dtMs)
+                        + " power(mW)=" + power_mW);
+            }
+        } catch (Throwable t) {
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] STOP read fail task=" + taskName + " err=" + t);
             }
         }
-    } catch (Throwable ignore) {}
-
-    if (!isCpu) {
-        if (raplDebug) {
-            System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " not CPU → discard baseline e0=" + e0 + " t0=" + t0);
-        }
-        return;
     }
 
-    if (e0 == null || t0 == null) {
-        if (raplDebug) {
-            System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " missing baseline e0/t0");
+    /**
+     * Try to resolve the best matching RAPL baseline for a given taskId.
+     * This is used when auto-stopping RAPL after kernel time is recorded,
+     * where the taskId may be different from the one used at start().
+     *
+     * @param taskId The task ID to resolve.
+     * @return The resolved task ID that has a RAPL baseline, or the original taskId if none found.
+     */
+
+    private String resolveRaplTaskKeyForTimer(String taskId) {
+
+
+        if (raplStartEnergyUj.containsKey(taskId)) {
+            return taskId;
         }
-        return;
+
+
+        String base = raplBaseOf(taskId);
+
+
+        String cand = raplLatestKeyByBase.get(base);
+        if (cand != null && raplStartEnergyUj.containsKey(cand)) {
+            return cand;
+        }
+
+        String best = null;
+        long bestT0 = Long.MIN_VALUE;
+
+        java.util.ArrayList<String> keysSnapshot = new java.util.ArrayList<>(raplStartEnergyUj.keySet());
+        for (String k : keysSnapshot) {
+            if (raplBaseOf(k).equals(base)) {
+                Long t0 = raplStartTimeNs.get(k);
+
+                if (best == null) {
+                    best = k;
+                    bestT0 = (t0 != null) ? t0 : Long.MIN_VALUE;
+                } else if (t0 != null && t0 > bestT0) {
+                    best = k;
+                    bestT0 = t0;
+                }
+            }
+        }
+
+        return (best != null) ? best : taskId;
     }
 
-    try {
-        long e1 = raplReader.readEnergyUj();    // μJ
-        long t1 = System.nanoTime();            // ns
 
-        long deltaUj = e1 - e0;
-        if (deltaUj < 0) {                      
-            long wrap = raplReader.minMaxRangeUj();
-            if (wrap > 0) deltaUj = (wrap - e0) + e1;
-        }
-
-        long   dtNs     = t1 - t0;
-        double dtMs     = dtNs / 1e6;          // ns → ms
-        double energy_mJ = deltaUj / 1000.0;   // μJ → mJ
-        long   power_mW  = (dtMs > 0.0) ? Math.round((energy_mJ / dtMs) * 1000.0) : -1;
-
-
-        setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, taskName, power_mW);
-
-
-        raplSumEnergyUj.put(taskName, raplSumEnergyUj.getOrDefault(taskName, 0L) + deltaUj);
-        raplSumTimeNs.put(taskName, raplSumTimeNs.getOrDefault(taskName, 0L) + dtNs);
-
-        if (raplDebug) {
-            System.out.println("[RAPL-DEBUG] STOP  task=" + taskName
-                    + " e1(uj)=" + e1
-                    + " delta(uj)=" + deltaUj
-                    + " dt(ms)=" + String.format("%.3f", dtMs)
-                    + " power(mW)=" + power_mW);
-        }
-    } catch (Throwable t) {
-        if (raplDebug) {
-            System.out.println("[RAPL-DEBUG] STOP read fail task=" + taskName + " err=" + t);
-        }
-    }
-}
 
 
     @Override
@@ -497,6 +585,7 @@ public class TimeProfiler implements TornadoProfiler {
         System.out.println(jsonContent);
     }
 
+
     @Override
     public synchronized void clean() {
         taskSizeMetrics.clear();
@@ -519,6 +608,64 @@ public class TimeProfiler implements TornadoProfiler {
             taskTimers.put(taskID, new HashMap<>());
         }
         taskTimers.get(taskID).put(type, timer);
+
+        // --- auto-stop when kernel time is written (RAPL) ---
+
+        // --- auto-stop when kernel time is written (RAPL) ---
+        if (type == ProfilerType.TASK_KERNEL_TIME && enableRapl && raplReader != null) {
+
+            // 0)
+            if (raplStartEnergyUj.containsKey(taskID)) {
+                //
+                if (raplDebug) System.out.println("[RAPL-DEBUG] auto-stop (this file) direct task=" + taskID);
+                stop(ProfilerType.TASK_KERNEL_TIME, taskID);
+                return;
+            }
+
+            // 1)
+            String base = raplBaseOf(taskID);
+            String cand = raplLatestKeyByBase.get(base);
+            if (cand != null && raplStartEnergyUj.containsKey(cand)) {
+                if (raplDebug) System.out.println("[RAPL-DEBUG] auto-stop (this file) remap base=" + base + " task=" + taskID + " -> " + cand);
+                stop(ProfilerType.TASK_KERNEL_TIME, cand);
+                return;
+            }
+
+            // 2)
+            String best = null;
+            long bestT0 = Long.MIN_VALUE;
+            java.util.ArrayList<String> keysSnapshot = new java.util.ArrayList<>(raplStartEnergyUj.keySet());
+            for (String k : keysSnapshot) {
+                if (raplBaseOf(k).equals(base)) {
+                    Long t0 = raplStartTimeNs.get(k);
+                    if (best == null) {
+                        best = k;
+                        bestT0 = (t0 != null) ? t0 : Long.MIN_VALUE;
+                    } else if (t0 != null && t0 > bestT0) {
+                        best = k;
+                        bestT0 = t0;
+                    }
+
+                    if (raplDebug) System.out.println("[RAPL-DEBUG] auto-stop (this file) candidate k=" + k + " t0=" + t0);
+                }
+            }
+
+            if (best != null) {
+                if (raplDebug) System.out.println("[RAPL-DEBUG] auto-stop (this file) scan base=" + base + " task=" + taskID + " -> " + best);
+                stop(ProfilerType.TASK_KERNEL_TIME, best);
+            } else if (raplDebug) {
+                StringBuilder b = new StringBuilder();
+                for (String k : keysSnapshot) {
+                    b.append(k).append("(base=").append(raplBaseOf(k)).append(") ");
+                }
+                System.out.println("[RAPL-DEBUG] auto-stop (this file) no baseline for task=" + taskID + " base=" + base + " keys=" + b);
+            }
+        }
+
+
+
+
+
     }
 
     @Override
@@ -526,7 +673,7 @@ public class TimeProfiler implements TornadoProfiler {
         if (!taskPowerMetrics.containsKey(taskID)) {
             taskPowerMetrics.put(taskID, new HashMap<>());
         }
-        if (power > 0) {
+        if (power >= 0) {
             taskPowerMetrics.get(taskID).put(type, Long.toString(power));
         } else {
             taskPowerMetrics.get(taskID).put(type, "n/a");

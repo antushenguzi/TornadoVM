@@ -1,3 +1,0 @@
-[1;34mRunning TornadoVM Benchmarks[0;0m
-[1;36m[INFO] This process takes between 30-60 minutes[0;0m
-Error: 'montecaro' does not match a valid key in allSizes. Please provide a valid benchmark.

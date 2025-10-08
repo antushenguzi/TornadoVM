@@ -193,7 +193,7 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
         return context.createProgramWithIL(spirvBinary, lengths, this);
     }
 
-    @Override
+
     public int enqueueNDRangeKernel(long executionPlanId,
                                     OCLKernel kernel,
                                     int dim,
@@ -202,52 +202,47 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
                                     long[] localWorkSize,
                                     int[] waitEvents) {
 
+        OCLCommandQueue commandQueue = getCommandQueue(executionPlanId);
+        OCLEventPool eventPool = getOCLEventPool(executionPlanId);
 
-        final OCLCommandQueue commandQueue = getCommandQueue(executionPlanId);
-        final OCLEventPool eventPool = getOCLEventPool(executionPlanId);
 
         String kernelName;
         try {
-            Method m = kernel.getClass().getMethod("getKernelName");
+            java.lang.reflect.Method m = kernel.getClass().getMethod("getKernelName");
             Object r = m.invoke(kernel);
             kernelName = (r != null) ? r.toString() : "kernel";
         } catch (Exception e1) {
             try {
-                Method m = kernel.getClass().getMethod("getName");
+                java.lang.reflect.Method m = kernel.getClass().getMethod("getName");
                 Object r = m.invoke(kernel);
                 kernelName = (r != null) ? r.toString() : "kernel";
             } catch (Exception e2) {
                 kernelName = "kernel@" + Integer.toHexString(System.identityHashCode(kernel));
             }
         }
+        final String taskName = "plan:" + executionPlanId + "/" + kernelName + "#" + raplSeq.incrementAndGet();
 
 
-        final String taskBase = "plan:" + executionPlanId + "/" + kernelName;
-        final String taskName  = taskBase + "#" + raplSeq.incrementAndGet();
+        final String deviceString = getDeviceName();
 
 
-        String deviceString;
-        try {
-            Method gm = commandQueue.getClass().getMethod("getDevice");
-            Object dev = gm.invoke(commandQueue);
-            deviceString = String.valueOf(dev);
-        } catch (Exception e) {
-            deviceString = String.valueOf(commandQueue);
-        }
+        uk.ac.manchester.tornado.drivers.opencl.util.ProfilerShim.startKernel(taskName, deviceString);
 
 
-        ProfilerShim.startKernel(taskName, deviceString);
+        final long oclEvent = commandQueue.enqueueNDRangeKernel(
+                kernel,
+                dim,
+                globalWorkOffset,
+                globalWorkSize,
+                localWorkSize,
+                eventPool.serialiseEvents(waitEvents, commandQueue) ? eventPool.waitEventsBuffer : null
+        );
 
 
         final int eventId = eventPool.registerEvent(
-                commandQueue.enqueueNDRangeKernel(
-                        kernel,
-                        dim,
-                        globalWorkOffset,
-                        globalWorkSize,
-                        localWorkSize,
-                        eventPool.serialiseEvents(waitEvents, commandQueue) ? eventPool.waitEventsBuffer : null
-                )
+                oclEvent,
+                uk.ac.manchester.tornado.drivers.common.utils.EventDescriptor.DESC_SYNC_MARKER,
+                commandQueue
         );
 
 
@@ -255,6 +250,7 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
 
         return eventId;
     }
+
 
 
     public long getPowerUsage() {

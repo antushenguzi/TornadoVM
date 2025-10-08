@@ -50,8 +50,7 @@ import uk.ac.manchester.tornado.drivers.opencl.power.OCLNvidiaPowerMetricHandler
 import uk.ac.manchester.tornado.drivers.opencl.runtime.OCLBufferProvider;
 import uk.ac.manchester.tornado.drivers.opencl.runtime.OCLTornadoDevice;
 import uk.ac.manchester.tornado.runtime.common.TornadoOptions;
-import uk.ac.manchester.tornado.runtime.common.profiler.TimeProfiler;
-import uk.ac.manchester.tornado.runtime.common.profiler.ProfilerType;
+import uk.ac.manchester.tornado.drivers.opencl.util.ProfilerShim;
 import uk.ac.manchester.tornado.runtime.tasks.meta.TaskDataContext;
 
 public class OCLDeviceContext implements OCLDeviceContextInterface {
@@ -191,17 +190,17 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
 
     public int enqueueNDRangeKernel(long executionPlanId, OCLKernel kernel, int dim, long[] globalWorkOffset, long[] globalWorkSize, long[] localWorkSize, int[] waitEvents) {
 
+
+
+        OCLCommandQueue commandQueue = getCommandQueue(executionPlanId);
+        OCLEventPool eventPool = getOCLEventPool(executionPlanId);
+
         final String kernelName = (kernel.getKernelName() != null) ? kernel.getKernelName() : kernel.getName();
         final String taskName   = String.format("plan:%d/%s", executionPlanId, kernelName);
 
         final String deviceString = commandQueue.getDevice().toString();
+        ProfilerShim.startKernel(taskName, deviceString);
 
-        final TimeProfiler tp = TimeProfiler.getInstance();
-        tp.registerDeviceName(taskName, deviceString);
-        tp.start(ProfilerType.TASK_KERNEL_TIME, taskName);
-
-        OCLCommandQueue commandQueue = getCommandQueue(executionPlanId);
-        OCLEventPool eventPool = getOCLEventPool(executionPlanId);
         return eventPool.registerEvent(commandQueue.enqueueNDRangeKernel(kernel, dim, globalWorkOffset, globalWorkSize, localWorkSize, eventPool.serialiseEvents(waitEvents, commandQueue)
                 ? eventPool.waitEventsBuffer
                 : null), EventDescriptor.DESC_PARALLEL_KERNEL, commandQueue);

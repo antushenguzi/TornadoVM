@@ -237,7 +237,7 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
                 globalWorkOffset,
                 globalWorkSize,
                 localWorkSize,
-                eventPool.serialiseEvents(waitEvents, commandQueue);
+                eventPool.serialiseEvents(waitEvents, commandQueue)
                 )
         );
 

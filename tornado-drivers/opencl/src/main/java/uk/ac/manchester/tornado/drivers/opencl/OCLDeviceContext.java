@@ -194,16 +194,25 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
     }
 
     @Override
-    public int enqueueNDRangeKernel(long executionPlanId, OCLKernel kernel, int dim, long[] globalWorkOffset, long[] globalWorkSize, long[] localWorkSize, int[] waitEvents) {
+    public int enqueueNDRangeKernel(long executionPlanId,
+                                    OCLKernel kernel,
+                                    int dim,
+                                    long[] globalWorkOffset,
+                                    long[] globalWorkSize,
+                                    long[] localWorkSize,
+                                    int[] waitEvents) {
 
+
+        final OCLCommandQueue commandQueue = getCommandQueue(executionPlanId);
+        final OCLEventPool eventPool = getOCLEventPool(executionPlanId);
 
         String kernelName;
-        try{
+        try {
             Method m = kernel.getClass().getMethod("getKernelName");
             Object r = m.invoke(kernel);
             kernelName = (r != null) ? r.toString() : "kernel";
         } catch (Exception e1) {
-            try{
+            try {
                 Method m = kernel.getClass().getMethod("getName");
                 Object r = m.invoke(kernel);
                 kernelName = (r != null) ? r.toString() : "kernel";
@@ -212,12 +221,13 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
             }
         }
 
-        final String taskName = "plan:" + executionPlanId + "/" + kernelName;
-        final String taskName = taskBase + "#" + raplSeq.incrementAndGet();
+
+        final String taskBase = "plan:" + executionPlanId + "/" + kernelName;
+        final String taskName  = taskBase + "#" + raplSeq.incrementAndGet();
 
 
         String deviceString;
-        try{
+        try {
             Method gm = commandQueue.getClass().getMethod("getDevice");
             Object dev = gm.invoke(commandQueue);
             deviceString = String.valueOf(dev);
@@ -225,23 +235,27 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
             deviceString = String.valueOf(commandQueue);
         }
 
+
         ProfilerShim.startKernel(taskName, deviceString);
+
 
         final int eventId = eventPool.registerEvent(
                 commandQueue.enqueueNDRangeKernel(
-                kernel,
-                dim,
-                globalWorkOffset,
-                globalWorkSize,
-                localWorkSize,
-                eventPool.serialiseEvents(waitEvents, commandQueue)
+                        kernel,
+                        dim,
+                        globalWorkOffset,
+                        globalWorkSize,
+                        localWorkSize,
+                        eventPool.serialiseEvents(waitEvents, commandQueue) ? eventPool.waitEventsBuffer : null
                 )
         );
+
 
         raplEventToTask.put(eventId, taskName);
 
         return eventId;
     }
+
 
     public long getPowerUsage() {
         long[] powerUsage = new long[1];

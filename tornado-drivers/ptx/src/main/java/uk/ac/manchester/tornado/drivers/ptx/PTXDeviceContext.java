@@ -352,7 +352,7 @@ public class PTXDeviceContext implements TornadoDeviceContext {
     private void updateProfiler(long executionPlanId, final int taskEvent, final TaskDataContext meta) {
         if (TornadoOptions.isProfilerEnabled()) {
             // Metrics captured before blocking
-            meta.getProfiler().setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, meta.getId(), getPowerUsage());
+            meta.getProfiler().setTaskPowerUsage(ProfilerType.GPU_POWER_USAGE_mW, meta.getId(), getPowerUsage());
             if (TornadoOptions.isUpsReaderEnabled()) {
                 meta.getProfiler().setSystemPowerConsumption(ProfilerType.SYSTEM_POWER_CONSUMPTION_W, meta.getId(), (UpsMeterReader.getOutputPowerMetric() != null)
                         ? Long.parseLong(UpsMeterReader.getOutputPowerMetric())

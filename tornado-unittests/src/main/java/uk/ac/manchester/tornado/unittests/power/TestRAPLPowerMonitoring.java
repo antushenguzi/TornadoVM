@@ -29,8 +29,7 @@ import uk.ac.manchester.tornado.api.TornadoExecutionResult;
 import uk.ac.manchester.tornado.api.enums.DataTransferMode;
 import uk.ac.manchester.tornado.api.enums.ProfilerMode;
 import uk.ac.manchester.tornado.api.exceptions.TornadoExecutionPlanException;
-import uk.ac.manchester.tornado.api.profiler.ProfilerType;
-import uk.ac.manchester.tornado.api.profiler.TornadoProfiler;
+import uk.ac.manchester.tornado.api.TornadoProfilerResult;
 import uk.ac.manchester.tornado.api.types.arrays.FloatArray;
 import uk.ac.manchester.tornado.unittests.common.TornadoTestBase;
 
@@ -105,23 +104,34 @@ public class TestRAPLPowerMonitoring extends TornadoTestBase {
 
             // Verify profiler captured data
             assertNotNull("Execution result should not be null", result);
-            TornadoProfiler profiler = result.getProfiler();
-            assertNotNull("Profiler should be available", profiler);
+            TornadoProfilerResult profilerResult = result.getProfilerResult();
+            assertNotNull("Profiler result should be available", profilerResult);
 
-            // Get power usage metric
-            String powerUsageStr = profiler.getTaskPowerUsage("s0.t0");
+            // Get profiler log which contains power metrics in JSON format
+            String profileLog = profilerResult.getProfileLog();
 
-            if (powerUsageStr != null && !powerUsageStr.equals("n/a")) {
-                System.out.println("[RAPL Test] Power usage captured: " + powerUsageStr + " mW");
+            if (profileLog != null && profileLog.contains("POWER_USAGE_mW")) {
+                System.out.println("[RAPL Test] Power usage metric found in profiler log");
 
-                // Verify power reading is reasonable for CPU (typically 5W - 200W)
-                try {
-                    long powerUsage = Long.parseLong(powerUsageStr);
-                    assertTrue("Power usage should be positive", powerUsage > 0);
-                    assertTrue("Power usage should be reasonable for CPU (< 500W)", powerUsage < 500_000);
-                    System.out.println("[RAPL Test] PASS - Valid power reading: " + powerUsage + " mW");
-                } catch (NumberFormatException e) {
-                    System.err.println("[RAPL Test] WARNING - Could not parse power value: " + powerUsageStr);
+                // Extract power usage from JSON (simple string parsing)
+                if (profileLog.contains("\"POWER_USAGE_mW\"")) {
+                    int powerIdx = profileLog.indexOf("\"POWER_USAGE_mW\"");
+                    int valueStart = profileLog.indexOf("\"", powerIdx + 17) + 1;
+                    int valueEnd = profileLog.indexOf("\"", valueStart);
+                    String powerUsageStr = profileLog.substring(valueStart, valueEnd);
+
+                    if (!powerUsageStr.equals("n/a")) {
+                        try {
+                            long powerUsage = Long.parseLong(powerUsageStr);
+                            assertTrue("Power usage should be positive", powerUsage > 0);
+                            assertTrue("Power usage should be reasonable for CPU (< 500W)", powerUsage < 500_000);
+                            System.out.println("[RAPL Test] PASS - Valid power reading: " + powerUsage + " mW");
+                        } catch (NumberFormatException e) {
+                            System.err.println("[RAPL Test] WARNING - Could not parse power value: " + powerUsageStr);
+                        }
+                    } else {
+                        System.out.println("[RAPL Test] SKIP - Power monitoring returned n/a");
+                    }
                 }
             } else {
                 // RAPL may not be available on this system
@@ -178,10 +188,16 @@ public class TestRAPLPowerMonitoring extends TornadoTestBase {
             }
 
             TornadoExecutionResult result = executionPlan.execute();
-            String powerStr = result.getProfiler().getTaskPowerUsage("s0.t0");
-            if (powerStr != null && !powerStr.equals("n/a")) {
-                lightPower = Long.parseLong(powerStr);
-                System.out.println("[RAPL Test] Light workload power: " + lightPower + " mW");
+            String profileLog = result.getProfilerResult().getProfileLog();
+            if (profileLog != null && profileLog.contains("\"POWER_USAGE_mW\"")) {
+                int powerIdx = profileLog.indexOf("\"POWER_USAGE_mW\"");
+                int valueStart = profileLog.indexOf("\"", powerIdx + 17) + 1;
+                int valueEnd = profileLog.indexOf("\"", valueStart);
+                String powerStr = profileLog.substring(valueStart, valueEnd);
+                if (!powerStr.equals("n/a")) {
+                    lightPower = Long.parseLong(powerStr);
+                    System.out.println("[RAPL Test] Light workload power: " + lightPower + " mW");
+                }
             }
         }
 
@@ -195,10 +211,16 @@ public class TestRAPLPowerMonitoring extends TornadoTestBase {
             }
 
             TornadoExecutionResult result = executionPlan.execute();
-            String powerStr = result.getProfiler().getTaskPowerUsage("s1.t0");
-            if (powerStr != null && !powerStr.equals("n/a")) {
-                heavyPower = Long.parseLong(powerStr);
-                System.out.println("[RAPL Test] Heavy workload power: " + heavyPower + " mW");
+            String profileLog = result.getProfilerResult().getProfileLog();
+            if (profileLog != null && profileLog.contains("\"POWER_USAGE_mW\"")) {
+                int powerIdx = profileLog.indexOf("\"POWER_USAGE_mW\"");
+                int valueStart = profileLog.indexOf("\"", powerIdx + 17) + 1;
+                int valueEnd = profileLog.indexOf("\"", valueStart);
+                String powerStr = profileLog.substring(valueStart, valueEnd);
+                if (!powerStr.equals("n/a")) {
+                    heavyPower = Long.parseLong(powerStr);
+                    System.out.println("[RAPL Test] Heavy workload power: " + heavyPower + " mW");
+                }
             }
         }
 

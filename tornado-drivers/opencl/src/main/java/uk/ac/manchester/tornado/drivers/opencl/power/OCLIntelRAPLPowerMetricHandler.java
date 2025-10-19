@@ -33,7 +33,7 @@ import uk.ac.manchester.tornado.runtime.common.TornadoLogger;
  *
  * This handler provides CPU energy consumption monitoring through Intel's RAPL interface.
  * RAPL energy counters are accessed via:
- * - MSR (Model Specific Registers) at /dev/cpu/*/msr (requires root or msr module)
+ * - MSR (Model Specific Registers) at /dev/cpu/N/msr (requires root or msr module)
  * - Linux powercap sysfs interface at /sys/class/powercap/intel-rapl/ (preferred)
  *
  * Power is derived from energy delta over time: Power(mW) = ΔEnergy(μJ) / Δtime(μs)

@@ -81,6 +81,7 @@ add_library(tornado-opencl SHARED
 	source/OCLPlatform.cpp
 	source/OCLProgram.cpp
 	source/OCLNvidiaPowerMetricHandler.cpp
+	source/OCLIntelRAPLPowerMetricHandler.cpp
 	source/OpenCL.cpp
 	source/utils.cpp
 	source/opencl_time_utils.cpp
@@ -116,6 +117,19 @@ else()
     if(NOT NVML_LIBRARY)
         message(STATUS "nvml not found")
     endif()
+endif()
+
+# Intel RAPL support detection
+# RAPL is available on Linux with either:
+# 1. Powercap sysfs interface (kernel 3.13+, preferred, no special permissions needed)
+# 2. MSR interface (requires msr kernel module and root/capabilities)
+if(UNIX AND NOT APPLE)
+    # Check if powercap sysfs exists (runtime check, so we always enable on Linux)
+    set(RAPL_SUPPORTED TRUE)
+    message(STATUS "Intel RAPL support enabled for Linux")
+    add_definitions(-DRAPL_IS_SUPPORTED)
+else()
+    message(STATUS "Intel RAPL not supported on this platform (Linux only)")
 endif()
 
 if(MSVC OR APPLE)

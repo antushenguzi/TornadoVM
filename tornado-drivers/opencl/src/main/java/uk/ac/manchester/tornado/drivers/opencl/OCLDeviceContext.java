@@ -46,6 +46,7 @@ import uk.ac.manchester.tornado.drivers.opencl.graal.OCLInstalledCode;
 import uk.ac.manchester.tornado.drivers.opencl.graal.compiler.OCLCompilationResult;
 import uk.ac.manchester.tornado.drivers.opencl.mm.OCLMemoryManager;
 import uk.ac.manchester.tornado.drivers.opencl.power.OCLEmptyPowerMetricHandler;
+import uk.ac.manchester.tornado.drivers.opencl.power.OCLIntelRAPLPowerMetricHandler;
 import uk.ac.manchester.tornado.drivers.opencl.power.OCLNvidiaPowerMetricHandler;
 import uk.ac.manchester.tornado.drivers.opencl.runtime.OCLBufferProvider;
 import uk.ac.manchester.tornado.drivers.opencl.runtime.OCLTornadoDevice;
@@ -83,8 +84,12 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
         this.commandQueueTable = new ConcurrentHashMap<>();
         this.device.setDeviceContext(this);
         this.executionIDs = Collections.synchronizedSet(new HashSet<>());
+
+        // Initialize power metric handler based on device vendor
         if (isDeviceContextOfNvidia()) {
             this.powerMetricHandler = new OCLNvidiaPowerMetricHandler(this);
+        } else if (isDeviceContextOfIntelCPU()) {
+            this.powerMetricHandler = new OCLIntelRAPLPowerMetricHandler(this);
         } else {
             this.powerMetricHandler = new OCLEmptyPowerMetricHandler();
         }
@@ -93,6 +98,13 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
 
     private boolean isDeviceContextOfNvidia() {
         return this.getPlatformContext().getPlatform().getName().toLowerCase().contains("nvidia");
+    }
+
+    private boolean isDeviceContextOfIntelCPU() {
+        String platformName = this.getPlatformContext().getPlatform().getName().toLowerCase();
+        String deviceType = this.getDevice().getDeviceType().name().toLowerCase();
+        // Enable RAPL for Intel CPUs (OpenCL platform contains "intel" and device is CPU)
+        return platformName.contains("intel") && deviceType.contains("cpu");
     }
 
     public static String checkKernelName(String entryPoint) {

@@ -96,13 +96,16 @@ public class OCLIntelRAPLPowerMetricHandler implements PowerMetric {
         } catch (OCLException e) {
             logger.error("Failed to initialize Intel RAPL: " + e.getMessage());
             isInitialized = false;
+        } catch (UnsatisfiedLinkError e) {
+            logger.error("RAPL native library not available: " + e.getMessage());
+            isInitialized = false;
         }
     }
 
     @Override
     public void getPowerUsage(long[] powerUsage) {
         if (!isInitialized) {
-            powerUsage[0] = -1; // Indicates unavailable
+            powerUsage[0] = 0; // Return 0 if not initialized
             return;
         }
 
@@ -116,9 +119,7 @@ public class OCLIntelRAPLPowerMetricHandler implements PowerMetric {
             long energyDelta = currentEnergy - previousEnergy;
             long timeDelta = currentTimestamp - previousTimestamp; // in nanoseconds
 
-            // Convert to milliwatts: (μJ * 1000) / ns
-            // = (μJ * 1,000,000) / μs
-            // = mW
+            // Convert to milliwatts: Power(mW) = ΔEnergy(μJ) × 1,000,000 / Δtime(ns)
             if (timeDelta > 0) {
                 powerUsage[0] = (energyDelta * 1_000_000L) / timeDelta;
             } else {
@@ -131,7 +132,7 @@ public class OCLIntelRAPLPowerMetricHandler implements PowerMetric {
 
         } catch (OCLException e) {
             logger.error("Failed to read RAPL energy: " + e.getMessage());
-            powerUsage[0] = -1;
+            powerUsage[0] = 0;
         }
     }
 

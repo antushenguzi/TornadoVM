@@ -85,10 +85,13 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
         this.device.setDeviceContext(this);
         this.executionIDs = Collections.synchronizedSet(new HashSet<>());
 
-        // Initialize power metric handler based on device vendor
+        // Initialize power metric handler based on device vendor/type
+        OCLDeviceType deviceType = this.getDevice().getDeviceType();
+
         if (isDeviceContextOfNvidia()) {
             this.powerMetricHandler = new OCLNvidiaPowerMetricHandler(this);
-        } else if (isDeviceContextOfIntelCPU()) {
+        } else if (deviceType == OCLDeviceType.CL_DEVICE_TYPE_CPU) {
+            // For CPU devices, try RAPL (works on Intel CPUs with RAPL support)
             this.powerMetricHandler = new OCLIntelRAPLPowerMetricHandler(this);
         } else {
             this.powerMetricHandler = new OCLEmptyPowerMetricHandler();
@@ -98,13 +101,6 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
 
     private boolean isDeviceContextOfNvidia() {
         return this.getPlatformContext().getPlatform().getName().toLowerCase().contains("nvidia");
-    }
-
-    private boolean isDeviceContextOfIntelCPU() {
-        String platformName = this.getPlatformContext().getPlatform().getName().toLowerCase();
-        String deviceType = this.getDevice().getDeviceType().name().toLowerCase();
-        // Enable RAPL for Intel CPUs (OpenCL platform contains "intel" and device is CPU)
-        return platformName.contains("intel") && deviceType.contains("cpu");
     }
 
     public static String checkKernelName(String entryPoint) {
@@ -208,8 +204,10 @@ public class OCLDeviceContext implements OCLDeviceContextInterface {
     }
 
     public long getPowerUsage() {
+        System.out.println("[OCLDeviceContext] getPowerUsage() called for: " + this.getDeviceName());
         long[] powerUsage = new long[1];
         powerMetricHandler.getPowerUsage(powerUsage);
+        System.out.println("[OCLDeviceContext] Power value: " + powerUsage[0] + " mW");
         return powerUsage[0];
     }
 

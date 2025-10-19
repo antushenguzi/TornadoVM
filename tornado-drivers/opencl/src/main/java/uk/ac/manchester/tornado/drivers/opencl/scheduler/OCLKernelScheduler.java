@@ -66,8 +66,10 @@ public abstract class OCLKernelScheduler {
     }
 
     private void updateProfiler(long executionPlanId, final int taskEvent, final TaskDataContext meta) {
+        System.out.println("[OCLKernelScheduler] updateProfiler called. ProfilerEnabled: " + TornadoOptions.isProfilerEnabled());
         if (TornadoOptions.isProfilerEnabled()) {
             // Metrics captured before blocking
+            System.out.println("[OCLKernelScheduler] Calling deviceContext.getPowerUsage()...");
             meta.getProfiler().setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, meta.getId(), deviceContext.getPowerUsage());
             if (TornadoOptions.isUpsReaderEnabled()) {
                 meta.getProfiler().setSystemPowerConsumption(ProfilerType.SYSTEM_POWER_CONSUMPTION_W, meta.getId(), (UpsMeterReader.getOutputPowerMetric() != null)

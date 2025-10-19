@@ -29,3 +29,6 @@ tornado-runtime/target/
 tornado.iml
 tornado_unittests.log
 OpenCL-Headers/
+
+# Claude Code documentation (local development aid)
+CLAUDE.md

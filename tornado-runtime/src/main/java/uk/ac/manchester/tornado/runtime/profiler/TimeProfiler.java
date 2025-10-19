@@ -50,11 +50,11 @@ public class TimeProfiler implements TornadoProfiler {
 
     private static String raplBaseOf(String id) {
         if (id == null) return "";
-        String t = id;
+        String t = id.trim();  // Remove leading/trailing whitespace
         int slash = t.lastIndexOf('/');  if (slash >= 0) t = t.substring(slash + 1); // saxpy#101
         int dot   = t.lastIndexOf('.');  if (dot   >= 0) t = t.substring(dot   + 1); // saxpy
         int hash  = t.indexOf('#');      if (hash  >= 0) t = t.substring(0, hash);
-        return t;
+        return t.trim();  // Trim again after extraction
     }
 
 
@@ -128,9 +128,8 @@ public class TimeProfiler implements TornadoProfiler {
 
         if (raplStartEnergyUj.containsKey(taskName) && raplStartTimeNs.containsKey(taskName)) {
             if (raplDebug) {
-                System.out.println("[RAPL-DEBUG] START task=" + taskName + " baseline already present");
+                System.out.println("[RAPL-DEBUG] START task=" + taskName + " baseline already present, overwriting");
             }
-            return;
         }
 
         try {
@@ -234,6 +233,22 @@ public class TimeProfiler implements TornadoProfiler {
                     String d = dev.toLowerCase();
                     isCpu = d.contains("cpu") || d.contains("pthread") || d.contains("cl_device_type_cpu");
                 }
+            } else {
+                // Try to find device info by base name
+                String base = raplBaseOf(taskName);
+                for (String key : taskDeviceIdentifiers.keySet()) {
+                    if (raplBaseOf(key).equals(base)) {
+                        String dev = taskDeviceIdentifiers.get(key).get(ProfilerType.DEVICE);
+                        if (dev != null) {
+                            String d = dev.toLowerCase();
+                            isCpu = d.contains("cpu") || d.contains("pthread") || d.contains("cl_device_type_cpu");
+                            if (raplDebug) {
+                                System.out.println("[RAPL-DEBUG] STOP task=" + taskName + " matched device from key=" + key + " dev=" + dev + " isCpu=" + isCpu);
+                            }
+                            break;
+                        }
+                    }
+                }
             }
         } catch (Throwable ignore) {}
 
@@ -283,6 +298,14 @@ public class TimeProfiler implements TornadoProfiler {
             long   power_mW  = (dtMs > 0.0) ? Math.round((energy_mJ / dtMs) * 1000.0) : -1;
 
             setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, taskName, power_mW);
+
+            // Also set power for all tasks with matching base name
+            String base = raplBaseOf(taskName);
+            for (String key : new java.util.ArrayList<>(taskPowerMetrics.keySet())) {
+                if (raplBaseOf(key).equals(base)) {
+                    setTaskPowerUsage(ProfilerType.POWER_USAGE_mW, key, power_mW);
+                }
+            }
 
             raplSumEnergyUj.put(taskName, raplSumEnergyUj.getOrDefault(taskName, 0L) + deltaUj);
             raplSumTimeNs.put(taskName, raplSumTimeNs.getOrDefault(taskName, 0L) + dtNs);
@@ -625,6 +648,9 @@ public class TimeProfiler implements TornadoProfiler {
             // 1)
             String base = raplBaseOf(taskID);
             String cand = raplLatestKeyByBase.get(base);
+            if (raplDebug) {
+                System.out.println("[RAPL-DEBUG] auto-stop check: taskID=\"" + taskID + "\" base=\"" + base + "\" cand=\"" + cand + "\" hasBaseline=" + (cand != null && raplStartEnergyUj.containsKey(cand)));
+            }
             if (cand != null && raplStartEnergyUj.containsKey(cand)) {
                 if (raplDebug) System.out.println("[RAPL-DEBUG] auto-stop (this file) remap base=" + base + " task=" + taskID + " -> " + cand);
                 stop(ProfilerType.TASK_KERNEL_TIME, cand);
